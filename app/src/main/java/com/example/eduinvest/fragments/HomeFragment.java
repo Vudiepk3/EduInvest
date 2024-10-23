@@ -4,9 +4,11 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -14,6 +16,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 
 
+import com.example.eduinvest.BankActivities.ManageLoanActivities;
 import com.example.eduinvest.R;
 import com.example.eduinvest.models.BannerModel;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +32,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class HomeFragment extends Fragment {
@@ -79,10 +83,14 @@ public class HomeFragment extends Fragment {
                 // Duyệt qua từng mục trong dữ liệu Firebase
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     BannerModel imageModel = itemSnapshot.getValue(BannerModel.class);
-                    if (imageModel != null && imageModel.getUrlImage() != null) {
+                    if (imageModel != null
+                            && imageModel.getUrlImage() != null
+                            && (imageModel.getNoteImage().equals("BANNER1") || imageModel.getNoteImage().equals("All"))) {
+
                         slideModels.add(new SlideModel(imageModel.getUrlImage(), ScaleTypes.FIT)); // Thêm hình ảnh vào danh sách slide
                         linkWebsites.add(imageModel.getLinkWeb()); // Thêm link website vào danh sách
                     }
+
                 }
 
                 // Cập nhật danh sách hình ảnh lên ImageSlider
@@ -129,6 +137,20 @@ public class HomeFragment extends Fragment {
                 Toast();
             }
         });
+        CardView loanCard = view.findViewById(R.id.loanCard);
+        try{
+            loanCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), ManageLoanActivities.class);
+                    startActivity(intent);
+                }
+            });
+        }catch (Exception e){
+            Log.e("Error", Objects.requireNonNull(e.getMessage()));
+        }
+
+
     }
     private void Toast(){
         Toast.makeText(getActivity(), "Chức năng sẽ được cập nhật sớm nhất đến với bạn", Toast.LENGTH_SHORT).show();

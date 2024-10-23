@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/baseline_rectangle"
+    android:orientation="vertical"
+    tools:context=".BankActivities.DetailBankActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        tools:context=".bankActivity.DetailBankActivity"
+        tools:ignore="ScrollViewSize">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:textSize="30sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_font"
+            android:text="Thông Tin Gói Vay"
+            android:gravity="center"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Tên Gói Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:id="@+id/detailTitleBank"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:text="Tên Gói Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="?attr/colorOnBackground" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Lãi Xuất Cho Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailRateBank"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:text="Lãi Xuất Cho Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="?attr/colorOnBackground" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Thời Gian Duyệt"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailBrowseBank"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:text="Thời Gian Duyệt"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="?attr/colorOnBackground" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Thời Gian  Cho Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailLoanPeriodBank"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:text="Thời Gian Cho Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="?attr/colorOnBackground" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Hạn Mức Cho Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailLimitBank"
+            android:autofillHints="username"
+            
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:text="Hạn Mức Cho Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="?attr/colorOnBackground" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Loại Tiền Cho Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailMoneyBank"
+            android:autofillHints="username"
+            
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:text="Loại Tiền"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="?attr/colorOnBackground" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Mô Tả"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailDescribeBank"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:text="Mô Tả"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="?attr/colorOnBackground" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Điều Kiện Cho Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailCosditionBank"
+            android:autofillHints="username"
+            android:layout_marginBottom="20dp"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:text="Điều Kiền Cho Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/baseline_button_background"
+                android:text="Đăng Ký Hồ Sơ"
+                android:layout_weight="1">
+            </Button>
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/baseline_rectangle"
+                android:text="Liên Hệ Nhân Viên"
+                android:layout_weight="1">
+            </Button>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

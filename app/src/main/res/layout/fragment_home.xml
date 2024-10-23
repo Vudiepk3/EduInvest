@@ -126,7 +126,7 @@
 
             <!-- Maths Card -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/mathsCard"
+                android:id="@+id/loanCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -164,7 +164,7 @@
 
             <!-- Literature Card -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/literatureCard"
+                android:id="@+id/payCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
@@ -204,7 +204,7 @@
 
             <!-- English Card -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/englishCard"
+                android:id="@+id/savingCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
@@ -245,7 +245,7 @@
 
             <!-- Physics Card -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/physicsCard"
+                android:id="@+id/moreCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"

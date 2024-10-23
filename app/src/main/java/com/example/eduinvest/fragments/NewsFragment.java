@@ -33,6 +33,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NewsFragment extends Fragment {
@@ -74,7 +75,7 @@ public class NewsFragment extends Fragment {
                 linkWebsites.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     BannerModel imageModel = itemSnapshot.getValue(BannerModel.class);
-                    if (imageModel != null && imageModel.getUrlImage() != null ) {
+                    if (imageModel != null && imageModel.getUrlImage() != null  && imageModel.getNoteImage().equals("BANNER2")|| imageModel.getNoteImage().equals("All")) {
                         slideModels2.add(new SlideModel(imageModel.getUrlImage(), ScaleTypes.FIT));
                         linkWebsites.add(imageModel.getLinkWeb());
                     }
@@ -118,8 +119,12 @@ public class NewsFragment extends Fragment {
         adapter = new NewsAdapter(getActivity(), dataList);
         recyclerView.setAdapter(adapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("News");
-        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("News");
+
+// Sử dụng orderByChild để sắp xếp theo timestamp
+        Query query = databaseReference.orderByChild("timestamp");
+
+        eventListener = query.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -131,15 +136,18 @@ public class NewsFragment extends Fragment {
                         dataList.add(dataClass);
                     }
                 }
-                adapter.notifyDataSetChanged();
 
+                // Đảo ngược danh sách để hiển thị tài liệu mới nhất trước
+                Collections.reverse(dataList);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Xử lý lỗi nếu có
             }
         });
+
     }
 
     @Override
