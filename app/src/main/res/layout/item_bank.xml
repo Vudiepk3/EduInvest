@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/itemBank"
@@ -16,14 +17,14 @@
 
         <ImageView
             android:id="@+id/imageBank"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="5dp"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
             android:contentDescription="@string/todo"
-            android:scaleType="centerCrop"
-            android:src="@drawable/image_eduinvest"/>
+            android:background="@drawable/image_eduinvest"
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/titleBank"
@@ -32,30 +33,30 @@
             android:text="Title Bank"
             android:textStyle="bold"
             android:textColor="?attr/colorOnBackground"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_toEndOf="@id/imageBank"/>
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@id/imageBank"
+            tools:ignore="HardcodedText" />
         <TextView
             android:id="@+id/nameBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name Bank"
+            android:text=""
             android:textColor="?attr/colorOnBackground"
-            android:textSize="14sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp"
+            android:textSize="12sp"
+            android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
             android:layout_toEndOf="@id/imageBank"
-            android:layout_below="@id/titleBank"/>
+            android:layout_below="@id/titleBank"
+            tools:ignore="HardcodedText" />
         <TextView
             android:id="@+id/typeNews"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="5dp"
+           android:layout_marginEnd="5dp"
             android:background="?attr/colorOnBackground"
             android:layout_toEndOf="@id/imageBank"
             android:layout_below="@id/nameBank"/>
@@ -65,27 +66,29 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/imageBank"
             android:layout_below="@id/typeNews"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:weightSum="2"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:weightSum="5"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/rate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Lãi Xuất"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/time"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="16sp"
+                android:layout_weight="3"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                android:text="Time"/>
+                android:text="Thời Gian Vay(Tháng)"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
@@ -94,29 +97,39 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/imageBank"
             android:layout_below="@id/linear1"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:weightSum="2"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:weightSum="5"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/rateBank"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="1%"
-                android:textStyle="bold"/>
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/browseBank"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="3-4 tuần"/>
+                android:layout_weight="3"
+                android:text="3-4 Tháng"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/statusBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="14sp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@id/imageBank"
+            android:layout_below="@id/linear2"/>
 
     </RelativeLayout>
 

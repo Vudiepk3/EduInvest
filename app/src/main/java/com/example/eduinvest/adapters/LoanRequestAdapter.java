@@ -15,50 +15,52 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.eduinvest.BankActivities.DetailBankActivity;
+import com.example.eduinvest.LoanActivities.DetailLoanActivity;
+import com.example.eduinvest.LoanActivities.DetailLoanRequestActivity;
 import com.example.eduinvest.R;
-import com.example.eduinvest.models.BankModel;
+import com.example.eduinvest.models.LoanRequestModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankAdapter extends RecyclerView.Adapter<BankAdapter.MyBankViewHolder> {
+public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.MyLoanRequestViewHolder> {
 
     private final Context context;
-    private List<BankModel> dataList;
+    private List<LoanRequestModel> dataList;
 
-    public BankAdapter(Context context, List<BankModel> dataList) {
+    public LoanRequestAdapter(Context context, List<LoanRequestModel> dataList) {
         this.context = context;
         this.dataList = dataList;
     }
 
     @NonNull
     @Override
-    public MyBankViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyLoanRequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bank, parent, false);
-        return new MyBankViewHolder(view);
+        return new MyLoanRequestViewHolder(view);
     }
 
+    @SuppressLint({"CheckResult", "SetTextI18n"})
     @Override
-    public void onBindViewHolder(@NonNull MyBankViewHolder holder, int position) {
-        BankModel bankModel = dataList.get(position);
+    public void onBindViewHolder(@NonNull MyLoanRequestViewHolder holder, int position) {
+        LoanRequestModel LoanRequestModel = dataList.get(position);
 
-        // Load dữ liệu vào các thành phần giao diện
-        Glide.with(context).load(bankModel.getImageBank()).into(holder.imageBank);
-        holder.titleBank.setText(bankModel.getTitleBank());
-        holder.nameBank.setText(bankModel.getNameBank());
-        holder.browseBank.setText(bankModel.getBrowseBank());
-        holder.rateBank.setText(bankModel.getRateBank());
+        holder.titleBank.setText(LoanRequestModel.getNamePerson());
+        holder.titleBank.setText(LoanRequestModel.getNamePerson() + " - " + LoanRequestModel.getGender());
+        holder.nameBank.setText(LoanRequestModel.getPhoneNumber()+" - " + LoanRequestModel.getEmail());
+        holder.browseBank.setText(LoanRequestModel.getLoanPeriodBank());
+        holder.rateBank.setText(LoanRequestModel.getRateBank());
+        holder.statusBank.setText(LoanRequestModel.getStatus());
 
         // Kiểm tra null và thiết lập OnClickListener
         if (holder.itemBank != null) {
             holder.itemBank.setOnClickListener(view -> {
-                Intent intent = new Intent(context, DetailBankActivity.class);
-                intent.putExtra("Key", bankModel.getKey());
+                Intent intent = new Intent(context, DetailLoanRequestActivity.class);
+                intent.putExtra("key", LoanRequestModel.getKey());
                 context.startActivity(intent);
             });
         } else {
-            Log.e("BankAdapter", "itemBank is null at position: " + position);
+            Log.e("LoanRequestAdapter", "itemBank is null at position: " + position);
         }
     }
 
@@ -68,19 +70,19 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.MyBankViewHold
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void searchDataList(ArrayList<BankModel> searchList) {
+    public void searchDataList(ArrayList<LoanRequestModel> searchList) {
         dataList = searchList;
         notifyDataSetChanged();
     }
 
     // Class ViewHolder cần được public static để đảm bảo truy cập đúng
-    public static class MyBankViewHolder extends RecyclerView.ViewHolder {
+    public static class MyLoanRequestViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageBank;
-        TextView titleBank, nameBank, browseBank, rateBank;
+        TextView titleBank, nameBank, browseBank, rateBank, statusBank;
         CardView itemBank;
 
-        public MyBankViewHolder(@NonNull View itemView) {
+        public MyLoanRequestViewHolder(@NonNull View itemView) {
             super(itemView);
 
             // Ánh xạ các thành phần giao diện
@@ -89,11 +91,12 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.MyBankViewHold
             nameBank = itemView.findViewById(R.id.nameBank);
             browseBank = itemView.findViewById(R.id.browseBank);
             rateBank = itemView.findViewById(R.id.rateBank);
+            statusBank = itemView.findViewById(R.id.statusBank);
             itemBank = itemView.findViewById(R.id.itemBank);  // CardView
 
             // Kiểm tra log để đảm bảo không null
             if (itemBank == null) {
-                Log.e("MyBankViewHolder", "itemBank is null");
+                Log.e("MyLoanRequestViewHolder", "itemBank is null");
             }
         }
     }

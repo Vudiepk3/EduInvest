@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="160dp"
-    tools:context=".BankActivities.FirstLoanFragment">
+    tools:context=".LoanActivities.FirstLoanFragment">
 
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:id="@+id/search"
         app:iconifiedByDefault="false"
         app:searchHintIcon="@null"
-        app:queryHint="Search..."
+        app:queryHint="Tìm Kiếm..."
         android:focusable="false"
         app:closeIcon="@drawable/baseline_clear_24"
         app:searchIcon="@drawable/baseline_search_24"

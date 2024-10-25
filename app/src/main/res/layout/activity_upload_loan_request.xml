@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/baseline_rectangle"
+    tools:context=".LoanActivities.UploadLoanRequestActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nhập Thông Tin"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_font"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thông Tin Cá Nhân"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="start|center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Họ Và tên"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText"/>
+        <EditText
+            android:id="@+id/detailNamePerson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,LabelFor"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ngày Sinh"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText"/>
+        <EditText
+            android:id="@+id/detailBirthDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="datetime"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Giới Tính"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="start|center_vertical"
+            tools:ignore="HardcodedText"
+            android:textColor="@color/black" />
+        <EditText
+            android:id="@+id/detailGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Số Điện Thoại"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="start|center_vertical"
+            tools:ignore="HardcodedText"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/detailPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:autofillHints="username"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="start|center_vertical"
+            tools:ignore="HardcodedText"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/detailEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor,TextFields" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Số Tiền Muốn Vay(VND)"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="start|center_vertical"
+            tools:ignore="HardcodedText"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/detailLimitBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:inputType="numberDecimal"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lãi Xuất Mong Muốn(%)"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="start|center_vertical"
+            tools:ignore="HardcodedText"
+            android:textColor="@color/black" />
+        <EditText
+            android:id="@+id/detailRateBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:inputType="numberDecimal"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thời Gian Vay(Tháng)"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="start|center_vertical"
+            tools:ignore="HardcodedText"
+            android:textColor="@color/black" />
+        <EditText
+            android:id="@+id/detailLoanPeriodBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:inputType="number"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ghi Chú"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="start|center_vertical"
+            tools:ignore="HardcodedText"
+            android:textColor="@color/black" />
+        <EditText
+            android:id="@+id/detailNoteBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:autofillHints="name"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/sendButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/baseline_button_background"
+                android:text="Gửi Yêu Cầu"
+                android:layout_weight="1"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

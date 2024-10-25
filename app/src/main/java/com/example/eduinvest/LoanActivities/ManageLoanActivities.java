@@ -1,4 +1,4 @@
-package com.example.eduinvest.BankActivities;
+package com.example.eduinvest.LoanActivities;
 
 import android.os.Bundle;
 

@@ -121,7 +121,7 @@ public class NewsFragment extends Fragment {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("News");
 
-// Sử dụng orderByChild để sắp xếp theo timestamp
+        // Sử dụng orderByChild để sắp xếp theo timestamp
         Query query = databaseReference.orderByChild("timestamp");
 
         eventListener = query.addValueEventListener(new ValueEventListener() {

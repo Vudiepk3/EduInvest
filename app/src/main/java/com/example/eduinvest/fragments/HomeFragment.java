@@ -16,7 +16,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 
 
-import com.example.eduinvest.BankActivities.ManageLoanActivities;
+import com.example.eduinvest.LoanActivities.ManageLoanActivities;
 import com.example.eduinvest.R;
 import com.example.eduinvest.models.BannerModel;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -137,7 +138,7 @@ public class HomeFragment extends Fragment {
                 Toast();
             }
         });
-        CardView loanCard = view.findViewById(R.id.loanCard);
+        LinearLayout loanCard = view.findViewById(R.id.loanCard);
         try{
             loanCard.setOnClickListener(new View.OnClickListener() {
                 @Override

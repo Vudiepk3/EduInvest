@@ -1,4 +1,4 @@
-package com.example.eduinvest.BankActivities;
+package com.example.eduinvest.LoanActivities;
 
 
 import androidx.annotation.NonNull;
@@ -17,8 +17,8 @@ import android.widget.TextView;
 import android.os.Handler;
 
 import com.example.eduinvest.R;
-import com.example.eduinvest.adapters.BankAdapter;
-import com.example.eduinvest.models.BankModel;
+import com.example.eduinvest.adapters.LoanAdapter;
+import com.example.eduinvest.models.LoanModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,8 +33,8 @@ public class FirstLoanFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private TextView txtNumberImage;
-    private BankAdapter adapter;
-    private ArrayList<BankModel> dataList;
+    private LoanAdapter adapter;
+    private ArrayList<LoanModel> dataList;
     private DatabaseReference databaseReference;
     private ValueEventListener eventListener;
 
@@ -89,7 +89,7 @@ public class FirstLoanFragment extends Fragment {
 
         // Initialize the data list and RecyclerView Adapter
         dataList = new ArrayList<>();
-        adapter = new BankAdapter(getContext(), dataList);
+        adapter = new LoanAdapter(getContext(), dataList);
         recyclerView.setAdapter(adapter);
 
 
@@ -101,7 +101,7 @@ public class FirstLoanFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dataList.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
-                    BankModel dataClass = itemSnapshot.getValue(BankModel.class);
+                    LoanModel dataClass = itemSnapshot.getValue(LoanModel.class);
                     if (dataClass != null && dataClass.getTypeBank().equals("VAYUUDAI")) {
                         dataClass.setKey(itemSnapshot.getKey());
                         dataList.add(dataClass);
@@ -137,8 +137,8 @@ public class FirstLoanFragment extends Fragment {
 
     // Method to search for images in the current list
     public void searchList(String text) {
-        ArrayList<BankModel> searchList = new ArrayList<>();
-        for (BankModel dataClass : dataList) {
+        ArrayList<LoanModel> searchList = new ArrayList<>();
+        for (LoanModel dataClass : dataList) {
             if (dataClass.getTitleBank().toLowerCase().contains(text.toLowerCase()) ||
                     dataClass.getNameBank().toLowerCase().contains(text.toLowerCase())) {
                 searchList.add(dataClass);

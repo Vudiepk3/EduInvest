@@ -39,7 +39,7 @@
         android:layout_marginBottom="48dp"
         android:text="Bắt Đầu"
         android:textColor="@color/white"
-        android:background="@drawable/stroke_bg"
+        android:background="@drawable/baseline_stroke_bg"
         android:gravity="center"
         android:textSize="20sp" />
 

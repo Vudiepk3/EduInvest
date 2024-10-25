@@ -7,11 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -76,7 +76,7 @@ class MyDicoverViewHolder extends RecyclerView.ViewHolder{
 
     ImageView imageNews;
     TextView titleNews,timeNews,linkNews,typeNews;
-    CardView itemnews;
+    LinearLayout itemnews;
 
     public MyDicoverViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -84,8 +84,6 @@ class MyDicoverViewHolder extends RecyclerView.ViewHolder{
         titleNews = itemView.findViewById(R.id.titleNews);
         timeNews = itemView.findViewById(R.id.timeNews);
         itemnews = itemView.findViewById(R.id.itemNews);
-
-
 
     }
 }

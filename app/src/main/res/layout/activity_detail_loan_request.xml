@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/baseline_rectangle"
+    android:orientation="vertical"
+    app:cardCornerRadius="20dp"
+    tools:context=".LoanActivities.DetailLoanActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:background="@color/blue"
+            android:inputType="text"
+            android:maxLines="2"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_font"
+            android:text="Thông Tin Gói Vay Mong Muốn"
+            android:gravity="center"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/white"
+            tools:ignore="HardcodedText,TextViewEdits" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="10dp"
+            android:text="Thông Tin Cá Nhân"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+        <TextView
+            android:id="@+id/detailInformationPersonBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:gravity="start|center_vertical"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:scrollHorizontally="false"
+            android:textColor="@color/black"
+            android:focusableInTouchMode="true"
+            android:autofillHints="username"
+            android:text="" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="?attr/colorOnBackground" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="Thông Tin Gói Vay"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+
+        <TextView
+            android:id="@+id/detailInformationLoanRequestBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:gravity="start|center_vertical"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:scrollHorizontally="false"
+            android:text=""
+            android:textColor="@color/black"
+            android:focusableInTouchMode="true"
+            android:autofillHints="username" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="?attr/colorOnBackground" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="Trạng Thái"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailStatusLoanRequestBank"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginStart="5dp"
+            android:text=""
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp"
+            android:background="?attr/colorOnBackground" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

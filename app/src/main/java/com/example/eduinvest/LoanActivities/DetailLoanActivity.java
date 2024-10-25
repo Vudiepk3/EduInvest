@@ -1,10 +1,8 @@
-package com.example.eduinvest.BankActivities;
+package com.example.eduinvest.LoanActivities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,17 +12,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
 import com.example.eduinvest.R;
-import com.example.eduinvest.models.BankModel;
-import com.github.clans.fab.FloatingActionButton;
+import com.example.eduinvest.models.LoanModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class DetailBankActivity extends AppCompatActivity {
+public class DetailLoanActivity extends AppCompatActivity {
     TextView detailNameBank, detailTitleBank, detailRateBank, detailBrowseBank, detailLoanPeriodBank,
             detailLimitBank, detailMoneyBank, detailDescribeBank, detailCosditonBank, detailTypeBank, detailContactBank;
     ImageView detailImageBank;
@@ -40,7 +36,7 @@ public class DetailBankActivity extends AppCompatActivity {
         getID();
 
         // Hiển thị dialog tiến trình
-        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(DetailBankActivity.this);
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(DetailLoanActivity.this);
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);
         androidx.appcompat.app.AlertDialog dialog = builder.create();
@@ -82,22 +78,22 @@ public class DetailBankActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    BankModel bankModel = snapshot.getValue(BankModel.class);
-                    if (bankModel != null) {
-                        detailTitleBank.setText(bankModel.getTitleBank());
-                        detailRateBank.setText(bankModel.getRateBank());
-                        detailBrowseBank.setText(bankModel.getBrowseBank());
-                        detailLoanPeriodBank.setText(bankModel.getLoanPeriodBank());
-                        detailLimitBank.setText(bankModel.getLimitBank());
-                        detailMoneyBank.setText(bankModel.getMoneyBank());
-                        detailDescribeBank.setText(bankModel.getDescribleBank());
-                        detailCosditonBank.setText(bankModel.getConditionBank());
-                        String contact = bankModel.getContanctBank();
+                    LoanModel loanModel = snapshot.getValue(LoanModel.class);
+                    if (loanModel != null) {
+                        detailTitleBank.setText(loanModel.getTitleBank());
+                        detailRateBank.setText(loanModel.getRateBank());
+                        detailBrowseBank.setText(loanModel.getBrowseBank());
+                        detailLoanPeriodBank.setText(loanModel.getLoanPeriodBank());
+                        detailLimitBank.setText(loanModel.getLimitBank());
+                        detailMoneyBank.setText(loanModel.getMoneyBank());
+                        detailDescribeBank.setText(loanModel.getDescribleBank());
+                        detailCosditonBank.setText(loanModel.getConditionBank());
+                        String contact = loanModel.getContanctBank();
                         getContact(contact);
                     }
                 } else {
                     // Xử lý trường hợp không tìm thấy dữ liệu với Key đã cho
-                    Toast.makeText(DetailBankActivity.this, "Không tìm thấy dữ liệu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailLoanActivity.this, "Không tìm thấy dữ liệu", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
@@ -105,7 +101,7 @@ public class DetailBankActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Xử lý lỗi khi đọc dữ liệu từ Firebase
-                Toast.makeText(DetailBankActivity.this, "Lỗi khi đọc dữ liệu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailLoanActivity.this, "Lỗi khi đọc dữ liệu", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -122,7 +118,7 @@ public class DetailBankActivity extends AppCompatActivity {
                 }
             });
         } catch (Exception e) {
-            Toast.makeText(DetailBankActivity.this, "Chúng tôi sẽ liên lại cho bạn sớm nhất", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DetailLoanActivity.this, "Chúng tôi sẽ liên lại cho bạn sớm nhất", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -134,7 +130,7 @@ public class DetailBankActivity extends AppCompatActivity {
         try {
             startActivity(Intent.createChooser(emailIntent, "Send email via"));
         } catch (ActivityNotFoundException ex) {
-            Toast.makeText(DetailBankActivity.this, "No email app found.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DetailLoanActivity.this, "No email app found.", Toast.LENGTH_SHORT).show();
         }
     }
 

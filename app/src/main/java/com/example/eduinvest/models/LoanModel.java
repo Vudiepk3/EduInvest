@@ -1,12 +1,12 @@
 package com.example.eduinvest.models;
 
-public class BankModel {
+public class LoanModel {
     String imageBank,nameBank,titleBank,rateBank,browseBank,loanPeriodBank,limitBank,moneyBank,describleBank,conditionBank,typeBank,contanctBank,key;
-    public BankModel() {
+    public LoanModel() {
 
     }
 
-    public BankModel(String imageBank,String nameBank, String titleBank, String rateBank, String browseBank, String loanPeriodBank, String limitBank, String moneyBank, String describleBank, String conditionBank,String typeBank) {
+    public LoanModel(String imageBank, String nameBank, String titleBank, String rateBank, String browseBank, String loanPeriodBank, String limitBank, String moneyBank, String describleBank, String conditionBank, String typeBank) {
         this.imageBank = imageBank;
         this.nameBank = nameBank;
         this.titleBank = titleBank;
@@ -19,7 +19,7 @@ public class BankModel {
         this.conditionBank = conditionBank;
         this.typeBank = typeBank;
     }
-    public BankModel(String imageBank,String nameBank, String titleBank, String rateBank, String browseBank, String loanPeriodBank, String limitBank, String moneyBank, String describleBank, String conditionBank,String typeBank,String contanctBank) {
+    public LoanModel(String imageBank, String nameBank, String titleBank, String rateBank, String browseBank, String loanPeriodBank, String limitBank, String moneyBank, String describleBank, String conditionBank, String typeBank, String contanctBank) {
         this.imageBank = imageBank;
         this.nameBank = nameBank;
         this.titleBank = titleBank;

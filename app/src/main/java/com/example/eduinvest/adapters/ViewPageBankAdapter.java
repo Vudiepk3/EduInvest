@@ -6,12 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.eduinvest.BankActivities.FirstLoanFragment;
-import com.example.eduinvest.BankActivities.ManageLoanActivities;
-import com.example.eduinvest.BankActivities.SecondLoanFragment;
-import com.example.eduinvest.SupportActivities.AssiterFragment;
-import com.example.eduinvest.SupportActivities.ChatGPTFragment;
-import com.example.eduinvest.SupportActivities.FAQFragment;
+import com.example.eduinvest.LoanActivities.FirstLoanFragment;
+import com.example.eduinvest.LoanActivities.SecondLoanFragment;
 
 public class ViewPageBankAdapter extends FragmentStateAdapter {
 
