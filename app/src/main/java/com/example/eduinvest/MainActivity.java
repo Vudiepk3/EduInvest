@@ -1,6 +1,5 @@
 package com.example.eduinvest;
 
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -20,17 +19,30 @@ import com.example.eduinvest.fragments.MySelfFragment;
 import com.example.eduinvest.fragments.NewsFragment;
 import com.example.eduinvest.fragments.SupportFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private BroadcastReceiver networkChangeReceiver;
     private boolean isConnected = true;
+    private boolean isReceiverRegistered = false; // Biến để kiểm tra trạng thái đăng ký
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); // Sử dụng layout trực tiếp
+        setContentView(R.layout.activity_main);
 
-        // Thay thế binding bằng findViewById
+        // Kiểm tra trạng thái đăng nhập
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser == null) {
+            Intent intent = new Intent(this, IntroActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish(); // Kết thúc MainActivity
+            return; // Dừng thực thi tiếp theo
+        }
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         replaceFragment(new HomeFragment());
         bottomNavigationView.setBackground(null);
@@ -47,24 +59,21 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
-        //kiểm tra trạng thái mạng
+
         networkChangeReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 boolean isAvailable = isNetworkAvailable(context);
 
                 if (isAvailable && !isConnected) {
-                    // Kết nối internet đã được khôi phục
                     Toast.makeText(context, "Kết nối internet đã được khôi phục", Toast.LENGTH_SHORT).show();
-                    isConnected = true; // Cậpnhật trạng thái kết nối
+                    isConnected = true;
                 } else if (!isAvailable && isConnected) {
-                    // Mất kết nối mạng
                     Toast.makeText(context, "Không có kết nối internet", Toast.LENGTH_SHORT).show();
-                    isConnected = false; // Cập nhật trạng thái kết nối
+                    isConnected = false;
                 }
             }
         };
-
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -73,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
     private boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
@@ -82,19 +92,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Đăng ký BroadcastReceiver khi Activity được hiển thị
-        registerReceiver(networkChangeReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        if (!isReceiverRegistered) {
+            registerReceiver(networkChangeReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+            isReceiverRegistered = true;
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        // Hủy đăng ký BroadcastReceiver khi Activity bị ẩn
-        unregisterReceiver(networkChangeReceiver);
+        if (isReceiverRegistered) {
+            unregisterReceiver(networkChangeReceiver);
+            isReceiverRegistered = false;
+        }
     }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Hủy đăng ký BroadcastReceiver khi Activity bị hủy
-        unregisterReceiver(networkChangeReceiver);
+        if (isReceiverRegistered) {
+            unregisterReceiver(networkChangeReceiver);
+            isReceiverRegistered = false;
+        }
     }
 }

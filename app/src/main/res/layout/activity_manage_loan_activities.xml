@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".85"
+        app:layout_constraintHeight_percent=".83"
         app:layout_constraintVertical_bias="1">
 
         <androidx.viewpager2.widget.ViewPager2

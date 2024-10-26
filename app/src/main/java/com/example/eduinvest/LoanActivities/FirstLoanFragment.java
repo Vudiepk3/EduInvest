@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.os.Handler;
 import com.example.eduinvest.R;
 import com.example.eduinvest.adapters.LoanAdapter;
 import com.example.eduinvest.models.LoanModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -69,7 +71,7 @@ public class FirstLoanFragment extends Fragment {
         // Initialize and bind the RecyclerView and other UI elements
         // Declare your views and references
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-
+        FloatingActionButton fab = view.findViewById(R.id.fab);
         SearchView searchView = view.findViewById(R.id.search);
         searchView.clearFocus();
 
@@ -115,6 +117,11 @@ public class FirstLoanFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
                 dialog.dismiss();
             }
+        });
+        fab.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), UploadLoanRequestActivity.class);
+
+            startActivity(intent);
         });
 
         // Handle image search functionality

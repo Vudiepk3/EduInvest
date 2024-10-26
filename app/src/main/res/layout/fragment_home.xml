@@ -19,18 +19,27 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal"
+            android:background="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:gravity="center_vertical">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardIconBank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="40dp"
+                app:cardElevation="40dp">
+                <ImageView
+                    android:id="@+id/iconImage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/image_eduinvest" />
 
-            <ImageView
-                android:id="@+id/iconImage"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:contentDescription="@string/todo"
-                android:background="@drawable/baseline_oval"
-                android:src="@drawable/image_eduinvest" />
+            </androidx.cardview.widget.CardView>
+
+
 
             <TextView
                 android:id="@+id/sologanTextView"
@@ -96,7 +105,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/row1">
@@ -105,10 +114,10 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:text="Tiện ích"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/montserrat_font"
-                tools:ignore="RtlSymmetry">
+                tools:ignore="HardcodedText,RtlSymmetry">
 
             </TextView>
         </LinearLayout>
@@ -117,7 +126,12 @@
             android:id="@+id/row2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:baselineAligned="false"
             android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/baseline_button_background"
+            android:padding="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView">
@@ -127,19 +141,26 @@
                 android:id="@+id/loanCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/mathsImage"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="10dp"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/image_pay" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/loanImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp">
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="15dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/image_pay" />
+                </androidx.cardview.widget.CardView>
+
+
 
                 <TextView
                     android:id="@+id/mathsText"
@@ -149,7 +170,8 @@
                     android:textColor="?attr/colorOnBackground"
                     android:textSize="12sp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Gói vay" />
+                    android:text="Gói vay"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
 
@@ -157,20 +179,24 @@
                 android:id="@+id/payCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/literatureImage"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="10dp"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/image_cash_flow" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/payImageCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp">
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="15dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/image_cash_flow" />
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/literatureText"
@@ -181,7 +207,8 @@
                     android:text="Chi tiêu"
                     android:textColor="?attr/colorOnBackground"
                     android:textSize="12sp"
-                    android:fontFamily="@font/poppins_semibold" />
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <!-- English Card -->
@@ -189,21 +216,24 @@
                 android:id="@+id/savingCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/englishImage"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="10dp"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/image_deposit" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/savingImageCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp">
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="15dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/image_deposit" />
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/englishText"
@@ -214,7 +244,8 @@
                     android:text="Gửi tiết kiệm"
                     android:textColor="?attr/colorOnBackground"
                     android:textSize="12sp"
-                    android:fontFamily="@font/poppins_semibold" />
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <!-- Physics Card -->
@@ -222,30 +253,37 @@
                 android:id="@+id/moreCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:padding="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/physicsImage"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="10dp"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/image_more" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/moreImageCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp">
+                    <ImageView
+                        android:id="@+id/literatureImage"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="15dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/image_more" />
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/physicsName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="5dp"
-                    android:text="Chức năng khác"
+                    android:gravity="center"
+                    android:text="Thêm"
                     android:textColor="?attr/colorOnBackground"
                     android:textSize="12sp"
-                    android:fontFamily="@font/poppins_semibold" />
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
 
@@ -263,10 +301,10 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:text="Ưu đãi cho bạn"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/montserrat_font"
-                tools:ignore="RtlSymmetry">
+                tools:ignore="HardcodedText,RtlSymmetry">
 
             </TextView>
         </LinearLayout>

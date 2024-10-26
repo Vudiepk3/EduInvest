@@ -9,7 +9,7 @@ public class LoanRequestModel extends LoanModel {
     }
 
     // Constructor để khởi tạo cả thuộc tính từ BankModel và các thuộc tính mới
-    public LoanRequestModel(String rateBank,String loanPeriodBank,String limitBank, String namePerson, String phoneNumber, String gender, String birthDate, String email,String note,String status) {
+    public LoanRequestModel(String rateBank,String loanPeriodBank,String limitBank, String namePerson, String phoneNumber, String gender, String birthDate, String email,String note, String typeBank,String status) {
         super(); // Gọi constructor của BankModel
 
         // Thiết lập các giá trị thuộc tính từ BankModel
@@ -23,6 +23,47 @@ public class LoanRequestModel extends LoanModel {
         this.birthDate = birthDate;
         this.email = email;
         this.note = note;
+        this.typeBank = typeBank;
+        this.status = status;
+    }
+
+    public LoanRequestModel(String nameBank,String titleBank,String rateBank,String loanPeriodBank,String limitBank, String namePerson, String phoneNumber, String gender, String birthDate, String email,String note,String typeBank,String status) {
+        super(); // Gọi constructor của BankModel
+
+        // Thiết lập các giá trị thuộc tính từ BankModel
+        this.nameBank = nameBank;
+        this.titleBank = titleBank;
+        this.rateBank = rateBank;
+        this.loanPeriodBank = loanPeriodBank;
+        this.limitBank = limitBank;
+        // Thiết lập giá trị cho các thuộc tính mới
+        this.namePerson = namePerson;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.email = email;
+        this.note = note;
+        this.typeBank = typeBank;
+        this.status = status;
+    }
+    public LoanRequestModel(String imageBank,String nameBank,String titleBank,String rateBank,String loanPeriodBank,String limitBank, String namePerson, String phoneNumber, String gender, String birthDate, String email,String note,String typeBank,String status) {
+        super(); // Gọi constructor của BankModel
+
+        // Thiết lập các giá trị thuộc tính từ BankModel
+        this.imageBank = imageBank;
+        this.nameBank = nameBank;
+        this.titleBank = titleBank;
+        this.rateBank = rateBank;
+        this.loanPeriodBank = loanPeriodBank;
+        this.limitBank = limitBank;
+        // Thiết lập giá trị cho các thuộc tính mới
+        this.namePerson = namePerson;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.email = email;
+        this.note = note;
+        this.typeBank = typeBank;
         this.status = status;
     }
 

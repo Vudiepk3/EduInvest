@@ -45,6 +45,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyBankViewHold
 
         // Load dữ liệu vào các thành phần giao diện
         Glide.with(context).load(loanModel.getImageBank()).into(holder.imageBank);
+        //holder.typeBank.setText("Gói Vay Ưu Đãi");
         holder.titleBank.setText(loanModel.getTitleBank());
         holder.nameBank.setText(loanModel.getNameBank());
         holder.browseBank.setText(loanModel.getBrowseBank());
@@ -55,6 +56,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyBankViewHold
             holder.itemBank.setOnClickListener(view -> {
                 Intent intent = new Intent(context, DetailLoanActivity.class);
                 intent.putExtra("Key", loanModel.getKey());
+
                 context.startActivity(intent);
             });
         } else {
@@ -77,7 +79,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyBankViewHold
     public static class MyBankViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageBank;
-        TextView titleBank, nameBank, browseBank, rateBank;
+        TextView titleBank, nameBank, browseBank, rateBank,typeBank;
         CardView itemBank;
 
         public MyBankViewHolder(@NonNull View itemView) {
@@ -89,6 +91,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyBankViewHold
             nameBank = itemView.findViewById(R.id.nameBank);
             browseBank = itemView.findViewById(R.id.browseBank);
             rateBank = itemView.findViewById(R.id.rateBank);
+            //typeBank = itemView.findViewById(R.id.typeBank);
             itemBank = itemView.findViewById(R.id.itemBank);  // CardView
 
             // Kiểm tra log để đảm bảo không null

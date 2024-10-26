@@ -33,7 +33,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -42,14 +41,22 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
     implementation(libs.cardview)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
     implementation(libs.imagepicker)
     implementation(libs.imageslideshow)
     implementation(libs.glide)
-    annotationProcessor(libs.compiler)
     implementation(libs.fab)
     implementation(libs.dexter)
 
+    // Firebase
+    implementation (platform("com.google.firebase:firebase-bom:33.4.0") )// BOM để quản lý phiên bản
+    implementation (libs.firebase.auth) // Firebase Authentication
+
+    // Google Sign-In
+    implementation ("com.google.android.gms:play-services-auth:20.5.0")
+
+    // Testing
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
 }
+

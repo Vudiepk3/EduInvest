@@ -31,6 +31,38 @@
             android:focusableInTouchMode="true"
             android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Tên Ngân Hàng"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:id="@+id/detailNameBank"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:text="Tên Ngân Hàng"
+            android:gravity="start|center_vertical"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText,TextViewEdits" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="?attr/colorOnBackground" />
         
         <TextView
             android:layout_width="match_parent"
@@ -306,7 +338,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:background="@drawable/baseline_rectangle"
-                android:text="Liên Hệ Nhân Viên"
+                android:text="Liên Hệ Giải Đáp"
                 android:layout_weight="1">
             </Button>
 

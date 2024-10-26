@@ -1,19 +1,17 @@
 package com.example.eduinvest.LoanActivities;
 
-
-import android.net.Uri;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eduinvest.R;
-
 import com.example.eduinvest.models.LoanRequestModel;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,37 +20,67 @@ import java.util.Calendar;
 
 public class UploadLoanRequestActivity extends AppCompatActivity {
 
-    Button sendButton;
-    EditText detailNamePerson, detailBirthDate, detailGender, detailPhoneNumber, detailEmail, detailLimitBank, detailRateBank, detailLoanPeriodBank,detailNoteBank;
+    private Button sendButton;
+    private EditText detailNamePerson, detailBirthDate, detailGender, detailPhoneNumber, detailEmail, detailLimitBank, detailRateBank, detailLoanPeriodBank, detailNoteBank;
+    private TextView txtLimitBank;
+    private TextView txtRateBank;
+    private TextView txtLoanPeriodBank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_loan_request);
-         detailNamePerson = findViewById(R.id.detailNamePerson);
-         detailBirthDate =  findViewById(R.id.detailBirthDate);
-         detailGender =  findViewById(R.id.detailGender);
-         detailPhoneNumber =  findViewById(R.id.detailPhoneNumber);
-         detailEmail =  findViewById(R.id.detailEmail);
-         detailLimitBank =  findViewById(R.id.detailLimitBank);
-         detailRateBank =  findViewById(R.id.detailRateBank);
-         detailLoanPeriodBank =  findViewById(R.id.detailLoanPeriodBank);
-         detailNoteBank =  findViewById(R.id.detailNoteBank);
 
-         sendButton =  findViewById(R.id.sendButton);
+        initializeViews();
+        setupIntentData();
 
-
-
-        // Set click listener for saving data
-        sendButton.setOnClickListener(view -> {
-                uploadData();
-        });
+        sendButton.setOnClickListener(view -> uploadData());
     }
 
+    private void initializeViews() {
+        detailNamePerson = findViewById(R.id.detailNamePerson);
+        detailBirthDate = findViewById(R.id.detailBirthDate);
+        detailGender = findViewById(R.id.detailGender);
+        detailPhoneNumber = findViewById(R.id.detailPhoneNumber);
+        detailEmail = findViewById(R.id.detailEmail);
+        detailLimitBank = findViewById(R.id.detailLimitBank);
+        detailRateBank = findViewById(R.id.detailRateBank);
+        detailLoanPeriodBank = findViewById(R.id.detailLoanPeriodBank);
+        detailNoteBank = findViewById(R.id.detailNoteBank);
+        TextView txtNoteBank = findViewById(R.id.txtNoteBank);
+        txtLimitBank = findViewById(R.id.txtLimitBank);
+        txtRateBank = findViewById(R.id.txtRateBank);
+        txtLoanPeriodBank = findViewById(R.id.txtLoanPeriodBank);
+        sendButton = findViewById(R.id.sendButton);
+    }
 
+    private void setupIntentData() {
+        String typeBank = getIntent().getStringExtra("typeBank");
+        String nameBank = getIntent().getStringExtra("nameBank");
+        String titleBank = getIntent().getStringExtra("titleBank");
+        String limitBank = getIntent().getStringExtra("limitBank");
+        String rateBank = getIntent().getStringExtra("rateBank");
+        String loanPeriodBank = getIntent().getStringExtra("loanPeriodBank");
 
-    // Upload data to Firebase Realtime Database
-    public void uploadData() {
+        if ("VAYUUDAI".equals(typeBank)) {
+            detailLimitBank.setText(limitBank);
+            detailRateBank.setText(rateBank);
+            detailLoanPeriodBank.setText(loanPeriodBank);
+            detailNoteBank.setText(nameBank + " - " + titleBank);
+
+            // Disable editing for promotional loan fields
+            detailLimitBank.setEnabled(false);
+            detailRateBank.setEnabled(false);
+            detailLoanPeriodBank.setEnabled(false);
+            detailNoteBank.setEnabled(false);
+            txtRateBank.setText("Lãi suất");
+            txtLimitBank.setText("Hạn mức vay");
+            txtLoanPeriodBank.setText("Thời gian vay");
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void uploadData() {
         String namePerson = detailNamePerson.getText().toString();
         String birthDate = detailBirthDate.getText().toString();
         String gender = detailGender.getText().toString();
@@ -62,64 +90,59 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
         String rateBank = detailRateBank.getText().toString();
         String loanPeriodBank = detailLoanPeriodBank.getText().toString();
         String noteBank = detailNoteBank.getText().toString();
+        String typeBank = getIntent().getStringExtra("typeBank");
 
-        // Kiểm tra từng trường thông tin
-        if (namePerson.isEmpty()) {
-            Toast.makeText(UploadLoanRequestActivity.this, "Vui lòng nhập tên người vay", Toast.LENGTH_SHORT).show();
-            detailNamePerson.requestFocus(); // Đưa con trỏ tới ô tên người vay
-            return;
-        }
-        if (birthDate.isEmpty()) {
-            Toast.makeText(UploadLoanRequestActivity.this, "Vui lòng nhập ngày sinh", Toast.LENGTH_SHORT).show();
-            detailBirthDate.requestFocus(); // Đưa con trỏ tới ô ngày sinh
-            return;
-        }
-        if (gender.isEmpty()) {
-            Toast.makeText(UploadLoanRequestActivity.this, "Vui lòng nhập giới tính", Toast.LENGTH_SHORT).show();
-            detailGender.requestFocus(); // Đưa con trỏ tới ô giới tính
-            return;
-        }
-        if (phoneNumber.isEmpty()) {
-            Toast.makeText(UploadLoanRequestActivity.this, "Vui lòng nhập số điện thoại", Toast.LENGTH_SHORT).show();
-            detailPhoneNumber.requestFocus(); // Đưa con trỏ tới ô số điện thoại
-            return;
-        }
-        if (email.isEmpty()) {
-            Toast.makeText(UploadLoanRequestActivity.this, "Vui lòng nhập email", Toast.LENGTH_SHORT).show();
-            detailEmail.requestFocus(); // Đưa con trỏ tới ô email
-            return;
-        }
-        if (limitBank.isEmpty()) {
-            Toast.makeText(UploadLoanRequestActivity.this, "Vui lòng nhập hạn mức vay", Toast.LENGTH_SHORT).show();
-            detailLimitBank.requestFocus(); // Đưa con trỏ tới ô hạn mức vay
-            return;
-        }
-        if (rateBank.isEmpty()) {
-            Toast.makeText(UploadLoanRequestActivity.this, "Vui lòng nhập lãi suất", Toast.LENGTH_SHORT).show();
-            detailRateBank.requestFocus(); // Đưa con trỏ tới ô lãi suất
-            return;
-        }
-        if (loanPeriodBank.isEmpty()) {
-            Toast.makeText(UploadLoanRequestActivity.this, "Vui lòng nhập thời gian vay", Toast.LENGTH_SHORT).show();
-            detailLoanPeriodBank.requestFocus(); // Đưa con trỏ tới ô thời gian vay
+        if (!validateInput(namePerson, birthDate, gender, phoneNumber, email, limitBank, rateBank, loanPeriodBank)) {
             return;
         }
 
-        // Nếu tất cả các trường đều đã được nhập, thực hiện gửi dữ liệu
-        LoanRequestModel dataClass = new LoanRequestModel(rateBank, loanPeriodBank, limitBank, namePerson, phoneNumber, gender, birthDate, email, noteBank, "Đang Gửi Yêu Cầu");
+        LoanRequestModel dataModel = createDataModel(typeBank, namePerson, birthDate, gender, phoneNumber, email, limitBank, rateBank, loanPeriodBank, noteBank);
+        saveDataToFirebase(dataModel);
+    }
+
+    private boolean validateInput(String namePerson, String birthDate, String gender, String phoneNumber, String email, String limitBank, String rateBank, String loanPeriodBank) {
+        if (namePerson.isEmpty()) return showError(detailNamePerson, "Vui lòng nhập tên người vay");
+        if (birthDate.isEmpty()) return showError(detailBirthDate, "Vui lòng nhập ngày sinh");
+        if (gender.isEmpty()) return showError(detailGender, "Vui lòng nhập giới tính");
+        if (phoneNumber.isEmpty()) return showError(detailPhoneNumber, "Vui lòng nhập số điện thoại");
+        if (email.isEmpty()) return showError(detailEmail, "Vui lòng nhập email");
+        if (limitBank.isEmpty()) return showError(detailLimitBank, "Vui lòng nhập hạn mức vay");
+        if (rateBank.isEmpty()) return showError(detailRateBank, "Vui lòng nhập lãi suất");
+        if (loanPeriodBank.isEmpty()) return showError(detailLoanPeriodBank, "Vui lòng nhập thời gian vay");
+        return true;
+    }
+
+    private boolean showError(EditText field, String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        field.requestFocus();
+        return false;
+    }
+
+    private LoanRequestModel createDataModel(String typeBank, String namePerson, String birthDate, String gender, String phoneNumber, String email, String limitBank, String rateBank, String loanPeriodBank, String noteBank) {
+        String nameBank = getIntent().getStringExtra("nameBank");
+        String titleBank = getIntent().getStringExtra("titleBank");
+        String imageBank = getIntent().getStringExtra("imageBank");
+
+        if ("VAYUUDAI".equals(typeBank)) {
+            return new LoanRequestModel(imageBank,nameBank, titleBank, rateBank, loanPeriodBank, limitBank, namePerson, phoneNumber, gender, birthDate, email, noteBank, "Gói Vay Ưu Đãi", "Đang Gửi Yêu Cầu");
+        } else {
+            return new LoanRequestModel("Null","Null", "Null", rateBank, loanPeriodBank, limitBank, namePerson, phoneNumber, gender, birthDate, email, noteBank, "Gói Vay Mong Muốn", "Đang Gửi Yêu Cầu");
+        }
+    }
+
+    private void saveDataToFirebase(LoanRequestModel dataModel) {
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
         FirebaseDatabase.getInstance().getReference("LoanRequest").child(currentDate)
-                .setValue(dataClass)
+                .setValue(dataModel)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(UploadLoanRequestActivity.this, "Lưu Thành Công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Lưu Thành Công", Toast.LENGTH_SHORT).show();
                         new Handler(Looper.getMainLooper()).postDelayed(this::finish, 2000);
                     } else {
-                        Toast.makeText(UploadLoanRequestActivity.this, "Thất Bại Trong Việc Lưu", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Thất Bại Trong Việc Lưu", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .addOnFailureListener(e -> Toast.makeText(UploadLoanRequestActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show());
+                .addOnFailureListener(e -> Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show());
     }
-
 }

@@ -10,127 +10,151 @@
     android:layout_marginTop="10dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="8dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+<!--        <TextView-->
+<!--            android:id="@+id/typeBank"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textColor="?attr/colorOnBackground"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            tools:ignore="HardcodedText" />-->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/imageBank"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
-            android:contentDescription="@string/todo"
-            android:background="@drawable/image_eduinvest"
-            android:scaleType="centerCrop"/>
-
-        <TextView
-            android:id="@+id/titleBank"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Title Bank"
-            android:textStyle="bold"
-            android:textColor="?attr/colorOnBackground"
-            android:textSize="18sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_toEndOf="@id/imageBank"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:id="@+id/nameBank"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="?attr/colorOnBackground"
-            android:textSize="12sp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_toEndOf="@id/imageBank"
-            android:layout_below="@id/titleBank"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:id="@+id/typeNews"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="5dp"
-           android:layout_marginEnd="5dp"
-            android:background="?attr/colorOnBackground"
-            android:layout_toEndOf="@id/imageBank"
-            android:layout_below="@id/nameBank"/>
-        <LinearLayout
-            android:id="@+id/linear1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/imageBank"
-            android:layout_below="@id/typeNews"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:weightSum="5"
-            android:orientation="horizontal">
+            android:layout_marginTop="10dp">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardImageBank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="4dp">
+                <ImageView
+                    android:id="@+id/imageBank"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:contentDescription="@string/todo"
+                    android:background="@drawable/image_eduinvest"
+                    android:scaleType="centerCrop"/>
+
+            </androidx.cardview.widget.CardView>
             <TextView
-                android:id="@+id/rate"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="Lãi Xuất"
+                android:id="@+id/titleBank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Title Bank"
                 android:textStyle="bold"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="18sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@+id/cardImageBank"
                 tools:ignore="HardcodedText" />
-
             <TextView
-                android:id="@+id/time"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:id="@+id/nameBank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/blue"
+                android:textSize="12sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@+id/cardImageBank"
+                android:layout_below="@id/titleBank"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/typeNews"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="?attr/colorOnBackground"
+                android:layout_toEndOf="@+id/cardImageBank"
+                android:layout_below="@id/nameBank"/>
+            <LinearLayout
+                android:id="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/cardImageBank"
+                android:layout_below="@id/typeNews"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:weightSum="5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="Lãi Xuất"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="Thời Gian Vay(Tháng)"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/cardImageBank"
+                android:layout_below="@id/linear1"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:weightSum="5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/rateBank"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="1%"
+                    android:textColor="@color/blue"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/browseBank"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:text="3-4 Tháng"
+                    android:textColor="@color/blue"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/statusBank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="?attr/colorOnBackground"
                 android:textSize="14sp"
-                android:textStyle="bold"
-                android:text="Thời Gian Vay(Tháng)"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@+id/cardImageBank"
+                android:layout_below="@id/linear2"/>
 
-        <LinearLayout
-            android:id="@+id/linear2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/imageBank"
-            android:layout_below="@id/linear1"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:weightSum="5"
-            android:orientation="horizontal">
+        </RelativeLayout>
 
-            <TextView
-                android:id="@+id/rateBank"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="1%"
-                tools:ignore="HardcodedText" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/browseBank"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:text="3-4 Tháng"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-        <TextView
-            android:id="@+id/statusBank"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="?attr/colorOnBackground"
-            android:textSize="14sp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_toEndOf="@id/imageBank"
-            android:layout_below="@id/linear2"/>
 
-    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

@@ -44,12 +44,15 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyLoanRequestViewHolder holder, int position) {
         LoanRequestModel LoanRequestModel = dataList.get(position);
-
+        if(!LoanRequestModel.getImageBank().equals("Null")){
+            Glide.with(context).load(LoanRequestModel.getImageBank()).into(holder.imageBank);
+        }
         holder.titleBank.setText(LoanRequestModel.getNamePerson());
         holder.titleBank.setText(LoanRequestModel.getNamePerson() + " - " + LoanRequestModel.getGender());
         holder.nameBank.setText(LoanRequestModel.getPhoneNumber()+" - " + LoanRequestModel.getEmail());
         holder.browseBank.setText(LoanRequestModel.getLoanPeriodBank());
         holder.rateBank.setText(LoanRequestModel.getRateBank());
+        //holder.typeBank.setText(LoanRequestModel.getTypeBank());
         holder.statusBank.setText(LoanRequestModel.getStatus());
 
         // Kiểm tra null và thiết lập OnClickListener
@@ -79,7 +82,7 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
     public static class MyLoanRequestViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageBank;
-        TextView titleBank, nameBank, browseBank, rateBank, statusBank;
+        TextView titleBank, nameBank, browseBank, rateBank, statusBank,typeBank;
         CardView itemBank;
 
         public MyLoanRequestViewHolder(@NonNull View itemView) {
@@ -92,6 +95,7 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
             browseBank = itemView.findViewById(R.id.browseBank);
             rateBank = itemView.findViewById(R.id.rateBank);
             statusBank = itemView.findViewById(R.id.statusBank);
+            //typeBank = itemView.findViewById(R.id.typeBank);
             itemBank = itemView.findViewById(R.id.itemBank);  // CardView
 
             // Kiểm tra log để đảm bảo không null

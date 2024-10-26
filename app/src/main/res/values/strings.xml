@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">EduInvest</string>
     <string name="todo">TODO</string>
+    <string name="default_web_client_id">657284319471-5q20dg63aie1iaml8vncbpo8ee0i29dq.apps.googleusercontent.com</string>
+
     <string name="more">Thêm</string>
     <string name="home">Trang Chủ</string>
     <string name="enrollment">Tuyển Sinh</string>

@@ -2,7 +2,9 @@
 
 dexter = "6.2.3"
 fab = "1.6.4"
+firebaseBom = "33.5.1"
 glide = "4.16.0"
+googlePlayServicesAuth = "20.5.0"
 imagepicker = "2.1"
 imageslideshow = "0.1.0"
 agp = "8.7.1"
@@ -19,9 +21,13 @@ firebaseDatabase = "21.0.0"
 firebaseFirestore = "25.1.0"
 firebaseStorage = "21.0.1"
 cardview = "1.0.0"
-
+playServicesAuth = "21.2.0"
+playServicesAuthVersion = "20.6.0"
+firebaseAuth = "23.1.0"
 [libraries]
+com-google-firebase-firebase-auth = { module = "com.google.firebase:firebase-auth" }
 compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 imagepicker = { module = "com.github.dhaval2404:imagepicker", version.ref = "imagepicker" }
 dexter = { module = "com.karumi:dexter", version.ref = "dexter" }
 fab = { module = "com.github.clans:fab", version.ref = "fab" }
@@ -39,7 +45,10 @@ firebase-database = { group = "com.google.firebase", name = "firebase-database",
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
 cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
-
+play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
+play-services-auth-v2050 = { module = "com.google.android.gms:play-services-auth", version.ref = "googlePlayServicesAuth" }
+play-services-auth-v2060 = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuthVersion" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }

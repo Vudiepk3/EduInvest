@@ -22,7 +22,7 @@ public class ManageLoanActivities extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
         viewPager2 = findViewById(R.id.view_pager);
         tabLayout.addTab(tabLayout.newTab().setText("Vay Ưu Đãi"));
-        tabLayout.addTab(tabLayout.newTab().setText("Vay Đề Xuất"));
+        tabLayout.addTab(tabLayout.newTab().setText("Vay Đăng Ký"));
         FragmentManager fragmentManager = getSupportFragmentManager();
         ViewPageBankAdapter adapter = new ViewPageBankAdapter(fragmentManager, getLifecycle());
         viewPager2.setAdapter(adapter);

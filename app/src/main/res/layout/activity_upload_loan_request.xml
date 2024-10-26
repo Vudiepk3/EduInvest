@@ -130,6 +130,7 @@
             tools:ignore="LabelFor,TextFields" />
 
         <TextView
+            android:id="@+id/txtLimitBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Số Tiền Muốn Vay(VND)"
@@ -149,6 +150,7 @@
             tools:ignore="LabelFor" />
 
         <TextView
+            android:id="@+id/txtRateBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Lãi Xuất Mong Muốn(%)"
@@ -167,6 +169,7 @@
             tools:ignore="LabelFor" />
 
         <TextView
+            android:id="@+id/txtLoanPeriodBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Thời Gian Vay(Tháng)"
@@ -185,6 +188,7 @@
             tools:ignore="LabelFor" />
 
         <TextView
+            android:id="@+id/txtNoteBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ghi Chú"

@@ -6,38 +6,41 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-
-
+import com.example.eduinvest.IntroActivity;
 import com.example.eduinvest.LoanActivities.ManageLoanActivities;
 import com.example.eduinvest.R;
+import com.example.eduinvest.UserProfileActivity;
+import com.example.eduinvest.firebase.FireBaseClass;
 import com.example.eduinvest.models.BannerModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
 public class HomeFragment extends Fragment {
-
+    private FirebaseAuth auth;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -48,68 +51,68 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate giao diện cho fragment này
-       View view =  inflater.inflate(R.layout.fragment_home, container, false);
-       getActivities(view);
-       loadImageSlide(view);
-       return view;
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        initializeActivities(view);
+        ImageView iconImage = view.findViewById(R.id.iconImage);
+        // Lấy thông tin user hiện tại
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser != null) {
+            Uri photoUrl = currentUser.getPhotoUrl(); // lấy link ảnh cuả user hiện tại
+            if (photoUrl != null) {
+                // Sử dụng Glide để tải ảnh vào iconImage
+                Glide.with(this)
+                        .load(photoUrl) // Load the user's photo URL
+                        .placeholder(R.drawable.image_eduinvest) // Ảnh mặc định khi chưa tải xong
+                        .error(R.drawable.image_eduinvest) // Ảnh mặc định khi không có ảnh
+                        .into(iconImage);
+            } else {
+                // Nếu không có ảnh, sử dụng ảnh mặc định
+                iconImage.setImageResource(R.drawable.image_eduinvest);
+            }
+        }
+        loadImageSlider(view);
+        return view;
     }
-    // Phương thức để tải và hiển thị slide ảnh từ Firebase
-    private void loadImageSlide(View view) {
 
+    private void loadImageSlider(View view) {
         ImageSlider imageSlider = view.findViewById(R.id.ImageSlide);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
-        List<String> linkWebsites = new ArrayList<>(); // Danh sách các link website
+        List<String> linkWebsites = new ArrayList<>();
 
-        // Lấy tham chiếu đến SlideImage trong Firebase
-        // Tham chiếu cơ sở dữ liệu Firebase
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Banner");
-        // Xóa danh sách hình ảnh cũ
-        // Xóa danh sách link website cũ
-        // Duyệt qua từng mục trong dữ liệu Firebase
-        // Thêm hình ảnh vào danh sách slide
-        // Thêm link website vào danh sách
-        // Cập nhật danh sách hình ảnh lên ImageSlider
-        // Đặt sự kiện click cho các hình ảnh trong slider
-        // Listener để nhận dữ liệu từ Firebase
-        ValueEventListener eventListener = new ValueEventListener() {
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                slideModels.clear(); // Xóa danh sách hình ảnh cũ
-                linkWebsites.clear(); // Xóa danh sách link website cũ
+                slideModels.clear();
+                linkWebsites.clear();
 
-                // Duyệt qua từng mục trong dữ liệu Firebase
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     BannerModel imageModel = itemSnapshot.getValue(BannerModel.class);
-                    if (imageModel != null
-                            && imageModel.getUrlImage() != null
-                            && (imageModel.getNoteImage().equals("BANNER1") || imageModel.getNoteImage().equals("All"))) {
+                    if (imageModel != null && imageModel.getUrlImage() != null &&
+                            (imageModel.getNoteImage().equals("BANNER1") || imageModel.getNoteImage().equals("All"))) {
+                        // Sử dụng Glide để caching ảnh trước khi thêm vào SlideModel
+                        Glide.with(requireContext())
+                                .load(imageModel.getUrlImage())
+                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .preload();
 
-                        slideModels.add(new SlideModel(imageModel.getUrlImage(), ScaleTypes.FIT)); // Thêm hình ảnh vào danh sách slide
-                        linkWebsites.add(imageModel.getLinkWeb()); // Thêm link website vào danh sách
+                        slideModels.add(new SlideModel(imageModel.getUrlImage(), ScaleTypes.FIT));
+                        linkWebsites.add(imageModel.getLinkWeb());
                     }
-
                 }
 
-                // Cập nhật danh sách hình ảnh lên ImageSlider
                 imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
-                // Đặt sự kiện click cho các hình ảnh trong slider
                 imageSlider.setItemClickListener(i -> {
                     if (i >= 0 && i < linkWebsites.size()) {
                         String linkWebsite = linkWebsites.get(i);
                         if (linkWebsite != null && !linkWebsite.isEmpty() && !linkWebsite.equals("No Link Website")) {
-                            try {
-                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkWebsite));
-                                startActivity(intent);
-                            } catch (ActivityNotFoundException e) {
-                                Toast.makeText(getActivity(), "Không thể mở đường dẫn web.", Toast.LENGTH_SHORT).show();
-                            }
+                            openWebsite(linkWebsite);
                         } else {
-                            Toast.makeText(getActivity(), "Không có đường dẫn web.", Toast.LENGTH_SHORT).show();
+                            showToast("Không có đường dẫn web.");
                         }
                     }
                 });
@@ -117,43 +120,69 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(), "Failed to load data.", Toast.LENGTH_SHORT).show();
+                showToast("Failed to load data.");
             }
-        };
-        databaseReference.addValueEventListener(eventListener);
+        });
     }
 
-    private void getActivities(View view){
+
+    private void openWebsite(String url) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            showToast("Không thể mở đường dẫn web.");
+        }
+    }
+
+    private void initializeActivities(View view) {
+        auth = FirebaseAuth.getInstance();
         ImageView iconImage = view.findViewById(R.id.iconImage);
-        iconImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast();
-            }
-        });
-        ImageView iconNotifition = view.findViewById(R.id.iconNotifition);
-        iconNotifition.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast();
-            }
-        });
-        LinearLayout loanCard = view.findViewById(R.id.loanCard);
+
+        // Đặt sự kiện click cho iconImage
         try{
-            loanCard.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), ManageLoanActivities.class);
-                    startActivity(intent);
-                }
+            iconImage.setOnClickListener(v -> {
+                Intent intent = new Intent(getActivity(), UserProfileActivity.class);
+                startActivity(intent);
             });
         }catch (Exception e){
             Log.e("Error", Objects.requireNonNull(e.getMessage()));
         }
 
+        setupClickListener(view.findViewById(R.id.iconNotifition), this::showFeatureNotAvailableToast);
 
+        setupClickListener(view.findViewById(R.id.loanCard), () -> startActivity(new Intent(getActivity(), ManageLoanActivities.class)));
+        setupClickListener(view.findViewById(R.id.payCard), this::showFeatureNotAvailableToast);
+        setupClickListener(view.findViewById(R.id.savingCard), this::showFeatureNotAvailableToast);
     }
-    private void Toast(){
-        Toast.makeText(getActivity(), "Chức năng sẽ được cập nhật sớm nhất đến với bạn", Toast.LENGTH_SHORT).show();
+
+    private void setupClickListener(View view, Runnable onClick) {
+        view.setOnClickListener(v -> {
+            try {
+                onClick.run();
+            } catch (Exception e) {
+                Log.e("Error", Objects.requireNonNull(e.getMessage()));
+            }
+        });
+    }
+    private void loadUserInfo(ImageView userProfilePic) {
+        FireBaseClass.getUserInfo(userInfo -> {
+            if (userInfo != null) {
+                // Load the profile image if available
+                Glide.with(this)
+                        .load(userInfo.getImage())
+                        .placeholder(R.drawable.image_eduinvest) // Placeholder image
+                        .error(R.drawable.image_eduinvest) // Fallback image
+                        .into(userProfilePic);
+            }
+        });
+    }
+
+    private void showFeatureNotAvailableToast() {
+        showToast("Chức năng sẽ được cập nhật sớm nhất đến với bạn");
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 }

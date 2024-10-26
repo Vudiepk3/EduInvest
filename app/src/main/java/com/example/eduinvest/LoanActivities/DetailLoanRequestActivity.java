@@ -82,9 +82,18 @@ public class DetailLoanRequestActivity extends AppCompatActivity {
                                                             +"\nNgày Sinh:"+loanModel.getBirthDate()
                                                             +"\nSố Điện Thoại:"+loanModel.getPhoneNumber()
                                                             +"\nEmail:"+loanModel.getEmail());
-                        detailInformationLoanRequestBank.setText("Lãi Suất:"+loanModel.getRateBank()
-                                                                +"\nThời Gian Vay:"+loanModel.getLoanPeriodBank()
-                                                                +"\nGiới Hạn:"+loanModel.getLimitBank());
+                        if(loanModel.getTitleBank().equals("Null") && loanModel.getNameBank().equals("Null")){
+                            detailInformationLoanRequestBank.setText("Lãi Suất:"+loanModel.getRateBank()
+                                    +"\nThời Gian Vay:"+loanModel.getLoanPeriodBank()
+                                    +"\nGiới Hạn:"+loanModel.getLimitBank());
+                        }else{
+                            detailInformationLoanRequestBank.setText("Tên Ngân Hàng:"+loanModel.getNameBank()
+                                    +"\nTên Gói Vay:"+loanModel.getTitleBank()
+                                     +"\nLãi Suất:"+loanModel.getRateBank()
+                                    +"\nThời Gian Vay:"+loanModel.getLoanPeriodBank()
+                                    +"\nGiới Hạn:"+loanModel.getLimitBank());
+                        }
+
                         detailStatusLoanRequestBank.setText(loanModel.getStatus());
 
                     }

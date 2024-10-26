@@ -62,6 +62,7 @@ public class DetailLoanActivity extends AppCompatActivity {
     // Phương thức lấy ID
     private void getID() {
         // Ánh xạ các thành phần giao diện
+        detailNameBank = findViewById(R.id.detailNameBank);
         detailTitleBank = findViewById(R.id.detailTitleBank);
         detailRateBank = findViewById(R.id.detailRateBank);
         detailBrowseBank = findViewById(R.id.detailBrowseBank);
@@ -80,6 +81,7 @@ public class DetailLoanActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     LoanModel loanModel = snapshot.getValue(LoanModel.class);
                     if (loanModel != null) {
+                        detailNameBank.setText(loanModel.getNameBank());
                         detailTitleBank.setText(loanModel.getTitleBank());
                         detailRateBank.setText(loanModel.getRateBank());
                         detailBrowseBank.setText(loanModel.getBrowseBank());
@@ -89,7 +91,9 @@ public class DetailLoanActivity extends AppCompatActivity {
                         detailDescribeBank.setText(loanModel.getDescribleBank());
                         detailCosditonBank.setText(loanModel.getConditionBank());
                         String contact = loanModel.getContanctBank();
-                        getContact(contact);
+                        String imageBank = loanModel.getImageBank();
+                        String type = loanModel.getTypeBank();
+                        getContact(contact,imageBank);
                     }
                 } else {
                     // Xử lý trường hợp không tìm thấy dữ liệu với Key đã cho
@@ -107,8 +111,28 @@ public class DetailLoanActivity extends AppCompatActivity {
         });
     }
 
-    private void getContact(String contactLink) {
+    private void getContact(String contactLink,String imageBank) {
         Button button1 = findViewById(R.id.button1);
+        try {
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(DetailLoanActivity.this, UploadLoanRequestActivity.class);
+                    intent.putExtra("typeBank", "VAYUUDAI");
+                    intent.putExtra("imageBank", imageBank);
+                    intent.putExtra("titleBank", detailTitleBank.getText().toString());
+                    intent.putExtra("nameBank", detailNameBank.getText().toString());
+                    intent.putExtra("rateBank", detailRateBank.getText().toString());
+                    intent.putExtra("browseBank", detailBrowseBank.getText().toString());
+                    intent.putExtra("loanPeriodBank", detailLoanPeriodBank.getText().toString());
+                    intent.putExtra("limitBank", detailLimitBank.getText().toString());
+                    startActivity(intent);
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(DetailLoanActivity.this, "Chúng tôi sẽ liên lại cho bạn sớm nhất", Toast.LENGTH_SHORT).show();
+        }
+
         Button button2 = findViewById(R.id.button2);
         try {
             button2.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +150,7 @@ public class DetailLoanActivity extends AppCompatActivity {
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("message/rfc822");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Liên Hệ Vay");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Giải Đáp Thắc Mắc Gói Vay" + detailTitleBank.getText().toString() +"của "+detailNameBank.getText().toString());
         try {
             startActivity(Intent.createChooser(emailIntent, "Send email via"));
         } catch (ActivityNotFoundException ex) {

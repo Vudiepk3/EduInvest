@@ -70,7 +70,7 @@ public class SecondLoanFragment extends Fragment {
         // Initialize and bind the RecyclerView and other UI elements
         // Declare your views and references
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        FloatingActionButton fab = view.findViewById(R.id.fab);
+
 
         // Set up LayoutManager for RecyclerView
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
@@ -114,10 +114,7 @@ public class SecondLoanFragment extends Fragment {
                 dialog.dismiss();
             }
         });
-        fab.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), UploadLoanRequestActivity.class);
-            startActivity(intent);
-        });
+
 
 
 
