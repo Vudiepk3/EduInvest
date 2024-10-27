@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/image_intro"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +25,6 @@
             android:layout_marginBottom="60dp"
             android:id="@+id/view_pager"
             app:layout_constraintVertical_bias="0"
-            android:background="@drawable/baseline_viewpager_bkg"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

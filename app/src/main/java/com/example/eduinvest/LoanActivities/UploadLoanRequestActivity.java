@@ -1,6 +1,7 @@
 package com.example.eduinvest.LoanActivities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -13,13 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eduinvest.R;
 import com.example.eduinvest.models.LoanRequestModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.util.Calendar;
 
 public class UploadLoanRequestActivity extends AppCompatActivity {
-
+    private FirebaseAuth auth;
     private Button sendButton;
     private EditText detailNamePerson, detailBirthDate, detailGender, detailPhoneNumber, detailEmail, detailLimitBank, detailRateBank, detailLoanPeriodBank, detailNoteBank;
     private TextView txtLimitBank;
@@ -54,6 +57,7 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
         sendButton = findViewById(R.id.sendButton);
     }
 
+    @SuppressLint("SetTextI18n")
     private void setupIntentData() {
         String typeBank = getIntent().getStringExtra("typeBank");
         String nameBank = getIntent().getStringExtra("nameBank");
@@ -122,14 +126,17 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
         String nameBank = getIntent().getStringExtra("nameBank");
         String titleBank = getIntent().getStringExtra("titleBank");
         String imageBank = getIntent().getStringExtra("imageBank");
+        String contactBank = getIntent().getStringExtra("contactBank");
+
+        // Lấy User UID từ Authentication
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         if ("VAYUUDAI".equals(typeBank)) {
-            return new LoanRequestModel(imageBank,nameBank, titleBank, rateBank, loanPeriodBank, limitBank, namePerson, phoneNumber, gender, birthDate, email, noteBank, "Gói Vay Ưu Đãi", "Đang Gửi Yêu Cầu");
+            return new LoanRequestModel(imageBank,nameBank, titleBank, rateBank, loanPeriodBank, limitBank,contactBank, namePerson, phoneNumber, gender, birthDate, email, noteBank, "Gói Vay Ưu Đãi", "DANG_DUYET", userId);
         } else {
-            return new LoanRequestModel("Null","Null", "Null", rateBank, loanPeriodBank, limitBank, namePerson, phoneNumber, gender, birthDate, email, noteBank, "Gói Vay Mong Muốn", "Đang Gửi Yêu Cầu");
+            return new LoanRequestModel("Null","Null", "Null", rateBank, loanPeriodBank, limitBank,"Null", namePerson, phoneNumber, gender, birthDate, email, noteBank, "Gói Vay Mong Muốn", "DANG_DUYET", userId);
         }
     }
-
     private void saveDataToFirebase(LoanRequestModel dataModel) {
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
@@ -137,10 +144,12 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
                 .setValue(dataModel)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(this, "Lưu Thành Công", Toast.LENGTH_SHORT).show();
-                        new Handler(Looper.getMainLooper()).postDelayed(this::finish, 2000);
+                        Toast.makeText(this, "Gửi Yêu Cầu Thành Công", Toast.LENGTH_SHORT).show();
+                        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                            finish(); // Kết thúc Activity hiện tại sau khi chuyển
+                        }, 2000);
                     } else {
-                        Toast.makeText(this, "Thất Bại Trong Việc Lưu", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Thất Bại Trong Việc Gửi Yêu Cầu", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(e -> Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show());

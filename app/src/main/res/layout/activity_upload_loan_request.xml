@@ -22,7 +22,7 @@
             android:fontFamily="@font/montserrat_font"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -34,7 +34,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText"/>
 
         <TextView
@@ -44,7 +44,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText"/>
         <EditText
             android:id="@+id/detailNamePerson"
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:autofillHints="username"
             android:inputType="text"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,LabelFor"/>
 
         <TextView
@@ -62,15 +62,15 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText"/>
         <EditText
             android:id="@+id/detailBirthDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="username"
-            android:inputType="datetime"
-            android:textColor="@color/black"
+            android:inputType="number|date"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="LabelFor" />
 
         <TextView
@@ -81,14 +81,14 @@
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             tools:ignore="HardcodedText"
-            android:textColor="@color/black" />
+            android:textColor="?attr/colorOnBackground" />
         <EditText
             android:id="@+id/detailGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="username"
             android:inputType="text"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="LabelFor" />
 
         <TextView
@@ -99,15 +99,15 @@
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             tools:ignore="HardcodedText"
-            android:textColor="@color/black" />
+            android:textColor="?attr/colorOnBackground" />
 
         <EditText
             android:id="@+id/detailPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone"
+            android:inputType="number|phone"
             android:autofillHints="username"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="LabelFor" />
 
         <TextView
@@ -118,7 +118,7 @@
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             tools:ignore="HardcodedText"
-            android:textColor="@color/black" />
+            android:textColor="?attr/colorOnBackground" />
 
         <EditText
             android:id="@+id/detailEmail"
@@ -126,7 +126,7 @@
             android:layout_height="wrap_content"
             android:autofillHints="username"
             android:inputType="text"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="LabelFor,TextFields" />
 
         <TextView
@@ -138,15 +138,15 @@
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             tools:ignore="HardcodedText"
-            android:textColor="@color/black" />
+            android:textColor="?attr/colorOnBackground" />
 
         <EditText
             android:id="@+id/detailLimitBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="name"
-            android:inputType="numberDecimal"
-            android:textColor="@color/black"
+            android:inputType="number"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="LabelFor" />
 
         <TextView
@@ -158,14 +158,14 @@
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             tools:ignore="HardcodedText"
-            android:textColor="@color/black" />
+            android:textColor="?attr/colorOnBackground" />
         <EditText
             android:id="@+id/detailRateBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="name"
             android:inputType="numberDecimal"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="LabelFor" />
 
         <TextView
@@ -177,14 +177,14 @@
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             tools:ignore="HardcodedText"
-            android:textColor="@color/black" />
+            android:textColor="?attr/colorOnBackground" />
         <EditText
             android:id="@+id/detailLoanPeriodBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="name"
-            android:inputType="number"
-            android:textColor="@color/black"
+            android:inputType="number|date"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="LabelFor" />
 
         <TextView
@@ -196,14 +196,14 @@
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             tools:ignore="HardcodedText"
-            android:textColor="@color/black" />
+            android:textColor="?attr/colorOnBackground" />
         <EditText
             android:id="@+id/detailNoteBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
             android:autofillHints="name"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnBackground"
             tools:ignore="LabelFor" />
 
         <LinearLayout

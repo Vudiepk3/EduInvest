@@ -1,24 +1,29 @@
 package com.example.eduinvest.adapters;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.eduinvest.LoanActivities.DetailLoanActivity;
 import com.example.eduinvest.LoanActivities.DetailLoanRequestActivity;
 import com.example.eduinvest.R;
 import com.example.eduinvest.models.LoanRequestModel;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +58,24 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
         holder.browseBank.setText(LoanRequestModel.getLoanPeriodBank());
         holder.rateBank.setText(LoanRequestModel.getRateBank());
         //holder.typeBank.setText(LoanRequestModel.getTypeBank());
-        holder.statusBank.setText(LoanRequestModel.getStatus());
+        String status = LoanRequestModel.getStatus();
+        holder.statusBank.setText(status);
+       // Kiểm tra nếu trạng thái là "Từ Chối" thì đổi màu thành đỏ
+        if ("TU_CHOI".equals(status)) {
+            holder.statusBank.setText("Từ Chối");
+            holder.statusBank.setTextColor(Color.RED);
+        } else if ("DANG_DUYET".equals(status)) {
+            holder.statusBank.setText("Đang Gửi Yêu Cầu");
+            holder.statusBank.setTextColor(ContextCompat.getColor(context, R.color.orange));
+        }
+        else if ("DA_DUYET".equals(status)) {
+            holder.statusBank.setText("Đã duyệt.Sẽ có nhân viên liên hệ bạn");
+            holder.statusBank.setTextColor(Color.GREEN);
+        }
+        else {
+            // Màu mặc định nếu không phải là "Từ Chối" và "Đang Gửi Yêu Cầu"
+            holder.statusBank.setTextColor(Color.GREEN);
+        }
 
         // Kiểm tra null và thiết lập OnClickListener
         if (holder.itemBank != null) {
@@ -65,6 +87,35 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
         } else {
             Log.e("LoanRequestAdapter", "itemBank is null at position: " + position);
         }
+        if (holder.itemBank != null) {
+            holder.itemBank.setOnLongClickListener(view -> {
+                // Tạo dialog xác nhận xóa
+                new AlertDialog.Builder(context)
+                        .setTitle("Xác nhận xóa")
+                        .setMessage("Bạn có chắc chắn muốn xóa mục này không?")
+                        .setPositiveButton("Xóa", (dialog, which) -> {
+                            // Thực hiện xóa khỏi Firebase Realtime Database
+                            DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+                                    .getReference("LoanRequest")
+                                    .child(LoanRequestModel.getKey());
+
+                            databaseReference.removeValue().addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        })
+                        .setNegativeButton("Hủy", (dialog, which) -> dialog.dismiss())
+                        .show();
+
+                return true;
+            });
+        } else {
+            Log.e("LoanRequestAdapter", "itemBank is null at position: " + position);
+        }
+
     }
 
     @Override

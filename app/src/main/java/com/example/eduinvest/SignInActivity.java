@@ -1,6 +1,8 @@
 package com.example.eduinvest;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -81,18 +83,30 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
+    // Kiểm tra kết nối mạng
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     // Đăng nhập người dùng với email và mật khẩu
     private void signInUser() {
+        if (!isNetworkAvailable()) {
+            Toast.makeText(this, "Vui lòng kiểm tra kết nối mạng của bạn", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         String email = txtSignInEmail.getText().toString().trim();
         String password = txtSignInPassword.getText().toString().trim();
 
         if (TextUtils.isEmpty(email) || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            txtSignInEmail.setError("Invalid Email");
+            txtSignInEmail.setError("Email Không Hợp Lệ");
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            txtSignInPassword.setError("Password cannot be empty");
+            txtSignInPassword.setError("Mật Khẩu Không Được Để Trống");
             return;
         }
 
@@ -112,6 +126,11 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void signInWithGoogle() {
+        if (!isNetworkAvailable()) {
+            Toast.makeText(this, "Vui lòng kiểm tra kết nối mạng của bạn", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Intent signInIntent = googleSignInClient.getSignInIntent();
         launcher.launch(signInIntent);
     }
@@ -145,5 +164,4 @@ public class SignInActivity extends AppCompatActivity {
                     }
                 });
     }
-
 }

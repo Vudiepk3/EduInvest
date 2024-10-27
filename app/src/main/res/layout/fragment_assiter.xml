@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="30dp"
     android:padding="10dp"
-    tools:context=".SupportActivities.Assiter">
+    tools:context=".SupportActivities.AssiterFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

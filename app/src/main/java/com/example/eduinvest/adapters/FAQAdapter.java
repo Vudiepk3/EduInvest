@@ -35,7 +35,8 @@ public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.FAQViewHolder> {
         FAQModel faq = faqList.get(position);
         holder.questionTextView.setText(faq.getQuestion());
         holder.answerTextView.setText(faq.getAnswer());
-
+        // Đặt trạng thái ban đầu của answerTextView là ẩn
+        holder.answerTextView.setVisibility(View.GONE);
         // Thiết lập sự kiện khi người dùng nhấn vào câu hỏi
         holder.itemView.setOnClickListener(v -> {
             // Tùy thuộc vào logic của bạn, bạn có thể ẩn hiện câu trả lời hoặc thực hiện một hành động khác

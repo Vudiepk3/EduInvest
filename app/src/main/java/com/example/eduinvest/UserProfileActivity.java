@@ -2,12 +2,9 @@ package com.example.eduinvest;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -54,12 +51,7 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private void loadUserInfo(TextView tvEmailId, TextView tvUserName, ImageView userProfilePic) {
-        // Hiển thị dialog tiến trình
-        AlertDialog.Builder builder = new AlertDialog.Builder(UserProfileActivity.this);
-        builder.setCancelable(false);
-        builder.setView(R.layout.progress_layout);
-        AlertDialog dialog = builder.create();
-        dialog.show();// Show loading indicator
+
         FireBaseClass.getUserInfo(userInfo -> {
             if (userInfo != null) {
                 tvUserName.setText(userInfo.getName());
@@ -70,11 +62,16 @@ public class UserProfileActivity extends AppCompatActivity {
                         .placeholder(R.drawable.image_user) // Placeholder image
                         .error(R.drawable.image_user) // Fallback image
                         .into(userProfilePic);
-                dialog.dismiss(); // Hide loading indicator
             } else {
                 tvUserName.setText("N/A");
                 tvEmailId.setText("N/A");
             }
         });
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadUserInfo(findViewById(R.id.tvEmailId), findViewById(R.id.tvUserName), findViewById(R.id.userProfilePic));
+    }
+
 }

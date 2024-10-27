@@ -11,7 +11,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <!-- Row 0: LinearLayout for Image and Text -->
         <LinearLayout
             android:id="@+id/row0"
@@ -19,11 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal"
-            android:background="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            tools:ignore="MissingConstraints">
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardIconBank"
                 android:layout_width="wrap_content"
@@ -128,10 +124,10 @@
             android:layout_height="wrap_content"
             android:baselineAligned="false"
             android:orientation="horizontal"
+            android:layout_marginTop="5dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:background="@drawable/baseline_button_background"
-            android:padding="10dp"
+            android:layout_marginBottom="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView">
@@ -173,7 +169,6 @@
                     android:text="Gói vay"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/payCard"
@@ -250,6 +245,166 @@
 
             <!-- Physics Card -->
             <LinearLayout
+                android:id="@+id/personalGrowthCard"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/personalGrowthImageCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp">
+                    <ImageView
+                        android:id="@+id/personalGrowthImage"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="15dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/image_personal_growth" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/personalGrowthName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Chứng Khoán"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/row3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/row2">
+
+            <!-- Maths Card -->
+            <LinearLayout
+                android:id="@+id/giftCard"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/giftImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp">
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="15dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/image_gift" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/giftText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Phần thưởng"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/voucherCard"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/voucherImageCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp">
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="15dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/image_voucher" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/voucherText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="Ưu đãi"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- English Card -->
+            <LinearLayout
+                android:id="@+id/insuranceCard"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/insuranceImageCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp">
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="15dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/image_healthcare" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/insuranceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="Bảo hiểm"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- Physics Card -->
+            <LinearLayout
                 android:id="@+id/moreCard"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -287,38 +442,26 @@
             </LinearLayout>
 
 
-
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/row2">
+            app:layout_constraintTop_toBottomOf="@id/row3">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
-                android:text="Ưu đãi cho bạn"
-                android:textSize="18sp"
+                android:text="EduInvest đề xuất"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/montserrat_font"
                 tools:ignore="HardcodedText,RtlSymmetry">
 
             </TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/row4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView1">
-
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,7 @@ import com.example.eduinvest.R;
 import com.example.eduinvest.adapters.LoanRequestAdapter;
 import com.example.eduinvest.models.LoanRequestModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -100,7 +101,7 @@ public class SecondLoanFragment extends Fragment {
                 dataList.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     LoanRequestModel dataClass = itemSnapshot.getValue(LoanRequestModel.class);
-                    if (dataClass != null) {
+                    if (dataClass != null && dataClass.getIdUser().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
                         dataClass.setKey(itemSnapshot.getKey());
                         dataList.add(dataClass);
                     }

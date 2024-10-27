@@ -1,11 +1,7 @@
 package com.example.eduinvest.LoanActivities;
 
 import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -93,9 +89,13 @@ public class DetailLoanRequestActivity extends AppCompatActivity {
                                     +"\nThời Gian Vay:"+loanModel.getLoanPeriodBank()
                                     +"\nGiới Hạn:"+loanModel.getLimitBank());
                         }
-
-                        detailStatusLoanRequestBank.setText(loanModel.getStatus());
-
+                        if(loanModel.getStatus().equals("DA_DUYET")){
+                            detailStatusLoanRequestBank.setText("Đã duyệt.Sẽ có nhân viên liên hệ bạn");
+                        }else if(loanModel.getStatus().equals("DANG_DUYET")){
+                            detailStatusLoanRequestBank.setText("Đang duyệt yêu cầu.Chúng tôi sẽ xử lý nhanh nhất.");
+                        }else if(loanModel.getStatus().equals("TU_CHOI")){
+                            detailStatusLoanRequestBank.setText("Từ chối.Yêu  cầu của bạn không được chấp thuận.Bạn có thể tạo yêu cầu mới để tiếp tục.");
+                        }
                     }
                 } else {
                     // Xử lý trường hợp không tìm thấy dữ liệu với Key đã cho

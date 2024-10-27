@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/home"
         android:title="Trang Chủ"
-        android:icon="@drawable/ic_baseline_home_24"/>
+        android:icon="@drawable/ic_baseline_home_24"
+        tools:ignore="HardcodedText" />
 
     <item
         android:id="@+id/news"
         android:title="Tin Tức"
-        android:icon="@drawable/baseline_news_24"/>
+        android:icon="@drawable/baseline_news_24"
+        tools:ignore="HardcodedText" />
 
     <item
         android:id="@+id/support"
         android:title="Hỗ Trợ"
-        android:icon="@drawable/ic_baseline_support"/>
+        android:icon="@drawable/ic_baseline_support"
+        tools:ignore="HardcodedText" />
 
     <item
         android:id="@+id/myself"
-        android:title="Tôi"
-        android:icon="@drawable/ic_baseline_person_24"/>
+        android:title="Cài Đặt"
+        android:icon="@drawable/baseline_settings_24"
+        tools:ignore="HardcodedText"/>
+
+
 </menu>

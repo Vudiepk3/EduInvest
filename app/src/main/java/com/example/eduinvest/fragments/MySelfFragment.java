@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import com.example.eduinvest.R;
+import com.example.eduinvest.UserProfileActivity;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 
 public class MySelfFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
@@ -38,10 +38,8 @@ public class MySelfFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            // Retrieve passed parameters if needed
             String mParam1 = getArguments().getString(ARG_PARAM1);
             String mParam2 = getArguments().getString(ARG_PARAM2);
-            // You can use mParam1 and mParam2 as needed
         }
     }
 
@@ -53,13 +51,15 @@ public class MySelfFragment extends Fragment {
     }
 
     private void getActivities(View view) {
-        setupClickListener(view, R.id.scholarshipRelative, this::Toast);
-        setupClickListener(view, R.id.internshipRelative, this::Toast);
+        setupClickListener(view, R.id.scholarshipRelative, this::showFeatureComingSoonToast);
+        setupClickListener(view, R.id.internshipRelative, this::showFeatureComingSoonToast);
         setupClickListener(view, R.id.rate, this::openPlayStoreForRating);
         setupClickListener(view, R.id.share, this::shareAppLink);
         setupClickListener(view, R.id.contact, this::sendEmailIntent);
-        setupClickListener(view, R.id.donateRelative, this::Toast);
+        setupClickListener(view, R.id.donateRelative, this::showFeatureComingSoonToast);
+        setupClickListener(view, R.id.UserRelative, this::openUserProfile);
     }
+
     private void setupClickListener(View view, int resId, Runnable action) {
         RelativeLayout layout = view.findViewById(resId);
         if (layout != null) {
@@ -68,8 +68,10 @@ public class MySelfFragment extends Fragment {
             Log.e(TAG, "View with ID " + resId + " not found in layout.");
         }
     }
+
     // Phương thức đánh giá app
     private void openPlayStoreForRating() {
+        if (!isAdded()) return;
         try {
             Intent rateIntent = new Intent(Intent.ACTION_VIEW);
             rateIntent.setData(Uri.parse(PLAY_STORE_LINK + requireContext().getPackageName()));
@@ -82,8 +84,10 @@ public class MySelfFragment extends Fragment {
             startActivity(rateIntent);
         }
     }
+
     // Phương thức chia sẻ link app
     private void shareAppLink() {
+        if (!isAdded()) return;
         try {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
@@ -94,10 +98,12 @@ public class MySelfFragment extends Fragment {
             Log.e(TAG, "Error sharing: " + e.getMessage(), e);
         }
     }
-    //Phương thức gửi email
+
+    // Phương thức gửi email
     private void sendEmailIntent() {
+        if (!isAdded()) return;
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-        emailIntent.setData(Uri.parse("vulq2k3@gmail.com"));
+        emailIntent.setData(Uri.parse("mailto:vulq2k3@gmail.com"));
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Liên Hệ Hợp Tác");
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the Email");
 
@@ -105,11 +111,22 @@ public class MySelfFragment extends Fragment {
             startActivity(Intent.createChooser(emailIntent, "Send email via"));
         } else {
             Log.e(TAG, "No email app found.");
-            Toast.makeText(getActivity(), "No email app found.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "No email app found.", Toast.LENGTH_SHORT).show();
         }
     }
-    private void Toast(){
-        Toast.makeText(getActivity(), "Chức năng sẽ được cập nhật sớm nhất đến với bạn", Toast.LENGTH_SHORT).show();
+
+    private void openUserProfile() {
+        if (!isAdded()) return;
+        try {
+            Intent intent = new Intent(getActivity(), UserProfileActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "Error opening UserProfileActivity: " + e.getMessage(), e);
+        }
     }
 
+    private void showFeatureComingSoonToast() {
+        if (!isAdded()) return;
+        Toast.makeText(requireContext(), "Chức năng sẽ được cập nhật sớm nhất đến với bạn", Toast.LENGTH_SHORT).show();
+    }
 }

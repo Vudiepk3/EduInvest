@@ -43,7 +43,7 @@ public class DetailLoanActivity extends AppCompatActivity {
         dialog.show();
 
         // Khởi tạo Firebase Realtime Database
-        databaseReference = FirebaseDatabase.getInstance().getReference("Bank"); // Khởi tạo databaseReference
+        databaseReference = FirebaseDatabase.getInstance().getReference("Loan"); // Khởi tạo databaseReference
         // Nhận dữ liệu từ Intent
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -120,6 +120,7 @@ public class DetailLoanActivity extends AppCompatActivity {
                     Intent intent = new Intent(DetailLoanActivity.this, UploadLoanRequestActivity.class);
                     intent.putExtra("typeBank", "VAYUUDAI");
                     intent.putExtra("imageBank", imageBank);
+                    intent.putExtra("contactBank", contactLink);
                     intent.putExtra("titleBank", detailTitleBank.getText().toString());
                     intent.putExtra("nameBank", detailNameBank.getText().toString());
                     intent.putExtra("rateBank", detailRateBank.getText().toString());

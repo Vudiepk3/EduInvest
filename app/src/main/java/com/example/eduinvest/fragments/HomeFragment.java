@@ -9,11 +9,9 @@ import android.view.View;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
@@ -21,7 +19,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.eduinvest.IntroActivity;
 import com.example.eduinvest.LoanActivities.ManageLoanActivities;
 import com.example.eduinvest.R;
 import com.example.eduinvest.UserProfileActivity;
@@ -56,10 +53,11 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         initializeActivities(view);
         ImageView iconImage = view.findViewById(R.id.iconImage);
+
         // Lấy thông tin user hiện tại
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
-            Uri photoUrl = currentUser.getPhotoUrl(); // lấy link ảnh cuả user hiện tại
+            Uri photoUrl = currentUser.getPhotoUrl(); // Lấy link ảnh của user hiện tại
             if (photoUrl != null) {
                 // Sử dụng Glide để tải ảnh vào iconImage
                 Glide.with(this)
@@ -68,15 +66,16 @@ public class HomeFragment extends Fragment {
                         .error(R.drawable.image_eduinvest) // Ảnh mặc định khi không có ảnh
                         .into(iconImage);
             } else {
-                // Nếu không có ảnh, sử dụng ảnh mặc định
-                iconImage.setImageResource(R.drawable.image_eduinvest);
+                iconImage.setImageResource(R.drawable.image_eduinvest); // Ảnh mặc định nếu không có ảnh
             }
         }
-        loadImageSlider(view);
+
+        loadImageSlider(view); // Tải ảnh slider
         return view;
     }
 
     private void loadImageSlider(View view) {
+        if (!isAdded()) return;  // Kiểm tra Fragment đã được gắn vào Activity
         ImageSlider imageSlider = view.findViewById(R.id.ImageSlide);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         List<String> linkWebsites = new ArrayList<>();
@@ -86,6 +85,7 @@ public class HomeFragment extends Fragment {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!isAdded()) return;  // Kiểm tra lại trước khi thao tác với Context
                 slideModels.clear();
                 linkWebsites.clear();
 
@@ -125,8 +125,8 @@ public class HomeFragment extends Fragment {
         });
     }
 
-
     private void openWebsite(String url) {
+        if (!isAdded()) return;  // Kiểm tra Fragment đã được gắn vào Activity
         try {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(intent);
@@ -140,12 +140,12 @@ public class HomeFragment extends Fragment {
         ImageView iconImage = view.findViewById(R.id.iconImage);
 
         // Đặt sự kiện click cho iconImage
-        try{
+        try {
             iconImage.setOnClickListener(v -> {
                 Intent intent = new Intent(getActivity(), UserProfileActivity.class);
                 startActivity(intent);
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e("Error", Objects.requireNonNull(e.getMessage()));
         }
 
@@ -165,9 +165,10 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
     private void loadUserInfo(ImageView userProfilePic) {
         FireBaseClass.getUserInfo(userInfo -> {
-            if (userInfo != null) {
+            if (userInfo != null && isAdded()) {  // Kiểm tra Fragment đã được gắn vào Activity
                 // Load the profile image if available
                 Glide.with(this)
                         .load(userInfo.getImage())
@@ -183,6 +184,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void showToast(String message) {
-        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+        if (isAdded()) {  // Kiểm tra Fragment đã được gắn vào Activity
+            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -5,19 +5,14 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.activity.result.ActivityResultLauncher;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -37,24 +32,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class NewsFragment extends Fragment {
-    private ValueEventListener eventListener;
-
     private DatabaseReference databaseReference;
+    private ValueEventListener eventListener;
     private List<NewsModel> dataList;
     private NewsAdapter adapter;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    public NewsFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_news, container, false);
-
         loadImageSlide(view);
         loadUniversityData(view);
         return view;
@@ -62,38 +47,38 @@ public class NewsFragment extends Fragment {
 
     // Load images from Firebase for ImageSlider
     public void loadImageSlide(View view) {
-        ImageSlider imageSlider2 = view.findViewById(R.id.ImageSlide2);
-        ArrayList<SlideModel> slideModels2 = new ArrayList<>();
+        ImageSlider imageSlider = view.findViewById(R.id.ImageSlide2);
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
         List<String> linkWebsites = new ArrayList<>();
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Banner");
-        Query query = databaseReference.orderByKey().limitToFirst(5);
+        DatabaseReference bannerRef = FirebaseDatabase.getInstance().getReference("Banner");
+        Query query = bannerRef.orderByKey().limitToFirst(5);
+
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                slideModels2.clear();
+                slideModels.clear();
                 linkWebsites.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
-                    BannerModel imageModel = itemSnapshot.getValue(BannerModel.class);
-                    if (imageModel != null && imageModel.getUrlImage() != null  && imageModel.getNoteImage().equals("BANNER2")|| imageModel.getNoteImage().equals("All")) {
-                        slideModels2.add(new SlideModel(imageModel.getUrlImage(), ScaleTypes.FIT));
-                        linkWebsites.add(imageModel.getLinkWeb());
+                    BannerModel banner = itemSnapshot.getValue(BannerModel.class);
+                    if (banner != null && "BANNER2".equals(banner.getNoteImage()) || "All".equals(banner.getNoteImage())) {
+                        slideModels.add(new SlideModel(banner.getUrlImage(), ScaleTypes.FIT));
+                        linkWebsites.add(banner.getLinkWeb());
                     }
                 }
-
-                imageSlider2.setImageList(slideModels2, ScaleTypes.FIT);
-                imageSlider2.setItemClickListener(i -> {
+                imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+                imageSlider.setItemClickListener(i -> {
                     if (i >= 0 && i < linkWebsites.size()) {
-                        String linkWebsite = linkWebsites.get(i);
-                        if (linkWebsite != null && !linkWebsite.isEmpty() && !linkWebsite.equals("No Link Website")) {
+                        String link = linkWebsites.get(i);
+                        if (link != null && !link.isEmpty() && !"No Link Website".equals(link)) {
                             try {
-                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkWebsite));
+                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
                                 startActivity(intent);
                             } catch (ActivityNotFoundException e) {
-                                Toast.makeText(getActivity(), "Không thể mở đường dẫn web.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(requireContext(), "Không thể mở đường dẫn web.", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(getActivity(), "Không có đường dẫn web.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), "Không có đường dẫn web.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -101,27 +86,21 @@ public class NewsFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(), "Tải Dữ Liệu Không Thành Công.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Tải Dữ Liệu Không Thành Công.", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-
-
     // Load university data from Firebase
     public void loadUniversityData(View view) {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 1));
 
         dataList = new ArrayList<>();
-        adapter = new NewsAdapter(getActivity(), dataList);
+        adapter = new NewsAdapter(requireContext(), dataList);
         recyclerView.setAdapter(adapter);
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("News");
-
-        // Sử dụng orderByChild để sắp xếp theo timestamp
+        databaseReference = FirebaseDatabase.getInstance().getReference("News");
         Query query = databaseReference.orderByChild("timestamp");
 
         eventListener = query.addValueEventListener(new ValueEventListener() {
@@ -130,40 +109,34 @@ public class NewsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dataList.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
-                    NewsModel dataClass = itemSnapshot.getValue(NewsModel.class);
-                    if (dataClass != null) {
-                        dataClass.setKey(itemSnapshot.getKey());
-                        dataList.add(dataClass);
+                    NewsModel news = itemSnapshot.getValue(NewsModel.class);
+                    if (news != null) {
+                        news.setKey(itemSnapshot.getKey());
+                        dataList.add(news);
                     }
                 }
-
-                // Đảo ngược danh sách để hiển thị tài liệu mới nhất trước
                 Collections.reverse(dataList);
                 adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Xử lý lỗi nếu có
+                Toast.makeText(requireContext(), "Tải Dữ Liệu Không Thành Công.", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        // Đăng ký lại eventListener khi Activity trở lại hoạt động
         if (databaseReference != null && eventListener != null) {
             databaseReference.addValueEventListener(eventListener);
-            // Hoặc addListenerForSingleValueEvent() nếu chỉ cần tải dữ liệu một lần
         }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // Hủy đăng ký eventListener khi Activity bị hủy để tránh rò rỉ bộ nhớ
         if (databaseReference != null && eventListener != null) {
             databaseReference.removeEventListener(eventListener);
         }

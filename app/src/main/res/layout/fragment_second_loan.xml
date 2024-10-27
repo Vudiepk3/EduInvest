@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="160dp"
-    tools:context=".LoanActivities.FirstLoanFragment">
+    tools:context=".LoanActivities.SecondLoanFragment">
 
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"

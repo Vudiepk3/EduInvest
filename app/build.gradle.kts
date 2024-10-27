@@ -53,7 +53,7 @@ dependencies {
 
     // Google Sign-In
     implementation ("com.google.android.gms:play-services-auth:20.5.0")
-
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

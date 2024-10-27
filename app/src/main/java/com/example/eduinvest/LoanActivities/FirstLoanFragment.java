@@ -96,7 +96,7 @@ public class FirstLoanFragment extends Fragment {
 
 
         // Listen for data changes in Firebase Realtime Database
-        databaseReference = FirebaseDatabase.getInstance().getReference("Bank");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Loan");
         eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
