@@ -11,7 +11,6 @@ public class LoanRequestModel extends LoanModel {
     // Constructor để khởi tạo cả thuộc tính từ BankModel và các thuộc tính mới
     public LoanRequestModel(String imageBank,String nameBank,String titleBank,String rateBank,String loanPeriodBank,String limitBank, String namePerson, String phoneNumber, String gender, String birthDate, String email,String note,String typeBank,String status) {
         super(); // Gọi constructor của BankModel
-
         // Thiết lập các giá trị thuộc tính từ BankModel
         this.imageBank = imageBank;
         this.nameBank = nameBank;

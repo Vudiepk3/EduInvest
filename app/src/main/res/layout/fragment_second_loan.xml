@@ -5,32 +5,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="160dp"
     tools:context=".LoanActivities.SecondLoanFragment">
 
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:id="@+id/search"
         app:iconifiedByDefault="false"
         app:searchHintIcon="@null"
-        app:queryHint="Tìm Kiếm..."
+        app:queryHint="Tìm Kiếm gói vay đã đăng ký"
         android:focusable="false"
         app:closeIcon="@drawable/baseline_clear_24"
         app:searchIcon="@drawable/baseline_search_24"
         android:background="@drawable/baseline_lavender_border"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerView"
         android:layout_below="@id/search"
         android:scrollbars="vertical"/>
-
-
-
 
 </RelativeLayout>

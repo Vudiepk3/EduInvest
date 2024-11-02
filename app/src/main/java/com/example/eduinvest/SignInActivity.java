@@ -65,6 +65,11 @@ public class SignInActivity extends AppCompatActivity {
 
         CardView googleSignInButton = findViewById(R.id.cardSignInWithGoogle);
         googleSignInButton.setOnClickListener(v -> signInWithGoogle());
+        CardView facebookSignInButton = findViewById(R.id.cardSignInWithFacebook);
+        facebookSignInButton.setOnClickListener(v -> {
+           Toast.makeText(this, "Tính năng này đang được phát triển", Toast.LENGTH_SHORT).show();
+        });
+
 
         // Đăng ký launcher cho kết quả hoạt động
         launcher = registerForActivityResult(

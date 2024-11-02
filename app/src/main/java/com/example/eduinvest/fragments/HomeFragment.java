@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,6 +39,8 @@ import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     private FirebaseAuth auth;
+    private DatabaseReference databaseReference;
+    private ValueEventListener eventListener;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -71,6 +74,7 @@ public class HomeFragment extends Fragment {
         }
 
         loadImageSlider(view); // Tải ảnh slider
+
         return view;
     }
 
@@ -80,7 +84,7 @@ public class HomeFragment extends Fragment {
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         List<String> linkWebsites = new ArrayList<>();
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Banner");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Banner");
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -154,6 +158,10 @@ public class HomeFragment extends Fragment {
         setupClickListener(view.findViewById(R.id.loanCard), () -> startActivity(new Intent(getActivity(), ManageLoanActivities.class)));
         setupClickListener(view.findViewById(R.id.payCard), this::showFeatureNotAvailableToast);
         setupClickListener(view.findViewById(R.id.savingCard), this::showFeatureNotAvailableToast);
+        setupClickListener(view.findViewById(R.id.row3), this::showFeatureNotAvailableToast);
+        setupClickListener(view.findViewById(R.id.row4), this::showFeatureNotAvailableToast);
+
+
     }
 
     private void setupClickListener(View view, Runnable onClick) {
@@ -186,6 +194,14 @@ public class HomeFragment extends Fragment {
     private void showToast(String message) {
         if (isAdded()) {  // Kiểm tra Fragment đã được gắn vào Activity
             Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (databaseReference != null && eventListener != null) {
+            databaseReference.addValueEventListener(eventListener);
         }
     }
 }

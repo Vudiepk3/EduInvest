@@ -151,7 +151,7 @@ public class DetailLoanActivity extends AppCompatActivity {
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("message/rfc822");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Giải Đáp Thắc Mắc Gói Vay" + detailTitleBank.getText().toString() +"của "+detailNameBank.getText().toString());
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Giải Đáp Thắc Mắc Gói Vay" + detailTitleBank.getText().toString() +" của "+detailNameBank.getText().toString());
         try {
             startActivity(Intent.createChooser(emailIntent, "Send email via"));
         } catch (ActivityNotFoundException ex) {

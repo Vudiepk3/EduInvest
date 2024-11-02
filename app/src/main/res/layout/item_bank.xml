@@ -34,12 +34,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="4dp">
                 <ImageView
                     android:id="@+id/imageBank"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_width="85dp"
+                    android:layout_height="95dp"
                     android:contentDescription="@string/todo"
                     android:background="@drawable/image_eduinvest"
                     android:scaleType="centerCrop"/>
@@ -74,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="10dp"
                 android:background="?attr/colorOnBackground"
                 android:layout_toEndOf="@+id/cardImageBank"
                 android:layout_below="@id/nameBank"/>
@@ -85,7 +86,9 @@
                 android:layout_toEndOf="@+id/cardImageBank"
                 android:layout_below="@id/typeNews"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
                 android:weightSum="6"
                 android:orientation="horizontal">
 
@@ -95,7 +98,7 @@
                     android:layout_height="match_parent"
                     android:textColor="?attr/colorOnBackground"
                     android:layout_weight="2"
-                    android:text="Lãi Xuất"
+                    android:text="Lãi Suất"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -105,7 +108,7 @@
                     android:textColor="?attr/colorOnBackground"
                     android:layout_weight="4"
                     android:textSize="14sp"
-                    android:text="Thời Gian Vay(Tháng)"
+                    android:text="Thời Gian Duyệt"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
 
@@ -116,7 +119,7 @@
                 android:layout_toEndOf="@+id/cardImageBank"
                 android:layout_below="@id/linear1"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="10dp"
                 android:weightSum="6"
                 android:orientation="horizontal">
 
@@ -127,6 +130,7 @@
                     android:layout_weight="2"
                     android:text="1%"
                     android:textColor="@color/blue"
+                    android:textStyle="bold"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -135,6 +139,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:text="3-4 Tháng"
+                    android:textStyle="bold"
                     android:textColor="@color/blue"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
@@ -145,7 +150,6 @@
                 android:text=""
                 android:textColor="@color/lightgreen"
                 android:textSize="14sp"
-                android:layout_marginBottom="5dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="10dp"
                 android:layout_toEndOf="@+id/cardImageBank"

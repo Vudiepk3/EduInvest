@@ -4,7 +4,11 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+
+import com.example.eduinvest.LoanActivities.DetailLoanActivity;
 import com.example.eduinvest.R;
 import com.example.eduinvest.UserProfileActivity;
 
@@ -53,11 +57,18 @@ public class MySelfFragment extends Fragment {
     private void getActivities(View view) {
         setupClickListener(view, R.id.scholarshipRelative, this::showFeatureComingSoonToast);
         setupClickListener(view, R.id.internshipRelative, this::showFeatureComingSoonToast);
+
         setupClickListener(view, R.id.rate, this::openPlayStoreForRating);
         setupClickListener(view, R.id.share, this::shareAppLink);
         setupClickListener(view, R.id.contact, this::sendEmailIntent);
         setupClickListener(view, R.id.donateRelative, this::showFeatureComingSoonToast);
         setupClickListener(view, R.id.UserRelative, this::openUserProfile);
+        CardView rewardCard = view.findViewById(R.id.rewardCard);
+        if (rewardCard != null) {
+            rewardCard.setOnClickListener(v -> showFeatureComingSoonToast());
+        } else {
+            Log.e(TAG, "View with ID rewardCard not found in layout.");
+        }
     }
 
     private void setupClickListener(View view, int resId, Runnable action) {
@@ -101,17 +112,14 @@ public class MySelfFragment extends Fragment {
 
     // Phương thức gửi email
     private void sendEmailIntent() {
-        if (!isAdded()) return;
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-        emailIntent.setData(Uri.parse("mailto:vulq2k3@gmail.com"));
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("message/rfc822");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"vulq2k3@gmail.com"});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Liên Hệ Hợp Tác");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the Email");
-
-        if (emailIntent.resolveActivity(requireActivity().getPackageManager()) != null) {
+        try {
             startActivity(Intent.createChooser(emailIntent, "Send email via"));
-        } else {
-            Log.e(TAG, "No email app found.");
-            Toast.makeText(requireContext(), "No email app found.", Toast.LENGTH_SHORT).show();
+        } catch (ActivityNotFoundException ex) {
+            Toast.makeText(getActivity(), "No email app found.", Toast.LENGTH_SHORT).show();
         }
     }
 

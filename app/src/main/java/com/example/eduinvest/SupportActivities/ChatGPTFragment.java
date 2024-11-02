@@ -1,5 +1,6 @@
 package com.example.eduinvest.SupportActivities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -90,8 +92,9 @@ public class ChatGPTFragment extends Fragment {
         return view;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     void addToChat(String message, String sentBy) {
-        getActivity().runOnUiThread(() -> {
+        requireActivity().runOnUiThread(() -> {
             messageList.add(new MessageModel(message, sentBy));
             messageAdapter.notifyDataSetChanged();
             recyclerView.smoothScrollToPosition(messageAdapter.getItemCount());
@@ -99,8 +102,12 @@ public class ChatGPTFragment extends Fragment {
     }
 
     void addResponse(String response) {
-        messageList.remove(messageList.size() - 1);
-        addToChat(response, MessageModel.SENT_BY_BOT);
+        requireActivity().runOnUiThread(() -> {
+            if (!messageList.isEmpty()) {
+                messageList.remove(messageList.size() - 1);
+            }
+            addToChat(response, MessageModel.SENT_BY_BOT);
+        });
     }
 
     void callAPI(String question) {
@@ -108,9 +115,9 @@ public class ChatGPTFragment extends Fragment {
 
         JSONObject jsonBody = new JSONObject();
         try {
-            jsonBody.put("model", "text-davinci-003");
+            jsonBody.put("model", "gpt-3.5-turbo-instruct");
             jsonBody.put("prompt", question);
-            jsonBody.put("max_tokens", 4000);
+            jsonBody.put("max_tokens", 2000);
             jsonBody.put("temperature", 0);
         } catch (JSONException e) {
             Log.e("JSONException", e.toString());
@@ -119,7 +126,7 @@ public class ChatGPTFragment extends Fragment {
         RequestBody body = RequestBody.create(jsonBody.toString(), JSON);
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/completions")
-                .header("Authorization", "Bearer YOUR_API_KEY")
+                .header("Authorization", "Bearer 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") // Sử dụng khóa API an toàn hơn
                 .post(body)
                 .build();
 
@@ -132,18 +139,21 @@ public class ChatGPTFragment extends Fragment {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    try {
-                        assert response.body() != null;
-                        JSONObject jsonObject = new JSONObject(response.body().string());
-                        JSONArray jsonArray = jsonObject.getJSONArray("choices");
-                        String result = jsonArray.getJSONObject(0).getString("text");
-                        addResponse(result.trim());
-                    } catch (JSONException e) {
-                        Log.e("JSONException", e.toString());
+                    String responseBody = response.body() != null ? response.body().string() : null;
+                    if (responseBody != null) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(responseBody);
+                            JSONArray jsonArray = jsonObject.getJSONArray("choices");
+                            String result = jsonArray.getJSONObject(0).getString("text");
+                            addResponse(result.trim());
+                        } catch (JSONException e) {
+                            Log.e("JSONException", e.toString());
+                        }
+                    } else {
+                        addResponse("Failed to load response: empty body");
                     }
                 } else {
-                    assert response.body() != null;
-                    addResponse("Failed to load response due to " + response.body().toString());
+                    addResponse("Failed to load response due to " + response.message());
                 }
             }
         });

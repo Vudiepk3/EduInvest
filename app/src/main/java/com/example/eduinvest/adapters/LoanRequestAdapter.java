@@ -57,6 +57,7 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
         holder.nameBank.setText(LoanRequestModel.getPhoneNumber()+" - " + LoanRequestModel.getEmail());
         holder.browseBank.setText(LoanRequestModel.getLoanPeriodBank());
         holder.rateBank.setText(LoanRequestModel.getRateBank());
+        holder.time.setText("Thời Gian Vay(Tháng)");
         //holder.typeBank.setText(LoanRequestModel.getTypeBank());
         String status = LoanRequestModel.getStatus();
         holder.statusBank.setText(status);
@@ -69,7 +70,7 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
             holder.statusBank.setTextColor(ContextCompat.getColor(context, R.color.orange));
         }
         else if ("DA_DUYET".equals(status)) {
-            holder.statusBank.setText("Đã duyệt.Sẽ có nhân viên liên hệ bạn");
+            holder.statusBank.setText("Đã duyệt.");
             holder.statusBank.setTextColor(Color.GREEN);
         }
         else {
@@ -133,7 +134,7 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
     public static class MyLoanRequestViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageBank;
-        TextView titleBank, nameBank, browseBank, rateBank, statusBank,typeBank;
+        TextView titleBank, nameBank, browseBank, rateBank, statusBank,typeBank,time;
         CardView itemBank;
 
         public MyLoanRequestViewHolder(@NonNull View itemView) {
@@ -145,6 +146,7 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
             nameBank = itemView.findViewById(R.id.nameBank);
             browseBank = itemView.findViewById(R.id.browseBank);
             rateBank = itemView.findViewById(R.id.rateBank);
+            time = itemView.findViewById(R.id.time);
             statusBank = itemView.findViewById(R.id.statusBank);
             //typeBank = itemView.findViewById(R.id.typeBank);
             itemBank = itemView.findViewById(R.id.itemBank);  // CardView

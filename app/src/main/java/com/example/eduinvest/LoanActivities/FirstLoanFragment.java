@@ -25,9 +25,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class FirstLoanFragment extends Fragment {
 
@@ -97,7 +99,9 @@ public class FirstLoanFragment extends Fragment {
 
         // Listen for data changes in Firebase Realtime Database
         databaseReference = FirebaseDatabase.getInstance().getReference("Loan");
-        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+        Query query = databaseReference.orderByChild("timestamp");
+
+        eventListener = query.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -109,6 +113,7 @@ public class FirstLoanFragment extends Fragment {
                         dataList.add(dataClass);
                     }
                 }
+                Collections.reverse(dataList); // Đảo ngược danh sách để mục mới nhất hiển thị trước
                 adapter.notifyDataSetChanged();
                 dialog.dismiss();
             }
@@ -118,6 +123,7 @@ public class FirstLoanFragment extends Fragment {
                 dialog.dismiss();
             }
         });
+
         fab.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), UploadLoanRequestActivity.class);
 
@@ -142,12 +148,14 @@ public class FirstLoanFragment extends Fragment {
         return view;
     }
 
-    // Method to search for images in the current list
+    // tìm kiếm thông tin đối tượng
     public void searchList(String text) {
         ArrayList<LoanModel> searchList = new ArrayList<>();
         for (LoanModel dataClass : dataList) {
             if (dataClass.getTitleBank().toLowerCase().contains(text.toLowerCase()) ||
-                    dataClass.getNameBank().toLowerCase().contains(text.toLowerCase())) {
+                    dataClass.getNameBank().toLowerCase().contains(text.toLowerCase())||
+                    dataClass.getRateBank().toLowerCase().contains(text.toLowerCase())||
+                    dataClass.getLoanPeriodBank().toLowerCase().contains(text.toLowerCase())) {
                 searchList.add(dataClass);
             }
         }

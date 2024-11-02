@@ -48,12 +48,13 @@ dependencies {
     implementation(libs.dexter)
 
     // Firebase
-    implementation (platform("com.google.firebase:firebase-bom:33.4.0") )// BOM để quản lý phiên bản
+    implementation (platform(libs.firebase.bom.v3340) )// BOM để quản lý phiên bản
     implementation (libs.firebase.auth) // Firebase Authentication
 
     // Google Sign-In
-    implementation ("com.google.android.gms:play-services-auth:20.5.0")
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation (libs.play.services.auth)
+    implementation(libs.okhttp.v4120)
+
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

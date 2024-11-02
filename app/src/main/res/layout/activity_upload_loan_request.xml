@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="username"
-            android:inputType="number|date"
+            android:inputType="number"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="LabelFor" />
 
@@ -183,7 +183,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="name"
-            android:inputType="number|date"
+            android:inputType="number"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="LabelFor" />
 

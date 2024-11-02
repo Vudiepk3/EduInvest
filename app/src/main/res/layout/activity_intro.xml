@@ -27,7 +27,8 @@
         android:text="Giải Pháp Tín Dụng Dành Cho Sinh Viên"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText" />
 
     <!-- Button Bắt Đầu -->
     <TextView
@@ -41,6 +42,7 @@
         android:textColor="@color/white"
         android:background="@drawable/baseline_stroke_bg"
         android:gravity="center"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        tools:ignore="HardcodedText" />
 
 </FrameLayout>

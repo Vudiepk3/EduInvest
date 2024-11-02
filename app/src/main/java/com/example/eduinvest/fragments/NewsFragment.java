@@ -134,11 +134,4 @@ public class NewsFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (databaseReference != null && eventListener != null) {
-            databaseReference.removeEventListener(eventListener);
-        }
-    }
 }
