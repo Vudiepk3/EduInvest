@@ -11,7 +11,7 @@ public class UserModel {
     private String image;
     private String password;
 
-    private List<LoanRequestModel> loanRequestList;;
+    ;
 
 
     public UserModel() {
@@ -38,7 +38,6 @@ public class UserModel {
         this.name = name;
         this.image = image;
         this.password = password;
-        this.loanRequestList = loanRequestList;
     }
 
     public UserModel(String id, String emailId, String name, String image, double allTimeScore, double weeklyScore, double monthlyScore, double lastGameScore) {
