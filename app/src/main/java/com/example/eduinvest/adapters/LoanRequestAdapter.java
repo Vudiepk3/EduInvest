@@ -134,7 +134,7 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
     public static class MyLoanRequestViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageBank;
-        TextView titleBank, nameBank, browseBank, rateBank, statusBank,typeBank,time;
+        TextView titleBank, nameBank, browseBank, rateBank, statusBank,time;
         CardView itemBank;
 
         public MyLoanRequestViewHolder(@NonNull View itemView) {

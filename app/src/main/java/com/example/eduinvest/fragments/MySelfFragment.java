@@ -8,7 +8,6 @@ import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import com.example.eduinvest.LoanActivities.DetailLoanActivity;
 import com.example.eduinvest.R;
 import com.example.eduinvest.UserProfileActivity;
 

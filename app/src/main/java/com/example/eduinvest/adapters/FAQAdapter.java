@@ -63,6 +63,7 @@ public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.FAQViewHolder> {
             answerTextView = itemView.findViewById(R.id.faqAnswer);
         }
     }
+    @SuppressLint("NotifyDataSetChanged")
     public void searchDataList(ArrayList<FAQModel> searchList){
         faqList = searchList;
         notifyDataSetChanged();

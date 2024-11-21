@@ -89,12 +89,16 @@ public class DetailLoanRequestActivity extends AppCompatActivity {
                                     +"\nThời Gian Vay:"+loanModel.getLoanPeriodBank()
                                     +"\nGiới Hạn:"+loanModel.getLimitBank());
                         }
-                        if(loanModel.getStatus().equals("DA_DUYET")){
-                            detailStatusLoanRequestBank.setText("Đã duyệt.Sẽ có nhân viên liên hệ bạn");
-                        }else if(loanModel.getStatus().equals("DANG_DUYET")){
-                            detailStatusLoanRequestBank.setText("Đang duyệt yêu cầu.Chúng tôi sẽ xử lý nhanh nhất.");
-                        }else if(loanModel.getStatus().equals("TU_CHOI")){
-                            detailStatusLoanRequestBank.setText("Từ chối.Yêu  cầu của bạn không được chấp thuận.Bạn có thể tạo yêu cầu mới để tiếp tục.");
+                        switch (loanModel.getStatus()) {
+                            case "DA_DUYET":
+                                detailStatusLoanRequestBank.setText("Đã duyệt.Sẽ có nhân viên liên hệ bạn");
+                                break;
+                            case "DANG_DUYET":
+                                detailStatusLoanRequestBank.setText("Đang duyệt yêu cầu.Chúng tôi sẽ xử lý nhanh nhất.");
+                                break;
+                            case "TU_CHOI":
+                                detailStatusLoanRequestBank.setText("Từ chối.Yêu  cầu của bạn không được chấp thuận.Bạn có thể tạo yêu cầu mới để tiếp tục.");
+                                break;
                         }
                     }
                 } else {

@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.os.Handler;
 
 import com.example.eduinvest.R;
@@ -32,11 +31,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class FirstLoanFragment extends Fragment {
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private TextView txtNumberImage;
     private LoanAdapter adapter;
     private ArrayList<LoanModel> dataList;
     private DatabaseReference databaseReference;
@@ -46,22 +40,9 @@ public class FirstLoanFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static FirstLoanFragment newInstance(String param1, String param2) {
-        FirstLoanFragment fragment = new FirstLoanFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            String mParam1 = getArguments().getString(ARG_PARAM1);
-            String mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override

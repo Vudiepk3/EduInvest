@@ -30,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class NewsFragment extends Fragment {
     private DatabaseReference databaseReference;
@@ -61,7 +62,7 @@ public class NewsFragment extends Fragment {
                 linkWebsites.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     BannerModel banner = itemSnapshot.getValue(BannerModel.class);
-                    if (banner != null && "BANNER2".equals(banner.getNoteImage()) || "All".equals(banner.getNoteImage())) {
+                    if (banner != null && "BANNER2".equals(banner.getNoteImage()) || "All".equals(Objects.requireNonNull(banner).getNoteImage())) {
                         slideModels.add(new SlideModel(banner.getUrlImage(), ScaleTypes.FIT));
                         linkWebsites.add(banner.getLinkWeb());
                     }

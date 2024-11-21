@@ -3,9 +3,7 @@ package com.example.eduinvest.LoanActivities;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,11 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DetailLoanActivity extends AppCompatActivity {
     TextView detailNameBank, detailTitleBank, detailRateBank, detailBrowseBank, detailLoanPeriodBank,
-            detailLimitBank, detailMoneyBank, detailDescribeBank, detailCosditonBank, detailTypeBank, detailContactBank;
-    ImageView detailImageBank;
+            detailLimitBank, detailMoneyBank, detailDescribeBank, detailCosditonBank;
     String key = "";
 
-    String imageUrl = "";
     DatabaseReference databaseReference;
 
     @Override
@@ -92,7 +88,6 @@ public class DetailLoanActivity extends AppCompatActivity {
                         detailCosditonBank.setText(loanModel.getConditionBank());
                         String contact = loanModel.getContanctBank();
                         String imageBank = loanModel.getImageBank();
-                        String type = loanModel.getTypeBank();
                         getContact(contact,imageBank);
                     }
                 } else {
@@ -114,35 +109,37 @@ public class DetailLoanActivity extends AppCompatActivity {
     private void getContact(String contactLink,String imageBank) {
         Button button1 = findViewById(R.id.button1);
         try {
-            button1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(DetailLoanActivity.this, UploadLoanRequestActivity.class);
-                    intent.putExtra("typeBank", "VAYUUDAI");
-                    intent.putExtra("imageBank", imageBank);
-                    intent.putExtra("contactBank", contactLink);
-                    intent.putExtra("titleBank", detailTitleBank.getText().toString());
-                    intent.putExtra("nameBank", detailNameBank.getText().toString());
-                    intent.putExtra("rateBank", detailRateBank.getText().toString());
-                    intent.putExtra("browseBank", detailBrowseBank.getText().toString());
-                    intent.putExtra("loanPeriodBank", detailLoanPeriodBank.getText().toString());
-                    intent.putExtra("limitBank", detailLimitBank.getText().toString());
-                    startActivity(intent);
-                }
+            // Thay thế anonymous class bằng lambda expression cho ngắn gọn
+            button1.setOnClickListener(v -> {
+                // Tạo một Intent để chuyển sang Activity UploadLoanRequestActivity
+                Intent intent = new Intent(DetailLoanActivity.this, UploadLoanRequestActivity.class);
+
+                // Thêm các dữ liệu cần thiết vào Intent bằng cách sử dụng putExtra
+                intent.putExtra("typeBank", "VAYUUDAI");
+                intent.putExtra("imageBank", imageBank);  // Hình ảnh của ngân hàng
+                intent.putExtra("contactBank", contactLink);  // Liên hệ ngân hàng
+                intent.putExtra("titleBank", detailTitleBank.getText().toString());  // Tiêu đề ngân hàng
+                intent.putExtra("nameBank", detailNameBank.getText().toString());  // Tên ngân hàng
+                intent.putExtra("rateBank", detailRateBank.getText().toString());  // Lãi suất của ngân hàng
+                intent.putExtra("browseBank", detailBrowseBank.getText().toString());  // Địa chỉ website của ngân hàng
+                intent.putExtra("loanPeriodBank", detailLoanPeriodBank.getText().toString());  // Thời gian vay
+                intent.putExtra("limitBank", detailLimitBank.getText().toString());  // Hạn mức vay
+
+                // Bắt đầu Activity mới
+                startActivity(intent);
             });
         } catch (Exception e) {
+            // Xử lý lỗi khi có sự cố và hiển thị thông báo
             Toast.makeText(DetailLoanActivity.this, "Chúng tôi sẽ liên lại cho bạn sớm nhất", Toast.LENGTH_SHORT).show();
         }
 
+
         Button button2 = findViewById(R.id.button2);
         try {
-            button2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                     sendEmailIntent(contactLink);
-                }
-            });
+            // Thay thế anonymous class bằng lambda expression cho ngắn gọn
+            button2.setOnClickListener(v -> sendEmailIntent(contactLink));
         } catch (Exception e) {
+            // Xử lý lỗi khi có sự cố và hiển thị thông báo
             Toast.makeText(DetailLoanActivity.this, "Chúng tôi sẽ liên lại cho bạn sớm nhất", Toast.LENGTH_SHORT).show();
         }
     }

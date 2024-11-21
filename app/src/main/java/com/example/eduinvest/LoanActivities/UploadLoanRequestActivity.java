@@ -1,7 +1,6 @@
 package com.example.eduinvest.LoanActivities;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,14 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.eduinvest.R;
 import com.example.eduinvest.models.LoanRequestModel;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class UploadLoanRequestActivity extends AppCompatActivity {
-    private FirebaseAuth auth;
     private Button sendButton;
     private EditText detailNamePerson, detailBirthDate, detailGender, detailPhoneNumber, detailEmail, detailLimitBank, detailRateBank, detailLoanPeriodBank, detailNoteBank;
     private TextView txtLimitBank;
@@ -50,7 +48,6 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
         detailRateBank = findViewById(R.id.detailRateBank);
         detailLoanPeriodBank = findViewById(R.id.detailLoanPeriodBank);
         detailNoteBank = findViewById(R.id.detailNoteBank);
-        TextView txtNoteBank = findViewById(R.id.txtNoteBank);
         txtLimitBank = findViewById(R.id.txtLimitBank);
         txtRateBank = findViewById(R.id.txtRateBank);
         txtLoanPeriodBank = findViewById(R.id.txtLoanPeriodBank);
@@ -129,7 +126,7 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
         String contactBank = getIntent().getStringExtra("contactBank");
 
         // Lấy User UID từ Authentication
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
 
         if ("VAYUUDAI".equals(typeBank)) {
             return new LoanRequestModel(imageBank,nameBank, titleBank, rateBank, loanPeriodBank, limitBank,contactBank, namePerson, phoneNumber, gender, birthDate, email, noteBank, "Gói Vay Ưu Đãi", "DANG_DUYET", userId);
@@ -145,9 +142,8 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Toast.makeText(this, "Gửi Yêu Cầu Thành Công", Toast.LENGTH_SHORT).show();
-                        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                            finish(); // Kết thúc Activity hiện tại sau khi chuyển
-                        }, 2000);
+                        // Kết thúc Activity hiện tại sau khi chuyển
+                        new Handler(Looper.getMainLooper()).postDelayed(this::finish, 2000);
                     } else {
                         Toast.makeText(this, "Thất Bại Trong Việc Gửi Yêu Cầu", Toast.LENGTH_SHORT).show();
                     }

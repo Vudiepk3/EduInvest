@@ -92,12 +92,12 @@ public class SignInActivity extends AppCompatActivity {
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        return activeNetworkInfo == null || !activeNetworkInfo.isConnected();
     }
 
     // Đăng nhập người dùng với email và mật khẩu
     private void signInUser() {
-        if (!isNetworkAvailable()) {
+        if (isNetworkAvailable()) {
             Toast.makeText(this, "Vui lòng kiểm tra kết nối mạng của bạn", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -131,7 +131,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void signInWithGoogle() {
-        if (!isNetworkAvailable()) {
+        if (isNetworkAvailable()) {
             Toast.makeText(this, "Vui lòng kiểm tra kết nối mạng của bạn", Toast.LENGTH_SHORT).show();
             return;
         }
