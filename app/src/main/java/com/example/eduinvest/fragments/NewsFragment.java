@@ -40,13 +40,17 @@ public class NewsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_news, container, false);
+       return inflater.inflate(R.layout.fragment_news, container, false);
+
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         loadImageSlide(view);
-        loadUniversityData(view);
-        return view;
+        loadNewsData(view);
     }
 
-    // Load images from Firebase for ImageSlider
+    // load ảnh từ firebase
     public void loadImageSlide(View view) {
         ImageSlider imageSlider = view.findViewById(R.id.ImageSlide2);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
@@ -92,8 +96,8 @@ public class NewsFragment extends Fragment {
         });
     }
 
-    // Load university data from Firebase
-    public void loadUniversityData(View view) {
+    // load tin tức từ firebase
+    public void loadNewsData(View view) {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 1));
 

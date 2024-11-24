@@ -47,13 +47,20 @@ dependencies {
     implementation(libs.fab)
     implementation(libs.dexter)
 
-    // Firebase
-    implementation (platform(libs.firebase.bom.v3340) )// BOM để quản lý phiên bản
-    implementation (libs.firebase.auth) // Firebase Authentication
+    // BOM để quản lý phiên bản Firebase
+    implementation(platform(libs.firebase.bom.v3340))
+
+    // Firebase Authentication
+    implementation(libs.firebase.auth)
 
     // Google Sign-In
-    implementation (libs.play.services.auth)
+    implementation (libs.play.services.auth.v2040) // Google Identity Services
+
+
+    // Nếu cần OkHttp (giữ lại nếu sử dụng):
     implementation(libs.okhttp.v4120)
+
+
 
     // Testing
     testImplementation(libs.junit)

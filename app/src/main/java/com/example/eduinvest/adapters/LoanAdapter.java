@@ -79,7 +79,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyBankViewHold
     public static class MyBankViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageBank;
-        TextView titleBank, nameBank, browseBank, rateBank,typeBank;
+        TextView titleBank, nameBank, browseBank, rateBank;
         CardView itemBank;
 
         public MyBankViewHolder(@NonNull View itemView) {

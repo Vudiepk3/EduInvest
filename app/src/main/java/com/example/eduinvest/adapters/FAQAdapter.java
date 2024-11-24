@@ -17,7 +17,6 @@ import java.util.List;
 
 public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.FAQViewHolder> {
     private List<FAQModel> faqList;
-    private List<FAQModel> faqListFull; // Danh sách đầy đủ để tìm kiếm
 
     public FAQAdapter(List<FAQModel> faqList) {
         this.faqList = faqList;

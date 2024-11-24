@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,8 +21,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText signUpName, signUpEmail, signUpPassword;
-    private TextView tvLoginPage;
-    private Button signUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
         signUpName = findViewById(R.id.signUpName);
         signUpEmail = findViewById(R.id.signUpEmail);
         signUpPassword = findViewById(R.id.signUpPassword);
-        signUpButton = findViewById(R.id.signUpButton);
+        Button signUpButton = findViewById(R.id.signUpButton);
 
 
         // Khi người dùng nhấn vào nút "Đăng ký"
@@ -87,10 +84,5 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         }
         return true;
-    }
-    public  void onBackPress(){
-        Intent intent = new Intent(this, SignInActivity.class);
-        startActivity(intent);
-        finish();
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/baseline_rectangle"
     android:orientation="vertical"
     tools:context=".LoanActivities.DetailLoanActivity">
     <LinearLayout
@@ -28,7 +28,7 @@
             android:fontFamily="@font/montserrat_font"
             android:text="Thông Tin Gói Vay"
             android:gravity="center"
-            android:focusableInTouchMode="true"
+
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
 
@@ -41,8 +41,8 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="16dp"
             android:text="Tên Ngân Hàng"
+            android:textStyle="bold"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
         <TextView
@@ -54,7 +54,6 @@
             android:inputType="text"
             android:text="Tên Ngân Hàng"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
 
@@ -73,8 +72,9 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="16dp"
             android:text="Tên Gói Vay"
+            android:textStyle="bold"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
         <TextView
@@ -86,7 +86,6 @@
             android:inputType="text"
             android:text="Tên Gói Vay"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
 
@@ -104,8 +103,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="16dp"
             android:text="Lãi Xuất Cho Vay"
+            android:textStyle="bold"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
 
@@ -119,7 +118,7 @@
             android:layout_marginStart="5dp"
             android:text="Lãi Xuất Cho Vay"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
         <TextView
@@ -138,7 +137,7 @@
             android:layout_marginBottom="16dp"
             android:text="Thời Gian Duyệt"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+            android:textStyle="bold"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
         
@@ -151,7 +150,7 @@
             android:layout_marginStart="5dp"
             android:text="Thời Gian Duyệt"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits"/>
 
@@ -171,7 +170,7 @@
             android:layout_marginBottom="16dp"
             android:text="Thời Gian  Cho Vay"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+            android:textStyle="bold"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
 
@@ -184,7 +183,7 @@
             android:layout_marginStart="5dp"
             android:text="Thời Gian Cho Vay"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits"/>
         <TextView
@@ -203,7 +202,7 @@
             android:layout_marginBottom="16dp"
             android:text="Hạn Mức Cho Vay"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+            android:textStyle="bold"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
 
@@ -217,7 +216,7 @@
             android:layout_marginStart="5dp"
             android:text="Hạn Mức Cho Vay"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits"/>
 
@@ -237,7 +236,7 @@
             android:layout_marginBottom="16dp"
             android:text="Loại Tiền Cho Vay"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+            android:textStyle="bold"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
         <TextView
@@ -250,7 +249,7 @@
             android:layout_marginStart="5dp"
             android:text="Loại Tiền"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits"/>
 
@@ -270,7 +269,7 @@
             android:layout_marginBottom="16dp"
             android:text="Mô Tả"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+            android:textStyle="bold"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
 
@@ -283,7 +282,6 @@
             android:layout_marginStart="5dp"
             android:text="Mô Tả"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits"/>
         <TextView
@@ -302,7 +300,7 @@
             android:layout_marginBottom="16dp"
             android:text="Điều Kiện Cho Vay"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
+            android:textStyle="bold"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits" />
         <TextView
@@ -315,7 +313,6 @@
             android:layout_marginStart="5dp"
             android:text="Điều Kiền Cho Vay"
             android:gravity="start|center_vertical"
-            android:focusableInTouchMode="true"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits"/>
         <LinearLayout

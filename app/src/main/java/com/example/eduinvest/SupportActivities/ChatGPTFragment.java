@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import com.example.eduinvest.R;
 import com.example.eduinvest.adapters.MessageAdapter;
 import com.example.eduinvest.models.MessageModel;
@@ -35,36 +34,20 @@ import okhttp3.Response;
 public class ChatGPTFragment extends Fragment {
 
     RecyclerView recyclerView;
-    TextView welcomeTextView;
     EditText messageEditText;
     ImageButton sendButton;
     List<MessageModel> messageList;
     MessageAdapter messageAdapter;
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     OkHttpClient client = new OkHttpClient();
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     public ChatGPTFragment() {
         // Required empty public constructor
     }
 
-    public static ChatGPTFragment newInstance(String param1, String param2) {
-        ChatGPTFragment fragment = new ChatGPTFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            String mParam1 = getArguments().getString(ARG_PARAM1);
-            String mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override

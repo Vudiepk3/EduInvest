@@ -2,7 +2,6 @@ package com.example.eduinvest.LoanActivities;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,10 +18,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DetailLoanRequestActivity extends AppCompatActivity {
     TextView detailInformationPersonBank,detailInformationLoanRequestBank,detailStatusLoanRequestBank;
-    ImageView detailImageBank;
     String key = "";
 
-    String imageUrl = "";
     DatabaseReference databaseReference;
 
     @Override

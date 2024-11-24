@@ -18,15 +18,14 @@ import com.bumptech.glide.Glide;
 import com.example.eduinvest.R;
 import com.example.eduinvest.models.NewsModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class NewsAdapter extends RecyclerView.Adapter<MyDicoverViewHolder> {
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyDicoverViewHolder> {
 
     private final Context context;
-    private List<NewsModel> dataList;
+    private final List<NewsModel> dataList;
 
-    public NewsAdapter (Context context, List<NewsModel> dataList) {
+    public NewsAdapter(Context context, List<NewsModel> dataList) {
         this.context = context;
         this.dataList = dataList;
     }
@@ -44,19 +43,15 @@ public class NewsAdapter extends RecyclerView.Adapter<MyDicoverViewHolder> {
         holder.titleNews.setText(dataList.get(position).getTitleNews());
         holder.timeNews.setText(dataList.get(position).getTimeNews());
 
-        String linkweb = dataList.get(position).getLinkNews();
+        String linkWeb = dataList.get(position).getLinkNews();
 
-        holder.itemnews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try{
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkweb));
-                    context.startActivity(intent);
-                }
-                catch (Exception e){
-                    Toast.makeText(context, "Thông tin sẽ được cập nhất đến bạn", Toast.LENGTH_SHORT).show();
-                }
-
+        // Sử dụng lambda expression thay cho anonymous class
+        holder.itemNews.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkWeb));
+                context.startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(context, "Thông tin sẽ được cập nhật đến bạn", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -66,24 +61,19 @@ public class NewsAdapter extends RecyclerView.Adapter<MyDicoverViewHolder> {
         return dataList.size();
     }
 
-    public void searchDataList(ArrayList<NewsModel> searchList){
-        dataList = searchList;
-        notifyDataSetChanged();
-    }
-}
+    // Lớp ViewHolder như là một inner class trong NewsAdapter
+    public static class MyDicoverViewHolder extends RecyclerView.ViewHolder {
 
-class MyDicoverViewHolder extends RecyclerView.ViewHolder{
+        ImageView imageNews;
+        TextView titleNews, timeNews;
+        LinearLayout itemNews;
 
-    ImageView imageNews;
-    TextView titleNews,timeNews,linkNews,typeNews;
-    LinearLayout itemnews;
-
-    public MyDicoverViewHolder(@NonNull View itemView) {
-        super(itemView);
-        imageNews = itemView.findViewById(R.id.imageNews);
-        titleNews = itemView.findViewById(R.id.titleNews);
-        timeNews = itemView.findViewById(R.id.timeNews);
-        itemnews = itemView.findViewById(R.id.itemNews);
-
+        public MyDicoverViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imageNews = itemView.findViewById(R.id.imageNews);
+            titleNews = itemView.findViewById(R.id.titleNews);
+            timeNews = itemView.findViewById(R.id.timeNews);
+            itemNews = itemView.findViewById(R.id.itemNews);
+        }
     }
 }

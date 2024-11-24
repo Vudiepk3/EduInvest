@@ -1,6 +1,8 @@
 package com.example.eduinvest.fragments;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
@@ -16,19 +18,17 @@ public class SupportFragment extends Fragment {
     private ViewPager2 viewPager2;
 
     public SupportFragment() {
-        // Required empty public constructor
-    }
-
-    public static SupportFragment newInstance() {
-        return new SupportFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_support, container, false);
+
+        return inflater.inflate(R.layout.fragment_support, container, false);
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         getViews(view);
-        return view;
     }
 
     private void getViews(View view) {

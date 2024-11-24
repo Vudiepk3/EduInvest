@@ -55,7 +55,8 @@
             android:scrollHorizontally="false"
             android:textColor="?attr/colorOnBackground"
             android:autofillHints="username"
-            android:text="" />
+            android:text=""
+            tools:ignore="TextViewEdits" />
 
         <TextView
             android:layout_width="match_parent"
@@ -88,7 +89,8 @@
             android:scrollHorizontally="false"
             android:text=""
             android:textColor="?attr/colorOnBackground"
-            android:autofillHints="username" />
+            android:autofillHints="username"
+            tools:ignore="TextViewEdits" />
 
         <TextView
             android:layout_width="match_parent"

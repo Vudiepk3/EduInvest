@@ -1,11 +1,10 @@
 package com.example.eduinvest;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.net.NetworkCapabilities;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -60,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
+        // Đăng ký BroadcastReceiver để lắng nghe thay đổi kết nối mạng
         networkChangeReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
+    // Thay thế Fragment hiện tại bằng một Fragment mới
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -83,15 +84,17 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    // Kiểm tra xem mạng có khả dụng hay không
     private boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
+        return capabilities != null && capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        // Đăng ký BroadcastReceiver khi Activity chuyển sang trạng thái onResume
         if (!isReceiverRegistered) {
             registerReceiver(networkChangeReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
             isReceiverRegistered = true;
@@ -101,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        // Hủy đăng ký BroadcastReceiver khi Activity chuyển sang trạng thái onPause
         if (isReceiverRegistered) {
             unregisterReceiver(networkChangeReceiver);
             isReceiverRegistered = false;
@@ -110,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // Hủy đăng ký BroadcastReceiver khi Activity bị hủy
         if (isReceiverRegistered) {
             unregisterReceiver(networkChangeReceiver);
             isReceiverRegistered = false;

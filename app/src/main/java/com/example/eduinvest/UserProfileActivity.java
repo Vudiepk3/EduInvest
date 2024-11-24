@@ -3,7 +3,6 @@ package com.example.eduinvest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -14,9 +13,10 @@ import com.example.eduinvest.firebase.FireBaseClass;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 public class UserProfileActivity extends AppCompatActivity {
     private FirebaseAuth auth;
-    private ProgressBar progressBar; // Add a ProgressBar to indicate loading
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class UserProfileActivity extends AppCompatActivity {
         CardView cvSignOut = findViewById(R.id.cvSignOut);
         CardView cvEditProfile = findViewById(R.id.cvEditProfile);
         auth = FirebaseAuth.getInstance();
-        // Load user information
+        // hiển thị thông tin người dùng
         loadUserInfo(tvEmailId, tvUserName, userProfilePic);
 
         cvSignOut.setOnClickListener(v -> {
@@ -55,8 +55,8 @@ public class UserProfileActivity extends AppCompatActivity {
         FireBaseClass.getUserInfo(userInfo -> {
             if (userInfo != null) {
                 tvUserName.setText(userInfo.getName());
-                tvEmailId.setText(auth.getCurrentUser().getEmail());
-                // Load the profile image if available
+                tvEmailId.setText(Objects.requireNonNull(auth.getCurrentUser()).getEmail());
+                // hiển thị ảnh đại diện
                 Glide.with(this)
                         .load(userInfo.getImage())
                         .placeholder(R.drawable.image_user) // Placeholder image
@@ -73,5 +73,4 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onResume();
         loadUserInfo(findViewById(R.id.tvEmailId), findViewById(R.id.tvUserName), findViewById(R.id.userProfilePic));
     }
-
 }

@@ -41,6 +41,7 @@ import java.util.concurrent.Executors;
 public class HomeFragment extends Fragment {
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
+    private ValueEventListener eventListener;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -144,7 +145,7 @@ public class HomeFragment extends Fragment {
 
         executorService.shutdown();
     }
-
+    // mở đường dẫn kèm theo
     private void openWebsite(String url) {
         if (!isAdded()) return;
         try {
@@ -199,5 +200,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        if (databaseReference != null && eventListener != null) {
+            databaseReference.addValueEventListener(eventListener);
+        }
     }
 }

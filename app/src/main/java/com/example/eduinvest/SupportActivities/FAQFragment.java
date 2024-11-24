@@ -27,15 +27,6 @@ public class FAQFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static FAQFragment newInstance(String param1, String param2) {
-        FAQFragment fragment = new FAQFragment();
-        Bundle args = new Bundle();
-        args.putString("param1", param1);
-        args.putString("param2", param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

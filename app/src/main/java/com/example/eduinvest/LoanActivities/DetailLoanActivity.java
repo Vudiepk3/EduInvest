@@ -67,6 +67,16 @@ public class DetailLoanActivity extends AppCompatActivity {
         detailMoneyBank = findViewById(R.id.detailMoneyBank);
         detailDescribeBank = findViewById(R.id.detailDescribeBank);
         detailCosditonBank = findViewById(R.id.detailCosditionBank);
+
+        detailNameBank.setEnabled(false);
+        detailTitleBank.setEnabled(false);
+        detailRateBank.setEnabled(false);
+        detailBrowseBank.setEnabled(false);
+        detailLoanPeriodBank.setEnabled(false);
+        detailLimitBank.setEnabled(false);
+        detailMoneyBank.setEnabled(false);
+        detailDescribeBank.setEnabled(false);
+        detailCosditonBank.setEnabled(false);
     }
 
     // Phương thức đọc dữ liệu từ Firebase Realtime Database

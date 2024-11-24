@@ -81,17 +81,6 @@ public class ForgetPasswordActivity extends AppCompatActivity {
             Base.showToast(this, "Không tìm thấy ứng dụng Gmail");
         }
     }
-    // Xử lý sự kiện khi Activity bị hủy
-    public  void onBackPress(){
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
-        } else {
-            super.onBackPressed();
-        }
-        Intent intent = new Intent(this, SignInActivity.class);
-        startActivity(intent);
-        finish();
-    }
 
     @Override
     protected void onDestroy() {

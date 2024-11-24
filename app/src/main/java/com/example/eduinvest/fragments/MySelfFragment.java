@@ -19,8 +19,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class MySelfFragment extends Fragment {
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     private static final String PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=";
     private static final String TAG = "MoreFragment";
 
@@ -28,22 +26,11 @@ public class MySelfFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static MySelfFragment newInstance(String param1, String param2) {
-        MySelfFragment fragment = new MySelfFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            String mParam1 = getArguments().getString(ARG_PARAM1);
-            String mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override

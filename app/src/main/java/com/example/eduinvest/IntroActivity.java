@@ -15,9 +15,7 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         TextView startTXT = findViewById(R.id.startTXT);
-        startTXT.setOnClickListener(v -> {
-            startNewActivity();
-        });
+        startTXT.setOnClickListener(v -> startNewActivity());
     }
     private void startNewActivity() {
         FirebaseAuth auth = FirebaseAuth.getInstance(); // Lấy một instance của FirebaseAuth
