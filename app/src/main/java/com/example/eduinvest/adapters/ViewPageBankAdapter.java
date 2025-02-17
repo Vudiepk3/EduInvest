@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.eduinvest.LoanActivities.FirstLoanFragment;
-import com.example.eduinvest.LoanActivities.SecondLoanFragment;
+import com.example.eduinvest.loanactivities.FirstLoanFragment;
+import com.example.eduinvest.loanactivities.SecondLoanFragment;
 
 public class ViewPageBankAdapter extends FragmentStateAdapter {
 
@@ -26,6 +26,6 @@ public class ViewPageBankAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 2; // Số lượng tab (FAQ, Chat GPT, Nhân viên hỗ trợ)
+        return 2; // Số lượng tab
     }
 }

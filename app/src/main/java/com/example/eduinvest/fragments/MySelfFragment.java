@@ -5,68 +5,60 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import com.example.eduinvest.R;
 import com.example.eduinvest.UserProfileActivity;
+import com.example.eduinvest.databinding.FragmentMyselfBinding;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class MySelfFragment extends Fragment {
     private static final String PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=";
     private static final String TAG = "MoreFragment";
 
+    // Biến binding để truy cập các view trong layout fragment_myself.xml
+    private FragmentMyselfBinding binding;
+
     public MySelfFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
+    // Sử dụng View Binding để inflate layout và truy cập các view
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_myself, container, false);
-        getActivities(view);
-        return view;
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentMyselfBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
-    private void getActivities(View view) {
-        setupClickListener(view, R.id.scholarshipRelative, this::showFeatureComingSoonToast);
-        setupClickListener(view, R.id.internshipRelative, this::showFeatureComingSoonToast);
-
-        setupClickListener(view, R.id.rate, this::openPlayStoreForRating);
-        setupClickListener(view, R.id.share, this::shareAppLink);
-        setupClickListener(view, R.id.contact, this::sendEmailIntent);
-        setupClickListener(view, R.id.donateRelative, this::showFeatureComingSoonToast);
-        setupClickListener(view, R.id.UserRelative, this::openUserProfile);
-        CardView rewardCard = view.findViewById(R.id.rewardCard);
-        if (rewardCard != null) {
-            rewardCard.setOnClickListener(v -> showFeatureComingSoonToast());
-        } else {
-            Log.e(TAG, "View with ID rewardCard not found in layout.");
-        }
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getActivities();
+    }
+    // Thiết lập các sự kiện click cho các view thông qua binding
+    private void getActivities() {
+        binding.btnScholarship.onClickListener(this::showFeatureComingSoonToast);
+        binding.btnInternship.onClickListener(this::showFeatureComingSoonToast);
+        binding.btnRate.onClickListener(this::openPlayStoreForRating);
+        binding.btnShare.onClickListener(this::shareAppLink);
+        binding.btnContact.onClickListener(this::sendEmailIntent);
+        binding.btnDonate.onClickListener(this::showFeatureComingSoonToast);
+        binding.UserRelative.setOnClickListener(v -> openUserProfile());
+        CardView rewardCard = binding.rewardCard;
+        rewardCard.setOnClickListener(v -> showFeatureComingSoonToast());
     }
 
-    private void setupClickListener(View view, int resId, Runnable action) {
-        RelativeLayout layout = view.findViewById(resId);
-        if (layout != null) {
-            layout.setOnClickListener(v -> action.run());
-        } else {
-            Log.e(TAG, "View with ID " + resId + " not found in layout.");
-        }
-    }
-
-    // Phương thức đánh giá app
+    // Phương thức mở Play Store để đánh giá app
     private void openPlayStoreForRating() {
         if (!isAdded()) return;
         try {
@@ -88,7 +80,8 @@ public class MySelfFragment extends Fragment {
         try {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            String shareMessage = "This is an awesome app for your Android mobile. Check it out: " + PLAY_STORE_LINK + requireContext().getPackageName();
+            String shareMessage = "This is an awesome app for your Android mobile. Check it out: "
+                    + PLAY_STORE_LINK + requireContext().getPackageName();
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
             startActivity(Intent.createChooser(shareIntent, "Share Link"));
         } catch (Exception e) {
@@ -109,6 +102,7 @@ public class MySelfFragment extends Fragment {
         }
     }
 
+    // Phương thức mở trang User Profile
     private void openUserProfile() {
         if (!isAdded()) return;
         try {
@@ -119,8 +113,16 @@ public class MySelfFragment extends Fragment {
         }
     }
 
+    // Hiển thị thông báo "Tính năng sắp ra mắt"
     private void showFeatureComingSoonToast() {
         if (!isAdded()) return;
         Toast.makeText(requireContext(), "Chức năng sẽ được cập nhật sớm nhất đến với bạn", Toast.LENGTH_SHORT).show();
+    }
+
+    // Giải phóng binding khi view bị hủy để tránh rò rỉ bộ nhớ
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

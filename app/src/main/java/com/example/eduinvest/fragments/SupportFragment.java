@@ -19,7 +19,6 @@ public class SupportFragment extends Fragment {
 
     public SupportFragment() {
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -35,16 +34,13 @@ public class SupportFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tab_layout);
         viewPager2 = view.findViewById(R.id.view_pager);
 
-        // Sử dụng ViewPagerAdapter để quản lý các fragment
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager(), getLifecycle());
         viewPager2.setAdapter(adapter);
 
-        // Thêm các tab
         tabLayout.addTab(tabLayout.newTab().setText("Câu hỏi FAQ"));
         tabLayout.addTab(tabLayout.newTab().setText("Chat GPT"));
         tabLayout.addTab(tabLayout.newTab().setText("Nhân Viên Hỗ Trợ"));
 
-        // Xử lý sự kiện khi chọn tab
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -53,16 +49,12 @@ public class SupportFragment extends Fragment {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                // Không làm gì
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                // Không làm gì
             }
         });
-
-        // Đồng bộ giữa ViewPager và TabLayout
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {

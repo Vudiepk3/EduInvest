@@ -5,10 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,12 +15,14 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.eduinvest.LoanActivities.ManageLoanActivities;
 import com.example.eduinvest.R;
 import com.example.eduinvest.UserProfileActivity;
+import com.example.eduinvest.databinding.FragmentHomeBinding;
+import com.example.eduinvest.loanactivities.ManageLoanActivities;
 import com.example.eduinvest.models.BannerModel;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,61 +40,55 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class HomeFragment extends Fragment {
+    private FragmentHomeBinding binding;
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
-    private ValueEventListener eventListener;
+    private static final String TAG = "HomeFragment";
 
     public HomeFragment() {
-        // Required empty public constructor
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
-    }
-    //Gắn kết và xử lý logic
-    
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        FirebaseApp.initializeApp(requireContext()); // Khởi tạo Firebase
-        initializeActivities(view);
-        ImageView iconImage = view.findViewById(R.id.iconImage);
+        // Khởi tạo Firebase
+        FirebaseApp.initializeApp(requireContext());
+        initializeActivities();
 
-        // Lấy thông tin user hiện tại
+        // Xử lý ảnh icon người dùng
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
             Uri photoUrl = currentUser.getPhotoUrl();
             if (photoUrl != null) {
-                // Sử dụng Glide để tải ảnh vào iconImage
                 Glide.with(this)
                         .load(photoUrl)
-                        .placeholder(R.drawable.image_eduinvest)
-                        .error(R.drawable.image_eduinvest)
-                        .into(iconImage);
+                        .apply(new RequestOptions()
+                                .placeholder(R.drawable.image_eduinvest)
+                                .error(R.drawable.image_eduinvest)
+                                .centerCrop())
+                        .into(binding.iconImage);
             } else {
-                iconImage.setImageResource(R.drawable.image_eduinvest);
+                binding.iconImage.setImageResource(R.drawable.image_eduinvest);
             }
         }
-
-        loadImageSlider(view); // Tải ảnh slider
+        // Tải ảnh slider
+        loadImageSlider();
     }
 
-    private void loadImageSlider(View view) {
-        if (!isAdded()) return; // Kiểm tra Fragment đã được gắn vào Activity
+    private void loadImageSlider() {
+        if (!isAdded()) return;
 
-        ImageSlider imageSlider = view.findViewById(R.id.ImageSlide);
+        ImageSlider imageSlider = binding.ImageSlide;
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         List<String> linkWebsites = new ArrayList<>();
-
-        // Tạo ExecutorService để chạy tác vụ nền
+        // Sử dụng ExecutorService để thực hiện tải dữ liệu trên background thread
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-
         executorService.execute(() -> {
             databaseReference = FirebaseDatabase.getInstance().getReference("Banner");
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -104,14 +99,20 @@ public class HomeFragment extends Fragment {
                     slideModels.clear();
                     linkWebsites.clear();
 
+                    RequestOptions requestOptions = new RequestOptions()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .centerCrop()
+                            .placeholder(R.drawable.image_eduinvest)
+                            .error(R.drawable.image_eduinvest);
+
                     for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                         BannerModel imageModel = itemSnapshot.getValue(BannerModel.class);
                         if (imageModel != null && imageModel.getUrlImage() != null &&
                                 (imageModel.getNoteImage().equals("BANNER1") || imageModel.getNoteImage().equals("All"))) {
-                            // Sử dụng Glide để caching ảnh
+                            // Preload ảnh vào cache
                             Glide.with(requireContext())
                                     .load(imageModel.getUrlImage())
-                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .apply(requestOptions)
                                     .preload();
 
                             slideModels.add(new SlideModel(imageModel.getUrlImage(), ScaleTypes.FIT));
@@ -122,11 +123,11 @@ public class HomeFragment extends Fragment {
                     // Cập nhật giao diện trên luồng chính
                     requireActivity().runOnUiThread(() -> {
                         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
-
                         imageSlider.setItemClickListener(i -> {
                             if (i >= 0 && i < linkWebsites.size()) {
                                 String linkWebsite = linkWebsites.get(i);
-                                if (linkWebsite != null && !linkWebsite.isEmpty() && !linkWebsite.equals("No Link Website")) {
+                                if (linkWebsite != null && !linkWebsite.isEmpty() &&
+                                        !linkWebsite.equals("No Link Website")) {
                                     openWebsite(linkWebsite);
                                 } else {
                                     showToast("Không có đường dẫn web.");
@@ -138,14 +139,14 @@ public class HomeFragment extends Fragment {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    requireActivity().runOnUiThread(() -> showToast("Failed to load data."));
+                    Log.e(TAG, "Failed to load banner images: " + error.getMessage());
                 }
             });
         });
-
         executorService.shutdown();
     }
-    // mở đường dẫn kèm theo
+
+    // Mở đường dẫn website
     private void openWebsite(String url) {
         if (!isAdded()) return;
         try {
@@ -156,12 +157,11 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private void initializeActivities(View view) {
+    private void initializeActivities() {
         auth = FirebaseAuth.getInstance();
-        ImageView iconImage = view.findViewById(R.id.iconImage);
 
         try {
-            iconImage.setOnClickListener(v -> {
+            binding.iconImage.setOnClickListener(v -> {
                 Intent intent = new Intent(getActivity(), UserProfileActivity.class);
                 startActivity(intent);
             });
@@ -169,12 +169,12 @@ public class HomeFragment extends Fragment {
             Log.e("Error", Objects.requireNonNull(e.getMessage()));
         }
 
-        setupClickListener(view.findViewById(R.id.iconNotifition), this::showFeatureNotAvailableToast);
-        setupClickListener(view.findViewById(R.id.loanCard), () -> startActivity(new Intent(getActivity(), ManageLoanActivities.class)));
-        setupClickListener(view.findViewById(R.id.payCard), this::showFeatureNotAvailableToast);
-        setupClickListener(view.findViewById(R.id.savingCard), this::showFeatureNotAvailableToast);
-        setupClickListener(view.findViewById(R.id.row3), this::showFeatureNotAvailableToast);
-        setupClickListener(view.findViewById(R.id.row4), this::showFeatureNotAvailableToast);
+        // Các sự kiện click khác
+        setupClickListener(binding.iconNotifition, this::showFeatureNotAvailableToast);
+        setupClickListener(binding.loanCard,
+                () -> startActivity(new Intent(getActivity(), ManageLoanActivities.class)));
+        setupClickListener(binding.payCard, this::showFeatureNotAvailableToast);
+        setupClickListener(binding.row4, this::showFeatureNotAvailableToast);
     }
 
     private void setupClickListener(View view, Runnable onClick) {
@@ -190,7 +190,7 @@ public class HomeFragment extends Fragment {
     private void showFeatureNotAvailableToast() {
         showToast("Chức năng sẽ được cập nhật sớm nhất đến với bạn");
     }
-   // chức năng thông báo
+
     private void showToast(String message) {
         if (isAdded()) {
             Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
@@ -198,10 +198,8 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        if (databaseReference != null && eventListener != null) {
-            databaseReference.addValueEventListener(eventListener);
-        }
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

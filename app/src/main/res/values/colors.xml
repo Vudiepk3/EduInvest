@@ -11,5 +11,5 @@
     <color name="lavender">#8692f7</color>
     <color name="red">#ff0000</color>
     <color name="lightgreen">#90EE90</color>
-    <color name="orange">#FFA500</color> <!-- Đây là mã màu cam -->
+    <color name="orange">#FFA500</color>
 </resources>

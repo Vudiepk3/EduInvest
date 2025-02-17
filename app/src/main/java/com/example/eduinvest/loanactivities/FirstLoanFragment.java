@@ -1,24 +1,23 @@
-package com.example.eduinvest.LoanActivities;
+package com.example.eduinvest.loanactivities;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Handler;
 
 import com.example.eduinvest.R;
 import com.example.eduinvest.adapters.LoanAdapter;
+import com.example.eduinvest.databinding.FragmentFirstLoanBinding;
 import com.example.eduinvest.models.LoanModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -38,9 +37,10 @@ public class FirstLoanFragment extends Fragment {
     private ArrayList<LoanModel> dataList;
     private DatabaseReference databaseReference;
     private ExecutorService executorService;
+    private FragmentFirstLoanBinding binding;
 
     public FirstLoanFragment() {
-        // Required empty public constructor
+        // Yêu cầu có constructor public không tham số
     }
 
     @Override
@@ -52,57 +52,63 @@ public class FirstLoanFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_first_loan, container, false);
+        // Khởi tạo binding cho fragment_first_loan.xml
+        binding = FragmentFirstLoanBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
+
+    // Khởi tạo và cấu hình các thành phần giao diện người dùng sau khi View đã được tạo ra
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        FloatingActionButton fab = view.findViewById(R.id.fab);
-        SearchView searchView = view.findViewById(R.id.search);
-        searchView.clearFocus();
 
-        // Set up LayoutManager for RecyclerView
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        // Thiết lập LayoutManager cho RecyclerView
+        binding.recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
-        // Show progress dialog
+        // Hiển thị dialog tiến trình
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);
         AlertDialog dialog = builder.create();
         dialog.show();
 
+        // Khởi tạo danh sách dữ liệu và adapter
         dataList = new ArrayList<>();
         adapter = new LoanAdapter(getContext(), dataList);
-        recyclerView.setAdapter(adapter);
+        binding.recyclerView.setAdapter(adapter);
 
-        // Tải dữ liệu từ Firebase bằng ExecutorService
+        // Tải dữ liệu từ Firebase sử dụng ExecutorService
         loadDataFromFirebase(dialog);
 
-        fab.setOnClickListener(v -> {
+        // Xử lý sự kiện khi nhấn FloatingActionButton
+        binding.fab.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), UploadLoanRequestActivity.class);
             startActivity(intent);
         });
 
-        // Tìm kiếm
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        // Xử lý tìm kiếm thông tin
+        binding.search.clearFocus();
+        binding.search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                // Không xử lý submit
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                // Tìm kiếm theo từ khóa mới nhập
                 searchList(newText);
                 return true;
             }
         });
     }
+
+    // Phương thức tải dữ liệu từ Firebase
     private void loadDataFromFirebase(AlertDialog dialog) {
         executorService.execute(() -> {
             databaseReference = FirebaseDatabase.getInstance().getReference("Loan");
             Query query = databaseReference.orderByChild("timestamp");
-
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @SuppressLint("NotifyDataSetChanged")
                 @Override
@@ -115,8 +121,7 @@ public class FirstLoanFragment extends Fragment {
                             tempList.add(dataClass);
                         }
                     }
-
-                    // Đảo danh sách và cập nhật giao diện trên MainThread
+                    // Đảo ngược danh sách và cập nhật giao diện trên MainThread
                     Collections.reverse(tempList);
                     new Handler(Looper.getMainLooper()).post(() -> {
                         dataList.clear();
@@ -134,6 +139,7 @@ public class FirstLoanFragment extends Fragment {
         });
     }
 
+    // Phương thức tìm kiếm dữ liệu theo từ khóa
     public void searchList(String text) {
         ArrayList<LoanModel> searchList = new ArrayList<>();
         for (LoanModel dataClass : dataList) {
@@ -147,11 +153,13 @@ public class FirstLoanFragment extends Fragment {
         adapter.searchDataList(searchList);
     }
 
+    // Giải phóng các tài nguyên để tránh rò rỉ bộ nhớ
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         if (executorService != null && !executorService.isShutdown()) {
             executorService.shutdown(); // Dừng ExecutorService để tránh rò rỉ tài nguyên
         }
+        binding = null;
     }
 }

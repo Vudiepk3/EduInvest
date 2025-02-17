@@ -5,23 +5,19 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.eduinvest.LoanActivities.DetailLoanRequestActivity;
-import com.example.eduinvest.R;
+import com.example.eduinvest.databinding.ItemBankBinding;
+import com.example.eduinvest.loanactivities.DetailLoanRequestActivity;
 import com.example.eduinvest.models.LoanRequestModel;
+import com.example.eduinvest.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -41,82 +37,73 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
     @NonNull
     @Override
     public MyLoanRequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bank, parent, false);
-        return new MyLoanRequestViewHolder(view);
+        ItemBankBinding binding = ItemBankBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new MyLoanRequestViewHolder(binding);
     }
 
-    @SuppressLint({"CheckResult", "SetTextI18n"})
+    @SuppressLint({"SetTextI18n"})
     @Override
     public void onBindViewHolder(@NonNull MyLoanRequestViewHolder holder, int position) {
-        LoanRequestModel LoanRequestModel = dataList.get(position);
-        if(!LoanRequestModel.getImageBank().equals("Null")){
-            Glide.with(context).load(LoanRequestModel.getImageBank()).into(holder.imageBank);
+        LoanRequestModel loanRequestModel = dataList.get(position);
+
+        // Load ảnh nếu không bằng chuỗi "Null"
+        if (!loanRequestModel.getImageBank().equals("Null")) {
+            Glide.with(context).load(loanRequestModel.getImageBank()).into(holder.binding.imageBank);
         }
-        holder.titleBank.setText(LoanRequestModel.getNamePerson());
-        holder.titleBank.setText(LoanRequestModel.getNamePerson() + " - " + LoanRequestModel.getGender());
-        holder.nameBank.setText(LoanRequestModel.getPhoneNumber()+" - " + LoanRequestModel.getEmail());
-        holder.browseBank.setText(LoanRequestModel.getLoanPeriodBank());
-        holder.rateBank.setText(LoanRequestModel.getRateBank());
-        holder.time.setText("Thời Gian Vay(Tháng)");
-        //holder.typeBank.setText(LoanRequestModel.getTypeBank());
-        String status = LoanRequestModel.getStatus();
-        holder.statusBank.setText(status);
-       // Kiểm tra nếu trạng thái là "Từ Chối" thì đổi màu thành đỏ
+
+        // Thiết lập dữ liệu cho các thành phần giao diện
+        holder.binding.titleBank.setText(loanRequestModel.getNamePerson() + " - " + loanRequestModel.getGender());
+        holder.binding.nameBank.setText(loanRequestModel.getPhoneNumber() + " - " + loanRequestModel.getEmail());
+        holder.binding.browseBank.setText(loanRequestModel.getLoanPeriodBank());
+        holder.binding.rateBank.setText(loanRequestModel.getRateBank());
+        holder.binding.time.setText("Thời Gian Vay(Tháng)");
+
+        // Thiết lập trạng thái
+        String status = loanRequestModel.getStatus();
+        holder.binding.statusBank.setText(status);
         if ("TU_CHOI".equals(status)) {
-            holder.statusBank.setText("Từ Chối");
-            holder.statusBank.setTextColor(Color.RED);
+            holder.binding.statusBank.setText("Từ Chối");
+            holder.binding.statusBank.setTextColor(Color.RED);
         } else if ("DANG_DUYET".equals(status)) {
-            holder.statusBank.setText("Đang Gửi Yêu Cầu");
-            holder.statusBank.setTextColor(ContextCompat.getColor(context, R.color.orange));
-        }
-        else if ("DA_DUYET".equals(status)) {
-            holder.statusBank.setText("Đã duyệt.");
-            holder.statusBank.setTextColor(Color.GREEN);
-        }
-        else {
-            // Màu mặc định nếu không phải là "Từ Chối" và "Đang Gửi Yêu Cầu"
-            holder.statusBank.setTextColor(Color.GREEN);
-        }
-
-        // Kiểm tra null và thiết lập OnClickListener
-        if (holder.itemBank != null) {
-            holder.itemBank.setOnClickListener(view -> {
-                Intent intent = new Intent(context, DetailLoanRequestActivity.class);
-                intent.putExtra("key", LoanRequestModel.getKey());
-                context.startActivity(intent);
-            });
+            holder.binding.statusBank.setText("Đang Gửi Yêu Cầu");
+            holder.binding.statusBank.setTextColor(ContextCompat.getColor(context, R.color.orange));
+        } else if ("DA_DUYET".equals(status)) {
+            holder.binding.statusBank.setText("Đã duyệt.");
+            holder.binding.statusBank.setTextColor(Color.GREEN);
         } else {
-            Log.e("LoanRequestAdapter", "itemBank is null at position: " + position);
-        }
-        if (holder.itemBank != null) {
-            holder.itemBank.setOnLongClickListener(view -> {
-                // Tạo dialog xác nhận xóa
-                new AlertDialog.Builder(context)
-                        .setTitle("Xác nhận xóa")
-                        .setMessage("Bạn có chắc chắn muốn xóa mục này không?")
-                        .setPositiveButton("Xóa", (dialog, which) -> {
-                            // Thực hiện xóa khỏi Firebase Realtime Database
-                            DatabaseReference databaseReference = FirebaseDatabase.getInstance()
-                                    .getReference("LoanRequest")
-                                    .child(LoanRequestModel.getKey());
-
-                            databaseReference.removeValue().addOnCompleteListener(task -> {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        })
-                        .setNegativeButton("Hủy", (dialog, which) -> dialog.dismiss())
-                        .show();
-
-                return true;
-            });
-        } else {
-            Log.e("LoanRequestAdapter", "itemBank is null at position: " + position);
+            // Màu mặc định nếu không thuộc các trạng thái trên
+            holder.binding.statusBank.setTextColor(Color.GREEN);
         }
 
+        // Xử lý sự kiện click cho item
+        holder.binding.itemBank.setOnClickListener(view -> {
+            Intent intent = new Intent(context, DetailLoanRequestActivity.class);
+            intent.putExtra("key", loanRequestModel.getKey());
+            context.startActivity(intent);
+        });
+
+        // Xử lý sự kiện long click để xóa item
+        holder.binding.itemBank.setOnLongClickListener(view -> {
+            new AlertDialog.Builder(context)
+                    .setTitle("Xác nhận xóa")
+                    .setMessage("Bạn có chắc chắn muốn xóa mục này không?")
+                    .setPositiveButton("Xóa", (dialog, which) -> {
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+                                .getReference("LoanRequest")
+                                .child(loanRequestModel.getKey());
+
+                        databaseReference.removeValue().addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    })
+                    .setNegativeButton("Hủy", (dialog, which) -> dialog.dismiss())
+                    .show();
+            return true;
+        });
     }
 
     @Override
@@ -130,31 +117,12 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
         notifyDataSetChanged();
     }
 
-    // Class ViewHolder cần được public static để đảm bảo truy cập đúng
     public static class MyLoanRequestViewHolder extends RecyclerView.ViewHolder {
+        final ItemBankBinding binding;
 
-        ImageView imageBank;
-        TextView titleBank, nameBank, browseBank, rateBank, statusBank,time;
-        CardView itemBank;
-
-        public MyLoanRequestViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            // Ánh xạ các thành phần giao diện
-            imageBank = itemView.findViewById(R.id.imageBank);
-            titleBank = itemView.findViewById(R.id.titleBank);
-            nameBank = itemView.findViewById(R.id.nameBank);
-            browseBank = itemView.findViewById(R.id.browseBank);
-            rateBank = itemView.findViewById(R.id.rateBank);
-            time = itemView.findViewById(R.id.time);
-            statusBank = itemView.findViewById(R.id.statusBank);
-            //typeBank = itemView.findViewById(R.id.typeBank);
-            itemBank = itemView.findViewById(R.id.itemBank);  // CardView
-
-            // Kiểm tra log để đảm bảo không null
-            if (itemBank == null) {
-                Log.e("MyLoanRequestViewHolder", "itemBank is null");
-            }
+        public MyLoanRequestViewHolder(@NonNull ItemBankBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

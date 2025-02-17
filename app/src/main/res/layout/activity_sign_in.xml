@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="40dp"
         android:layout_gravity="center"
         app:cardElevation="20dp">
 
@@ -108,7 +108,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
-                android:text="------------------ Hoặc ------------------"
+                android:text="---------------- Hoặc ----------------"
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 

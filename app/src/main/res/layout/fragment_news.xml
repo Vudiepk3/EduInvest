@@ -32,47 +32,7 @@
             android:fontFamily="@font/montserrat_font"
             android:gravity="center"
             tools:ignore="HardcodedText" />
-
-        <ImageView
-            android:id="@+id/iconNotifition"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:contentDescription="@string/todo"
-            android:src="@drawable/icon_notification" />
     </LinearLayout>
-
-    <!-- CardView with ImageSlider -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/slideCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardElevation="20dp"
-        app:cardCornerRadius="10dp">
-
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/ImageSlide2"
-            android:layout_width="match_parent"
-            android:layout_height="175dp"
-            app:iss_auto_cycle="true"
-            app:iss_delay="1500"
-            app:iss_period="1500"
-            app:cardElevation="20dp"
-            app:cardCornerRadius="20dp"/>
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Khám phá thêm"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:fontFamily="@font/montserrat_font">
-
-    </TextView>
-    <!-- RecyclerView inside ScrollView -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

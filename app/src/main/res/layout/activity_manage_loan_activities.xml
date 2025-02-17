@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="5dp"
     android:background="@drawable/main_background"
-    tools:context=".LoanActivities.ManageLoanActivities">
+    tools:context=".loanactivities.ManageLoanActivities">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
