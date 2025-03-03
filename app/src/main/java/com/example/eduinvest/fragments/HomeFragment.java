@@ -20,7 +20,7 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.eduinvest.R;
-import com.example.eduinvest.UserProfileActivity;
+import com.example.eduinvest.activity.UserProfileActivity;
 import com.example.eduinvest.databinding.FragmentHomeBinding;
 import com.example.eduinvest.loanactivities.ManageLoanActivities;
 import com.example.eduinvest.models.BannerModel;

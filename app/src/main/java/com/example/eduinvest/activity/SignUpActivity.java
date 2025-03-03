@@ -1,4 +1,4 @@
-package com.example.eduinvest;
+package com.example.eduinvest.activity;
 
 
 
@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.eduinvest.R;
 import com.example.eduinvest.constants.Base;
 import com.example.eduinvest.firebase.FireBaseClass;
 import com.example.eduinvest.models.UserModel;

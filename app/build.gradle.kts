@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.eduinvest"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.eduinvest"
@@ -26,9 +26,13 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
@@ -57,14 +61,15 @@ dependencies {
     implementation (libs.play.services.auth.v2040) // Google Identity Services
 
 
-    // Nếu cần OkHttp (giữ lại nếu sử dụng):
-    implementation(libs.okhttp.v4120)
-
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
 
 
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    implementation ("me.relex:circleindicator:2.1.6")
+    implementation ("com.tbuonomo:dotsindicator:4.3")
 }
 

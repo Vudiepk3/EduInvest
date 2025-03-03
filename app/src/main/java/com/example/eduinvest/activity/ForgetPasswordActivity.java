@@ -1,4 +1,4 @@
-package com.example.eduinvest;
+package com.example.eduinvest.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.eduinvest.R;
 import com.example.eduinvest.constants.Base;
 import com.google.firebase.auth.FirebaseAuth;
 

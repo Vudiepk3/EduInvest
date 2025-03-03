@@ -1,8 +1,7 @@
-package com.example.eduinvest;
+package com.example.eduinvest.activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.eduinvest.R;
 import com.example.eduinvest.fragments.HomeFragment;
 import com.example.eduinvest.fragments.MySelfFragment;
 import com.example.eduinvest.fragments.NewsFragment;
@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new HomeFragment());
             } else if (itemId == R.id.news) {
                 replaceFragment(new NewsFragment());
-            } else if (itemId == R.id.support) {
-                replaceFragment(new SupportFragment());
             } else if (itemId == R.id.myself) {
                 replaceFragment(new MySelfFragment());
             }
@@ -89,35 +87,5 @@ public class MainActivity extends AppCompatActivity {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
         return capabilities != null && capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // Đăng ký BroadcastReceiver khi Activity chuyển sang trạng thái onResume
-        if (!isReceiverRegistered) {
-            registerReceiver(networkChangeReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-            isReceiverRegistered = true;
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // Hủy đăng ký BroadcastReceiver khi Activity chuyển sang trạng thái onPause
-        if (isReceiverRegistered) {
-            unregisterReceiver(networkChangeReceiver);
-            isReceiverRegistered = false;
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // Hủy đăng ký BroadcastReceiver khi Activity bị hủy
-        if (isReceiverRegistered) {
-            unregisterReceiver(networkChangeReceiver);
-            isReceiverRegistered = false;
-        }
     }
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Định nghĩa thuộc tính tùy chỉnh cho ButtonTextView -->
+
+    <!-- Thuộc tính nhận giá trị màu sắc cho nền của nút -->
+    <attr name="button_color" format="color" />
+
+    <!-- Thuộc tính nhận giá trị kích thước (dimension) cho độ bo tròn chung của nút -->
+    <attr name="button_radius" format="dimension" />
+
+    <!-- Thuộc tính nhận giá trị kích thước cho góc trên bên trái -->
+    <attr name="button_radiusTopLeft" format="dimension" />
+
+    <!-- Thuộc tính nhận giá trị kích thước cho góc trên bên phải -->
+    <attr name="button_radiusTopRight" format="dimension" />
+
+    <!-- Thuộc tính nhận giá trị kích thước cho góc dưới bên trái -->
+    <attr name="button_radiusBottomLeft" format="dimension" />
+
+    <!-- Thuộc tính nhận giá trị kích thước cho góc dưới bên phải -->
+    <attr name="button_radiusBottomRight" format="dimension" />
+
+    <!-- Thuộc tính nhận giá trị màu sắc cho viền của nút -->
+    <attr name="button_borderColor" format="color" />
+
+    <!-- Thuộc tính nhận giá trị kích thước (dimension) cho độ dày của viền nút -->
+    <attr name="button_borderWidth" format="dimension" />
+
+    <!-- Thuộc tính boolean để xác định có cắt nội dung theo outline hay không -->
+    <attr name="button_clipToOutline" format="boolean" />
+
+    <!-- Thuộc tính enum để xác định hình dạng của nút -->
+    <attr name="button_shape" format="enum">
+        <!-- Giá trị 0: Hình chữ nhật (rectangle) -->
+        <enum name="rectangle" value="0" />
+        <!-- Giá trị 1: Hình tròn (circle) -->
+        <enum name="circle" value="1" />
+    </attr>
+
+    <!-- Khai báo nhóm thuộc tính cho custom view ButtonTextView -->
+    <declare-styleable name="ButtonTextView">
+        <!-- Các thuộc tính bên dưới có thể được sử dụng trực tiếp trong XML khi định nghĩa ButtonTextView -->
+        <attr name="button_color" />
+        <attr name="button_radius" />
+        <attr name="button_radiusTopLeft" />
+        <attr name="button_radiusTopRight" />
+        <attr name="button_radiusBottomLeft" />
+        <attr name="button_radiusBottomRight" />
+        <attr name="button_borderColor" />
+        <attr name="button_borderWidth" />
+        <attr name="button_clipToOutline" />
+        <attr name="button_shape" />
+        <!-- Thuộc tính boolean để thiết lập gạch chân cho văn bản -->
+        <attr name="button_underline" format="boolean" />
+    </declare-styleable>
+
+</resources>

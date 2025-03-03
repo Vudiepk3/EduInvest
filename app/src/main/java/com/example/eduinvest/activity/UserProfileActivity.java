@@ -1,4 +1,4 @@
-package com.example.eduinvest;
+package com.example.eduinvest.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
+import com.example.eduinvest.R;
 import com.example.eduinvest.adapters.EditProfileAdapter;
 import com.example.eduinvest.firebase.FireBaseClass;
 import com.google.firebase.auth.FirebaseAuth;

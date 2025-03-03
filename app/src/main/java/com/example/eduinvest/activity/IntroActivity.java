@@ -1,4 +1,4 @@
-package com.example.eduinvest;
+package com.example.eduinvest.activity;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.eduinvest.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -24,12 +25,11 @@ public class IntroActivity extends AppCompatActivity {
         // Kiểm tra xem người dùng có đăng nhập không
         if (currentUser != null) {
             // Nếu người dùng đã đăng nhập, bắt đầu MainActivity
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, OnboardingActivity.class));
         } else {
             // Nếu người dùng chưa đăng nhập, bắt đầu GetStartedActivity
             startActivity(new Intent(this, SignInActivity.class));
         }
-
         // Kết thúc activity hiện tại
         finish();
     }

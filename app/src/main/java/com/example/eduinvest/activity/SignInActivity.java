@@ -1,4 +1,4 @@
-package com.example.eduinvest;
+package com.example.eduinvest.activity;
 
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -13,6 +13,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.eduinvest.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

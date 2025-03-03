@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.OnboardingActivity">
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="12dp">
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/circleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            app:ci_drawable="@drawable/bg_cicle_blue"/>
+
+        <LinearLayout
+            android:id="@+id/layout_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tv_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:text="Tiếp tục"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_20"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

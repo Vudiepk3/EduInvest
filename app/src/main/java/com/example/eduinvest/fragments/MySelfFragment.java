@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import com.example.eduinvest.UserProfileActivity;
+import com.example.eduinvest.activity.UserProfileActivity;
 import com.example.eduinvest.databinding.FragmentMyselfBinding;
 
 import android.util.Log;
