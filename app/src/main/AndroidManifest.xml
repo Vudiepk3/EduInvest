@@ -15,38 +15,46 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EduInvest"
         tools:targetApi="31">
-        <activity
-            android:name=".activity.OnboardingActivity"
-            android:exported="false" />
+
         <activity
             android:name=".activity.UserProfileActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.ForgetPasswordActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".loanactivities.UploadLoanRequestActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".loanactivities.DetailLoanRequestActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".loanactivities.DetailLoanActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".loanactivities.ManageLoanActivities"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.SignUpActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.SignInActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".activity.IntroActivity"
+            android:name=".activity.OnboardingActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

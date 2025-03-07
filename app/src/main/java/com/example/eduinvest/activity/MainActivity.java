@@ -1,91 +1,75 @@
 package com.example.eduinvest.activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
+
+
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkCapabilities;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.eduinvest.R;
-import com.example.eduinvest.fragments.HomeFragment;
-import com.example.eduinvest.fragments.MySelfFragment;
-import com.example.eduinvest.fragments.NewsFragment;
-import com.example.eduinvest.fragments.SupportFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import com.example.eduinvest.adapters.ViewPagerFragmentAdapter;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
-
-    private BroadcastReceiver networkChangeReceiver;
-    private boolean isConnected = true;
-    private boolean isReceiverRegistered = false; // Biến để kiểm tra trạng thái đăng ký
+    private TabLayout tabLayout;
+    private ViewPager2 viewPager2;
+    private ViewPagerFragmentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Kiểm tra trạng thái đăng nhập
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null) {
             Intent intent = new Intent(this, IntroActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-            finish(); // Kết thúc MainActivity
-            return; // Dừng thực thi tiếp theo
+            finish();
+            return;
         }
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPager2 = findViewById(R.id.view_pager);
+        viewPager2.setOffscreenPageLimit(3);
+        // Thêm tab vào TabLayout
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_home));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_news));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_person));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_more));
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        replaceFragment(new HomeFragment());
-        bottomNavigationView.setBackground(null);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.home) {
-                replaceFragment(new HomeFragment());
-            } else if (itemId == R.id.news) {
-                replaceFragment(new NewsFragment());
-            } else if (itemId == R.id.myself) {
-                replaceFragment(new MySelfFragment());
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        adapter = new ViewPagerFragmentAdapter(fragmentManager, getLifecycle());
+        viewPager2.setAdapter(adapter);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager2.setCurrentItem(tab.getPosition());
             }
-            return true;
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
         });
 
-        // Đăng ký BroadcastReceiver để lắng nghe thay đổi kết nối mạng
-        networkChangeReceiver = new BroadcastReceiver() {
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
-            public void onReceive(Context context, Intent intent) {
-                boolean isAvailable = isNetworkAvailable(context);
-
-                if (isAvailable && !isConnected) {
-                    Toast.makeText(context, "Kết nối internet đã được khôi phục", Toast.LENGTH_SHORT).show();
-                    isConnected = true;
-                } else if (!isAvailable && isConnected) {
-                    Toast.makeText(context, "Không có kết nối internet", Toast.LENGTH_SHORT).show();
-                    isConnected = false;
-                }
+            public void onPageSelected(int position) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
             }
-        };
+        });
     }
 
-    // Thay thế Fragment hiện tại bằng một Fragment mới
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.commit();
-    }
 
-    // Kiểm tra xem mạng có khả dụng hay không
-    private boolean isNetworkAvailable(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
-        return capabilities != null && capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
-    }
 }

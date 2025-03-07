@@ -63,20 +63,20 @@ public class HomeFragment extends Fragment {
 
         // Xử lý ảnh icon người dùng
         FirebaseUser currentUser = auth.getCurrentUser();
-        if (currentUser != null) {
-            Uri photoUrl = currentUser.getPhotoUrl();
-            if (photoUrl != null) {
-                Glide.with(this)
-                        .load(photoUrl)
-                        .apply(new RequestOptions()
-                                .placeholder(R.drawable.image_eduinvest)
-                                .error(R.drawable.image_eduinvest)
-                                .centerCrop())
-                        .into(binding.iconImage);
-            } else {
-                binding.iconImage.setImageResource(R.drawable.image_eduinvest);
-            }
-        }
+//        if (currentUser != null) {
+//            Uri photoUrl = currentUser.getPhotoUrl();
+//            if (photoUrl != null) {
+//                Glide.with(this)
+//                        .load(photoUrl)
+//                        .apply(new RequestOptions()
+//                                .placeholder(R.drawable.image_eduinvest)
+//                                .error(R.drawable.image_eduinvest)
+//                                .centerCrop())
+//                        .into(binding.iconImage);
+//            } else {
+//                binding.iconImage.setImageResource(R.drawable.image_eduinvest);
+//            }
+//        }
         // Tải ảnh slider
         loadImageSlider();
     }

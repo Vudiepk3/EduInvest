@@ -16,4 +16,8 @@
     <string name="shopping">Mua Sắm</string>
     <string name="ungho">Người dân chung tay xóa nhà tạm, nhà dột nát trên phạm vi toàn quốc bằng cách chuyển khoản đến Quỹ Vì người nghèo Trung ương số tài khoản:\n - 111135888888 tại Vietinbank.\n - 9999999999999 tại Vietcombank.\n - 1303999789999 tại Agribank.\n - 8631088888 tại BIDV.\n - 2025 tại MBBank\n - 3761.0.9054386.91046 tại Kho bạc Nhà nước Hoàn Kiếm, Hà Nội.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="manage">Manage</string>
+    <string name="time">Time</string>
+    <string name="time_icon">Time Icon</string>
+    <string name="title_news">Title News</string>
 </resources>

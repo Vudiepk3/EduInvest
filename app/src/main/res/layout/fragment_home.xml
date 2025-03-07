@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="60dp"
+    android:background="@color/white"
     tools:context=".fragments.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,44 +17,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
-            tools:ignore="MissingConstraints">
-            <androidx.cardview.widget.CardView
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            android:background="@color/white"
+            tools:layout_editor_absoluteX="10dp">
+
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardIconBank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="40dp"
-                app:cardElevation="40dp">
-                <ImageView
-                    android:id="@+id/iconImage"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/image_eduinvest" />
+                app:cardElevation="0dp"
+                app:strokeWidth="0.25dp"
+                app:strokeColor="@color/black">
 
-            </androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/iconImage"
+                android:layout_width="@dimen/dp_47"
+                android:layout_height="@dimen/dp_47"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/image_eduinvest" />
 
+        </com.google.android.material.card.MaterialCardView>
 
-
-            <TextView
+        <TextView
                 android:id="@+id/sologanTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/app_name"
-                android:textSize="24sp"
-                android:textColor="@color/blue"
-                android:fontFamily="@font/montserrat_font"
+                android:fontFamily="@font/font_alfa_slab_one"
                 android:gravity="center"
+                android:text="@string/app_name"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_26"
                 tools:ignore="HardcodedText" />
 
             <ImageView
                 android:id="@+id/iconNotifition"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/dp_47"
+                android:layout_height="@dimen/dp_47"
                 android:contentDescription="@string/todo"
-                android:src="@drawable/icon_notification" />
+                android:src="@drawable/ic_notification" />
 
         </LinearLayout>
 
@@ -82,7 +88,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:cardElevation="20dp"
+                app:cardElevation="0dp"
                 app:cardCornerRadius="10dp">
 
                 <com.denzcoskun.imageslider.ImageSlider
@@ -111,7 +117,8 @@
                 android:paddingStart="10dp"
                 android:text="Tiện ích"
                 android:textSize="18sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/font_alfa_slab_one"
+                android:textColor="@color/black"
                 tools:ignore="HardcodedText,RtlSymmetry">
 
             </TextView>
@@ -142,32 +149,34 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/loanImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginTop="5dp"
                     app:cardCornerRadius="15dp"
-                    app:cardElevation="4dp">
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#F5F5F5">
+
                     <ImageView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:layout_margin="15dp"
+                        android:layout_gravity="center"
                         android:contentDescription="@string/todo"
+                        android:backgroundTint="@color/blue"
                         android:src="@drawable/image_pay" />
                 </androidx.cardview.widget.CardView>
-
-
 
                 <TextView
                     android:id="@+id/mathsText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textColor="?attr/colorOnBackground"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:text="Gói vay"
+                    android:textStyle="normal"
+                    android:text="Gói Vay"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/voucherCard"
                 android:layout_width="0dp"
@@ -178,16 +187,19 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/voucherImageCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginTop="5dp"
                     app:cardCornerRadius="15dp"
-                    app:cardElevation="4dp">
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#F5F5F5">
+
                     <ImageView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:layout_margin="15dp"
+                        android:layout_gravity="center"
                         android:contentDescription="@string/todo"
+                        android:backgroundTint="@color/blue"
                         android:src="@drawable/image_voucher" />
                 </androidx.cardview.widget.CardView>
 
@@ -198,11 +210,12 @@
                     android:gravity="center"
                     android:layout_marginTop="5dp"
                     android:text="Ưu đãi"
-                    android:textColor="?attr/colorOnBackground"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/personalGrowthCard"
                 android:layout_width="0dp"
@@ -213,17 +226,20 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/personalGrowthImageCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginTop="5dp"
                     app:cardCornerRadius="15dp"
-                    app:cardElevation="4dp">
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#F5F5F5">
+
                     <ImageView
                         android:id="@+id/personalGrowthImage"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:layout_margin="15dp"
+                        android:layout_gravity="center"
                         android:contentDescription="@string/todo"
+                        android:backgroundTint="@color/blue"
                         android:src="@drawable/image_personal_growth" />
                 </androidx.cardview.widget.CardView>
 
@@ -234,11 +250,12 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="Việc làm"
-                    android:textColor="?attr/colorOnBackground"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/payCard"
                 android:layout_width="0dp"
@@ -249,16 +266,19 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/payImageCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginTop="5dp"
                     app:cardCornerRadius="15dp"
-                    app:cardElevation="4dp">
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#F5F5F5">
+
                     <ImageView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:layout_margin="15dp"
+                        android:layout_gravity="center"
                         android:contentDescription="@string/todo"
+                        android:backgroundTint="@color/blue"
                         android:src="@drawable/image_course" />
                 </androidx.cardview.widget.CardView>
 
@@ -269,140 +289,16 @@
                     android:gravity="center"
                     android:layout_marginTop="5dp"
                     android:text="Khóa Học"
-                    android:textColor="?attr/colorOnBackground"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
+
 
 
         </LinearLayout>
-      <!--  <LinearLayout
-            android:id="@+id/row3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/row2">
 
-            &lt;!&ndash; Maths Card &ndash;&gt;
-            <LinearLayout
-                android:id="@+id/giftCard"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/giftImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardElevation="4dp">
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="15dp"
-                        android:contentDescription="@string/todo"
-                        android:src="@drawable/image_gift" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/giftText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textColor="?attr/colorOnBackground"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:text="Phần thưởng"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-
-
-            &lt;!&ndash; English Card &ndash;&gt;
-            <LinearLayout
-                android:id="@+id/insuranceCard"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/insuranceImageCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardElevation="4dp">
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="15dp"
-                        android:contentDescription="@string/todo"
-                        android:src="@drawable/image_healthcare" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/insuranceText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:text="Bảo hiểm"
-                    android:textColor="?attr/colorOnBackground"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-            &lt;!&ndash; Physics Card &ndash;&gt;
-            <LinearLayout
-                android:id="@+id/moreCard"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/moreImageCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardElevation="4dp">
-                    <ImageView
-                        android:id="@+id/literatureImage"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="15dp"
-                        android:contentDescription="@string/todo"
-                        android:src="@drawable/image_more" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/physicsName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:text="Thêm"
-                    android:textColor="?attr/colorOnBackground"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-        </LinearLayout>
--->
         <LinearLayout
             android:id="@+id/textView1"
             android:layout_width="match_parent"
@@ -418,6 +314,8 @@
                 android:text="Ưu đãi siêu hời"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/font_alfa_slab_one"
                 tools:ignore="HardcodedText,RtlSymmetry">
 
             </TextView>

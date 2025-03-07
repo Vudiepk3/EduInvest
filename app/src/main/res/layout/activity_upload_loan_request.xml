@@ -20,7 +20,7 @@
             android:text="Nhập Thông Tin"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:fontFamily="@font/montserrat_font"
+            android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:textColor="?attr/colorOnBackground"

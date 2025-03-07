@@ -2,46 +2,41 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginBottom="70dp"
-    tools:context=".fragments.NewsFragment">
+    android:background="@color/light_gray">
 
+    <!-- Header -->
     <LinearLayout
-        android:id="@+id/row0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="10dp"
-        tools:ignore="UseCompoundDrawables">
+        android:background="@color/white"
+        android:paddingHorizontal="@dimen/dp_12"
+        android:layout_gravity="center"
+        android:clipToOutline="true">
 
         <TextView
-            android:id="@+id/sologanTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tin tức"
-            android:textSize="24sp"
-            android:textColor="@color/blue"
-            android:fontFamily="@font/montserrat_font"
-            android:gravity="center"
-            tools:ignore="HardcodedText" />
-    </LinearLayout>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical" />
-    </ScrollView>
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="Tin tức"
+            android:textSize="@dimen/sp_26"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:fontFamily="@font/font_alfa_slab_one"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:scrollbars="vertical"
+        android:clipToPadding="false"/>
 
 </LinearLayout>

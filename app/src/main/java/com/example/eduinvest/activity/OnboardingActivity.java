@@ -31,7 +31,7 @@ public class OnboardingActivity extends AppCompatActivity {
     }
 
     private void setupClick() {
-        binding.tvNext.setOnClickListener(v -> {
+        binding.btnNext.setOnClickListener(v -> {
             int currentItem = binding.viewPager.getCurrentItem();
             if (currentItem < adapter.getCount() - 1) {
                 binding.viewPager.setCurrentItem(currentItem + 1);

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginStart="@dimen/dp_5"
+    android:layout_marginEnd="@dimen/dp_5"
+    android:layout_marginBottom="@dimen/dp_5"
+    android:id="@+id/itemNewsTrending"
+    android:orientation="vertical">
+
+    <!-- Hình ảnh -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageNews"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/todo"
+        app:shapeAppearanceOverlay="@style/RoundedImageView"
+        android:background="@drawable/rounded_image" />
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/titleNews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:fontFamily="@font/font_inter"
+        android:textColor="@color/black"
+        android:text="@string/title_news" />
+
+    <!-- Icon + Thời gian theo hàng dọc -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/icon_baseline_access_time_24"
+            android:contentDescription="@string/time_icon"
+            app:tint="@color/black"/>
+
+        <TextView
+            android:id="@+id/timeNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_5"
+            android:text="@string/time"
+            android:fontFamily="@font/font_inter"
+            android:textSize="12sp"
+            android:textColor="@color/red" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/black" />
+
+</LinearLayout>

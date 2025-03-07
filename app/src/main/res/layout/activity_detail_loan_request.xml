@@ -23,7 +23,7 @@
             android:padding="15dp"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:fontFamily="@font/montserrat_font"
+            android:fontFamily="@font/font_inter"
             android:text="Thông Tin Gói Vay Mong Muốn"
             android:gravity="center"
             android:focusableInTouchMode="true"

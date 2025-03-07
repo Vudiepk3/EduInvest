@@ -15,7 +15,7 @@ import com.example.eduinvest.R;
 import com.example.eduinvest.constants.Base;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ForgetPasswordActivity extends AppCompatActivity {
+public class ForgetPasswordActivity extends BaseActivity {
     private FirebaseAuth auth;
     private Button btnForgotPasswordSubmit;
     private EditText titleEmailForgetPassword;

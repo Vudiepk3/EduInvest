@@ -8,17 +8,20 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.eduinvest.R;
 import com.example.eduinvest.databinding.ItemNewsBinding;
+import com.example.eduinvest.databinding.ItemNewsTrendingBinding;
 import com.example.eduinvest.models.NewsModel;
 
 import java.util.List;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyDicoverViewHolder> {
+public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private static final int ITEM_NEWS_TRENDING = 0;
+    private static final int ITEM_NEWS = 1;
 
     private final Context context;
     private final List<NewsModel> dataList;
@@ -28,33 +31,43 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyDicoverViewH
         this.dataList = dataList;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return dataList.get(position).getTypeNews().equals("Trending") ? ITEM_NEWS_TRENDING : ITEM_NEWS;
+    }
+
     @NonNull
     @Override
-    public MyDicoverViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemNewsBinding binding = ItemNewsBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new MyDicoverViewHolder(binding);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (viewType == ITEM_NEWS_TRENDING) {
+            ItemNewsTrendingBinding binding = ItemNewsTrendingBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+            return new TrendingViewHolder(binding);
+        } else {
+            ItemNewsBinding binding = ItemNewsBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+            return new NewsViewHolder(binding);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyDicoverViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         NewsModel news = dataList.get(position);
-
-        // Load ảnh và thiết lập dữ liệu
-        Glide.with(context).load(news.getImageNew()).into(holder.binding.imageNews);
-        holder.binding.titleNews.setText(news.getTitleNews());
-        holder.binding.timeNews.setText(news.getTimeNews());
-
         String linkWeb = news.getLinkNews();
 
-        // Xử lý sự kiện click mở link trong trình duyệt
-        holder.binding.itemNews.setOnClickListener(v -> {
-            try {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkWeb));
-                context.startActivity(intent);
-            } catch (Exception e) {
-                Toast.makeText(context, "Thông tin sẽ được cập nhật đến bạn", Toast.LENGTH_SHORT).show();
-            }
-        });
+        if (holder instanceof TrendingViewHolder) {
+            TrendingViewHolder trendingHolder = (TrendingViewHolder) holder;
+            Glide.with(context).load(news.getImageNew()).into(trendingHolder.binding.imageNews);
+            trendingHolder.binding.titleNews.setText(news.getTitleNews());
+            trendingHolder.binding.timeNews.setText(news.getTimeNews());
+
+            trendingHolder.binding.itemNewsTrending.setOnClickListener(v -> openLink(linkWeb));
+        } else if (holder instanceof NewsViewHolder) {
+            NewsViewHolder newsHolder = (NewsViewHolder) holder;
+            Glide.with(context).load(news.getImageNew()).into(newsHolder.binding.imageNews);
+            newsHolder.binding.titleNews.setText(news.getTitleNews());
+            newsHolder.binding.timeNews.setText(news.getTimeNews());
+
+            newsHolder.binding.itemNews.setOnClickListener(v -> openLink(linkWeb));
+        }
     }
 
     @Override
@@ -62,10 +75,28 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyDicoverViewH
         return dataList.size();
     }
 
-    public static class MyDicoverViewHolder extends RecyclerView.ViewHolder {
+    private void openLink(String link) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+            context.startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(context, "Thông tin sẽ được cập nhật đến bạn", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public static class NewsViewHolder extends RecyclerView.ViewHolder {
         final ItemNewsBinding binding;
 
-        public MyDicoverViewHolder(@NonNull ItemNewsBinding binding) {
+        public NewsViewHolder(@NonNull ItemNewsBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+    }
+
+    public static class TrendingViewHolder extends RecyclerView.ViewHolder {
+        final ItemNewsTrendingBinding binding;
+
+        public TrendingViewHolder(@NonNull ItemNewsTrendingBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
