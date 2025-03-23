@@ -5,12 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-
-import com.example.eduinvest.activity.UserProfileActivity;
-import com.example.eduinvest.databinding.FragmentMyselfBinding;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,44 +14,38 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-public class MySelfFragment extends Fragment {
+import com.example.eduinvest.R;
+import com.example.eduinvest.activity.UserProfileActivity;
+
+public class SettingFragment extends Fragment {
     private static final String PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=";
     private static final String TAG = "MoreFragment";
 
-    // Biến binding để truy cập các view trong layout fragment_myself.xml
-    private FragmentMyselfBinding binding;
 
-    public MySelfFragment() {
+    public SettingFragment() {
         // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public static SettingFragment newInstance() {
+        return new SettingFragment();
     }
 
-    // Sử dụng View Binding để inflate layout và truy cập các view
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentMyselfBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_setting, container, false);
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        getActivities();
-    }
-    // Thiết lập các sự kiện click cho các view thông qua binding
     private void getActivities() {
-        binding.btnScholarship.onClickListener(this::showFeatureComingSoonToast);
-        binding.btnInternship.onClickListener(this::showFeatureComingSoonToast);
-        binding.btnRate.onClickListener(this::openPlayStoreForRating);
-        binding.btnShare.onClickListener(this::shareAppLink);
-        binding.btnContact.onClickListener(this::sendEmailIntent);
-        binding.btnDonate.onClickListener(this::showFeatureComingSoonToast);
-        binding.UserRelative.setOnClickListener(v -> openUserProfile());
-        CardView rewardCard = binding.rewardCard;
-        rewardCard.setOnClickListener(v -> showFeatureComingSoonToast());
+//        binding.btnScholarship.onClickListener(this::showFeatureComingSoonToast);
+//        binding.btnInternship.onClickListener(this::showFeatureComingSoonToast);
+//        binding.btnRate.onClickListener(this::openPlayStoreForRating);
+//        binding.btnShare.onClickListener(this::shareAppLink);
+//        binding.btnContact.onClickListener(this::sendEmailIntent);
+//        binding.btnDonate.onClickListener(this::showFeatureComingSoonToast);
+////        binding.UserRelative.setOnClickListener(v -> openUserProfile());
+//        CardView rewardCard = binding.rewardCard;
+//        rewardCard.setOnClickListener(v -> showFeatureComingSoonToast());
     }
 
     // Phương thức mở Play Store để đánh giá app
@@ -119,10 +109,4 @@ public class MySelfFragment extends Fragment {
         Toast.makeText(requireContext(), "Chức năng sẽ được cập nhật sớm nhất đến với bạn", Toast.LENGTH_SHORT).show();
     }
 
-    // Giải phóng binding khi view bị hủy để tránh rò rỉ bộ nhớ
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
 }

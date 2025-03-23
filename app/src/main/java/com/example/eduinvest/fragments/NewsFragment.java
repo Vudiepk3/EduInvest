@@ -57,7 +57,7 @@ public class NewsFragment extends Fragment {
                 dataList.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     NewsModel news = itemSnapshot.getValue(NewsModel.class);
-                    if (news != null) {
+                    if (news != null   && !news.getTypeNews().equals("KHÁC")) {
                         news.setKey(itemSnapshot.getKey());
                         dataList.add(news);
                     }

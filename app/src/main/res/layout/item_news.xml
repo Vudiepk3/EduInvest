@@ -18,12 +18,12 @@
             android:id="@+id/imageNews"
             android:layout_width="160dp"
             android:layout_height="80dp"
-            android:scaleType="centerCrop"
             android:contentDescription="@string/todo"
-            app:shapeAppearanceOverlay="@style/RoundedImageView"
-            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
         <LinearLayout
             android:id="@+id/newsContent"
@@ -41,41 +41,48 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/sp_16"
                 android:textStyle="bold"
-                android:maxLines="2"
+                android:maxLines="3"
                 android:ellipsize="end"
                 android:fontFamily="@font/font_inter"
                 android:textColor="@color/black"
                 android:text="@string/title_news"/>
 
-            <LinearLayout
-                android:id="@+id/newsInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_20"
-                android:layout_gravity="bottom"
-                android:orientation="horizontal"
-                android:paddingTop="4dp">
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/icon_baseline_access_time_24"
-                    android:contentDescription="@string/time_icon"
-                    app:tint="@color/black"/>
-
-                <TextView
-                    android:id="@+id/timeNews"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/time"
-                    android:fontFamily="@font/font_inter"
-                    android:textSize="12sp"
-                    android:layout_marginStart="4dp"
-                    android:textColor="@color/red"/>
-            </LinearLayout>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/newsInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingTop="4dp">
+
+        <ImageView
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:src="@drawable/icon_baseline_access_time_24"
+            android:contentDescription="@string/time_icon"
+            app:tint="@color/black"/>
+
+        <TextView
+            android:id="@+id/timeNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time"
+            android:textStyle="normal"
+            android:fontFamily="@font/font_inter"
+            android:textSize="16sp"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/red"
+            android:layout_weight="1"/> <!-- Đẩy ảnh sang cuối -->
+
+        <ImageView
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:src="@drawable/ic_share" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"

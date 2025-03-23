@@ -1,5 +1,6 @@
 package com.example.eduinvest.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -21,9 +23,12 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.eduinvest.R;
 import com.example.eduinvest.activity.UserProfileActivity;
+import com.example.eduinvest.adapters.NewsAdapter;
+import com.example.eduinvest.adapters.ScholarshipAdapter;
 import com.example.eduinvest.databinding.FragmentHomeBinding;
 import com.example.eduinvest.loanactivities.ManageLoanActivities;
 import com.example.eduinvest.models.BannerModel;
+import com.example.eduinvest.models.NewsModel;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,9 +36,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
@@ -44,6 +51,9 @@ public class HomeFragment extends Fragment {
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
     private static final String TAG = "HomeFragment";
+
+    private List<NewsModel> dataList;
+    private ScholarshipAdapter adapter;
 
     public HomeFragment() {
     }
@@ -79,6 +89,7 @@ public class HomeFragment extends Fragment {
 //        }
         // Tải ảnh slider
         loadImageSlider();
+        loadData();
     }
 
     private void loadImageSlider() {
@@ -174,7 +185,7 @@ public class HomeFragment extends Fragment {
         setupClickListener(binding.loanCard,
                 () -> startActivity(new Intent(getActivity(), ManageLoanActivities.class)));
         setupClickListener(binding.payCard, this::showFeatureNotAvailableToast);
-        setupClickListener(binding.row4, this::showFeatureNotAvailableToast);
+
     }
 
     private void setupClickListener(View view, Runnable onClick) {
@@ -195,6 +206,37 @@ public class HomeFragment extends Fragment {
         if (isAdded()) {
             Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
         }
+    }
+    private void loadData() {
+        binding.recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 1));
+
+        dataList = new ArrayList<>();
+        adapter = new ScholarshipAdapter(dataList, requireContext());
+        binding.recyclerView.setAdapter(adapter);
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("News");
+        Query query = databaseReference.orderByChild("timestamp");
+
+        ValueEventListener eventListener = query.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                dataList.clear();
+                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                    NewsModel news = itemSnapshot.getValue(NewsModel.class);
+                    if (news != null && news.getTypeNews().equals("KHÁC")) {
+                        news.setKey(itemSnapshot.getKey());
+                        dataList.add(news);
+                    }
+                }
+                Collections.reverse(dataList);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
     @Override

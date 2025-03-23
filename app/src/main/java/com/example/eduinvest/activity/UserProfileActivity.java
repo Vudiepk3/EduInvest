@@ -2,76 +2,80 @@ package com.example.eduinvest.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import com.bumptech.glide.Glide;
 import com.example.eduinvest.R;
 import com.example.eduinvest.adapters.EditProfileAdapter;
+import com.example.eduinvest.databinding.ActivityUserProfileBinding;
 import com.example.eduinvest.firebase.FireBaseClass;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 import java.util.Objects;
 
 public class UserProfileActivity extends AppCompatActivity {
     private FirebaseAuth auth;
+    private ActivityUserProfileBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
+        binding = ActivityUserProfileBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        // Khởi tạo các view
-        TextView tvEmailId = findViewById(R.id.tvEmailId);
-        TextView tvUserName = findViewById(R.id.tvUserName);
-        ImageView userProfilePic = findViewById(R.id.userProfilePic);
-        CardView cvSignOut = findViewById(R.id.cvSignOut);
-        CardView cvEditProfile = findViewById(R.id.cvEditProfile);
         auth = FirebaseAuth.getInstance();
-        // hiển thị thông tin người dùng
-        loadUserInfo(tvEmailId, tvUserName, userProfilePic);
 
-        cvSignOut.setOnClickListener(v -> {
+        // Hiển thị thông tin người dùng
+        loadUserInfo();
+
+        binding.cvSignOut.setOnClickListener(v -> {
             FirebaseUser currentUser = auth.getCurrentUser();
             if (currentUser != null) {
                 auth.signOut();
-                Intent intent = new Intent(UserProfileActivity.this, IntroActivity.class);
+                Intent intent = new Intent(this, OnboardingActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
         });
 
-        cvEditProfile.setOnClickListener(v -> {
-            EditProfileAdapter bottomSheetFragment = new EditProfileAdapter(UserProfileActivity.this);
+        binding.cvEditProfile.setOnClickListener(v -> {
+            EditProfileAdapter bottomSheetFragment = new EditProfileAdapter(this);
             bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
         });
     }
 
-    private void loadUserInfo(TextView tvEmailId, TextView tvUserName, ImageView userProfilePic) {
-
+    private void loadUserInfo() {
         FireBaseClass.getUserInfo(userInfo -> {
             if (userInfo != null) {
-                tvUserName.setText(userInfo.getName());
-                tvEmailId.setText(Objects.requireNonNull(auth.getCurrentUser()).getEmail());
-                // hiển thị ảnh đại diện
+                binding.tvUserName.setText(userInfo.getName());
+                binding.tvEmailId.setText(Objects.requireNonNull(auth.getCurrentUser()).getEmail());
+
+                // Hiển thị ảnh đại diện
                 Glide.with(this)
                         .load(userInfo.getImage())
-                        .placeholder(R.drawable.image_user) // Placeholder image
-                        .error(R.drawable.image_user) // Fallback image
-                        .into(userProfilePic);
+                        .placeholder(R.drawable.image_user)
+                        .error(R.drawable.image_user)
+                        .into(binding.userProfilePic);
             } else {
-                tvUserName.setText("N/A");
-                tvEmailId.setText("N/A");
+//                binding.tvUserName.setText("N/A");
+//                binding.tvEmailId.setText("N/A");
             }
         });
     }
+
     @Override
     protected void onResume() {
         super.onResume();
-        loadUserInfo(findViewById(R.id.tvEmailId), findViewById(R.id.tvUserName), findViewById(R.id.userProfilePic));
+        loadUserInfo();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null; // Giải phóng bộ nhớ
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

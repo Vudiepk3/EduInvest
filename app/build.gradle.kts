@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.google.firebase.crashlytics)
 }
 
 android {
@@ -60,8 +61,11 @@ dependencies {
     // Google Sign-In
     implementation (libs.play.services.auth.v2040) // Google Identity Services
 
-
+    implementation ("com.google.android.material:material:1.11.0")
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation(libs.firebase.messaging)
+    implementation(libs.firebase.inappmessaging.display)
+    implementation(libs.firebase.crashlytics)
 
 
     // Testing

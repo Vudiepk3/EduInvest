@@ -43,9 +43,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyBankViewHold
         Glide.with(context)
                 .load(loanModel.getImageBank())
                 .into(holder.binding.imageBank);
-        holder.binding.titleBank.setText(loanModel.getTitleBank());
         holder.binding.nameBank.setText(loanModel.getNameBank());
-        holder.binding.browseBank.setText(loanModel.getBrowseBank());
         holder.binding.rateBank.setText(loanModel.getRateBank());
 
         // Thiết lập sự kiện click cho item

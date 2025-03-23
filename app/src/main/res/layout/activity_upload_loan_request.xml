@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/baseline_rectangle"
     tools:context=".loanactivities.UploadLoanRequestActivity">
 
@@ -23,72 +24,47 @@
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Họ Và tên"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="start|center_vertical"
-            android:textColor="?attr/colorOnBackground"
-            tools:ignore="HardcodedText"/>
         <EditText
             android:id="@+id/detailNamePerson"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_10"
             android:autofillHints="username"
+            android:hint="Họ Và Tên"
             android:inputType="text"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
+            android:background="@drawable/bg_txt"
             tools:ignore="HardcodedText,LabelFor"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ngày Sinh"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="start|center_vertical"
-            android:textColor="?attr/colorOnBackground"
-            tools:ignore="HardcodedText"/>
+
         <EditText
             android:id="@+id/detailBirthDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:paddingStart="@dimen/dp_10"
             android:autofillHints="username"
             android:inputType="datetime"
-            android:textColor="?attr/colorOnBackground"
+            android:hint="Ngày Sinh"
+            android:background="@drawable/bg_txt"
+            android:textColor="@color/black"
             tools:ignore="LabelFor" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Giới Tính"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="start|center_vertical"
-            tools:ignore="HardcodedText"
-            android:textColor="?attr/colorOnBackground" />
         <EditText
             android:id="@+id/detailGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
             android:autofillHints="username"
             android:inputType="text"
-            android:textColor="?attr/colorOnBackground"
+            android:hint="Giới Tính"
+            android:background="@drawable/bg_txt"
+            android:textColor="@color/black"
             tools:ignore="LabelFor" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Số Điện Thoại"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="start|center_vertical"
-            tools:ignore="HardcodedText"
-            android:textColor="?attr/colorOnBackground" />
 
         <EditText
             android:id="@+id/detailPhoneNumber"
@@ -96,46 +72,47 @@
             android:layout_height="wrap_content"
             android:inputType="number|phone"
             android:autofillHints="username"
-            android:textColor="?attr/colorOnBackground"
+            android:layout_marginTop="@dimen/dp_5"
+            android:hint="Số điện thoại"
+            android:paddingStart="@dimen/dp_10"
+            android:background="@drawable/bg_txt"
+            android:textColor="@color/black"
             tools:ignore="LabelFor" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="start|center_vertical"
-            tools:ignore="HardcodedText"
-            android:textColor="?attr/colorOnBackground" />
 
         <EditText
             android:id="@+id/detailEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:paddingStart="@dimen/dp_10"
+            android:hint="Email"
             android:autofillHints="username"
             android:inputType="text"
-            android:textColor="?attr/colorOnBackground"
+            android:background="@drawable/bg_txt"
+            android:textColor="@color/black"
             tools:ignore="LabelFor,TextFields" />
 
         <TextView
             android:id="@+id/txtLimitBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
             android:text="Số Tiền Muốn Vay(VND)"
             android:textSize="16sp"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             tools:ignore="HardcodedText"
-            android:textColor="?attr/colorOnBackground" />
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/detailLimitBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_10"
             android:autofillHints="name"
             android:inputType="number"
-            android:textColor="?attr/colorOnBackground"
+            android:background="@drawable/bg_txt"
+            android:textColor="@color/black"
             tools:ignore="LabelFor" />
 
         <TextView
@@ -147,14 +124,16 @@
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             tools:ignore="HardcodedText"
-            android:textColor="?attr/colorOnBackground" />
+            android:textColor="@color/black" />
         <EditText
             android:id="@+id/detailRateBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_10"
+            android:background="@drawable/bg_txt"
             android:autofillHints="name"
             android:inputType="numberDecimal"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="LabelFor" />
 
         <TextView
@@ -166,14 +145,16 @@
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             tools:ignore="HardcodedText"
-            android:textColor="?attr/colorOnBackground" />
+            android:textColor="@color/black" />
         <EditText
             android:id="@+id/detailLoanPeriodBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_10"
+            android:background="@drawable/bg_txt"
             android:autofillHints="name"
             android:inputType="number"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="LabelFor" />
 
         <TextView
@@ -185,31 +166,32 @@
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             tools:ignore="HardcodedText"
-            android:textColor="?attr/colorOnBackground" />
+            android:textColor="@color/black" />
         <EditText
             android:id="@+id/detailNoteBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_5"
+            android:background="@drawable/bg_txt"
             android:inputType="text"
             android:autofillHints="name"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="LabelFor" />
 
-        <LinearLayout
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sendButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/sendButton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:textSize="20sp"
-                android:background="@drawable/baseline_button_background"
-                android:text="Gửi Yêu Cầu"
-                android:layout_weight="1"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
+            android:padding="@dimen/dp_5"
+            android:layout_height="0dp"
+            app:backgroundTint="@color/blue"
+            android:layout_margin="5dp"
+            android:textSize="20sp"
+            android:text="Gửi Yêu Cầu"
+            android:layout_weight="1"
+            app:cornerRadius="16dp"
+            android:textColor="@color/white"/>
+
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

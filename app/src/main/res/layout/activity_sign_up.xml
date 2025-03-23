@@ -22,8 +22,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:padding="20dp"
-            android:background="@drawable/baseline_button_background">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -80,15 +79,21 @@
                 android:textColor="@color/black"
                 tools:ignore="HardcodedText" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="Đăng Ký"
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/signUpButton"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đăng Ký"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"
                 app:cornerRadius = "20dp"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                app:backgroundTint="@color/blue"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 

@@ -6,17 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginBottom="60dp"
-    tools:context=".fragments.MySelfFragment">
+    android:layout_marginBottom="60dp">
     <TextView
         android:id="@+id/myselfTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_10"
         android:layout_marginBottom="5dp"
+        android:textColor="@color/white"
         android:background="@color/blue"
-        android:text="Tài Khoản"
-        android:gravity="center"
-        android:textColor="?attr/color"
+        android:text="Cài đặt"
         android:fontFamily="@font/poppins_semibold"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -34,45 +34,6 @@
             android:orientation="vertical">
 
 
-            <RelativeLayout
-                android:id="@+id/UserRelative"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="8dp">
-
-                <ImageView
-                    android:id="@+id/UserImageView"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/image_user" />
-
-                <TextView
-                    android:id="@+id/UserTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_toEndOf="@id/UserImageView"
-                    android:text="Trang Cá Nhân"
-                    android:textColor="?attr/colorOnBackground"
-                    android:textSize="16sp"
-                    tools:ignore="HardcodedText" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="8dp"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/ic_more" />
-            </RelativeLayout>
 
 
             <androidx.cardview.widget.CardView
@@ -86,8 +47,9 @@
                     android:id="@+id/row1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="@dimen/dp_10"
                     android:baselineAligned="false"
-                    android:weightSum="2"
                     android:orientation="vertical">
 
                     <TextView
@@ -96,9 +58,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="10dp"
-                        android:text="Ưu Đãi"
-                        android:textColor="?attr/colorOnBackground"
-                        android:textSize="18sp"
+                        android:text="Cài đặt"
+                        android:textColor="@color/blue"
+                        android:textSize="24sp"
                         android:textStyle="bold"/>
 
                     <com.example.eduinvest.view.ButtonTextView
@@ -108,17 +70,13 @@
                         android:layout_weight="1"
                         android:padding="8dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Qùa của tôi"
-                        android:textColor="?attr/colorOnBackground"
+                        android:text="Ngôn ngữ thiết bị"
+                        android:textColor="@color/blue"
                         android:textSize="16sp"
-                        app:drawableEndCompat="@drawable/ic_more" />
+                        app:drawableEndCompat="@drawable/icon_right" />
 
                     <!-- Divider -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="5dp"
-                        android:background="?attr/colorOnBackground" />
+
 
                     <com.example.eduinvest.view.ButtonTextView
                         android:id="@+id/btn_internship"
@@ -127,10 +85,21 @@
                         android:layout_weight="1"
                         android:padding="8dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Xu tích lũy"
-                        android:textColor="?attr/colorOnBackground"
+                        android:text="Âm thanh thông báo"
+                        android:textColor="@color/blue"
                         android:textSize="16sp"
-                        app:drawableEndCompat="@drawable/ic_more" />
+                        app:drawableEndCompat="@drawable/icon_right" />
+
+                    <com.example.eduinvest.view.ButtonTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Quản lý thông báo"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        app:drawableEndCompat="@drawable/icon_right" />
 
 
                 </LinearLayout>
@@ -148,6 +117,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:paddingStart="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -156,28 +126,52 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="15dp"
-                        android:text="Hỗ Trợ Và Cài Đặt"
-                        android:textColor="?attr/colorOnBackground"
-                        android:textSize="18sp"
+                        android:text="Hỗ Trợ"
+                        android:textColor="@color/blue"
+                        android:textSize="24sp"
                         android:textStyle="bold"/>
+
+                    <!-- ButtonTextView cho mục Share -->
+                    <com.example.eduinvest.view.ButtonTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Câu hỏi thường gặp"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        app:drawableEndCompat="@drawable/icon_right" />
+
+                    <!-- Divider -->
+
 
                     <com.example.eduinvest.view.ButtonTextView
                         android:id="@+id/btn_rate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="@string/rate"
-                        android:textColor="?attr/colorOnBackground"
+                        android:text="Hướng dẫn sử dụng"
+                        android:textColor="@color/blue"
                         android:textSize="16sp"
                         android:fontFamily="@font/poppins_semibold"
-                        app:drawableEndCompat="@drawable/ic_more"/>
+                        app:drawableEndCompat="@drawable/icon_right"/>
 
 
-                    <TextView
+
+
+                    <!-- ButtonTextView cho mục Share -->
+                    <com.example.eduinvest.view.ButtonTextView
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="5dp"
-                        android:background="?attr/colorOnBackground" />
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Điều khoản"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        app:drawableEndCompat="@drawable/icon_right" />
+
+                    <!-- Divider -->
+
 
                     <!-- ButtonTextView cho mục Share -->
                     <com.example.eduinvest.view.ButtonTextView
@@ -186,17 +180,13 @@
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/share"
-                        android:textColor="?attr/colorOnBackground"
+                        android:text="Phản hồi nhà phát triển"
+                        android:textColor="@color/blue"
                         android:textSize="16sp"
-                        app:drawableEndCompat="@drawable/ic_more" />
+                        app:drawableEndCompat="@drawable/icon_right" />
 
                     <!-- Divider -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="5dp"
-                        android:background="?attr/colorOnBackground" />
+
 
                     <!-- ButtonTextView cho mục Contact -->
                     <com.example.eduinvest.view.ButtonTextView
@@ -205,17 +195,13 @@
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/contanct"
-                        android:textColor="?attr/colorOnBackground"
+                        android:text="Mời bạn bè"
+                        android:textColor="@color/blue"
                         android:textSize="16sp"
-                        app:drawableEndCompat="@drawable/ic_more" />
+                        app:drawableEndCompat="@drawable/icon_right" />
 
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="5dp"
-                        android:background="?attr/colorOnBackground" />
+
 
                     <com.example.eduinvest.view.ButtonTextView
                         android:id="@+id/btn_donate"
@@ -225,10 +211,38 @@
                         android:focusable="true"
                         android:padding="8dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/donate"
-                        android:textColor="?attr/colorOnBackground"
+                        android:text="Đánh giá"
+                        android:textColor="@color/blue"
                         android:textSize="16sp"
-                        app:drawableEndCompat="@drawable/ic_more" />
+                        app:drawableEndCompat="@drawable/icon_right" />
+
+
+
+                    <com.example.eduinvest.view.ButtonTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Theo dõi EduInvest trên TikTok"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        app:drawableEndCompat="@drawable/icon_right" />
+
+
+
+                    <com.example.eduinvest.view.ButtonTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Theo dõi EduInvest trên Facebook"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        app:drawableEndCompat="@drawable/icon_right" />
 
 
                 </LinearLayout>

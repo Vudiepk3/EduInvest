@@ -2,7 +2,10 @@
 <resources>
 
     <style name="RoundedImageView">
-        <item name="cornerSize">10dp</item>
+        <item name="cornerSize">@dimen/dp_15</item>
+    </style>
+    <style name="RoundedImageStyle">
+        <item name="cornerSize">10%</item> <!-- Bo tròn ảnh -->
     </style>
 
 </resources>

@@ -48,21 +48,19 @@
             android:id="@+id/detailInformationPersonBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
             android:layout_marginStart="5dp"
             android:gravity="start|center_vertical"
             android:inputType="textMultiLine"
             android:singleLine="false"
             android:scrollHorizontally="false"
-            android:textColor="?attr/colorOnBackground"
+            android:background="@drawable/bg_txt"
             android:autofillHints="username"
             android:text=""
             tools:ignore="TextViewEdits" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:background="?attr/colorOnBackground" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,21 +80,19 @@
             android:id="@+id/detailInformationLoanRequestBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
             android:layout_marginStart="5dp"
             android:gravity="start|center_vertical"
             android:inputType="textMultiLine"
             android:singleLine="false"
             android:scrollHorizontally="false"
-            android:text=""
+            android:background="@drawable/bg_txt"
             android:textColor="?attr/colorOnBackground"
             android:autofillHints="username"
             tools:ignore="TextViewEdits" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:background="?attr/colorOnBackground" />
+
 
         <TextView
             android:layout_width="match_parent"
@@ -116,23 +112,17 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
             android:id="@+id/detailStatusLoanRequestBank"
             android:autofillHints="username"
             android:inputType="text"
             android:layout_marginStart="5dp"
-            android:text=""
+            android:background="@drawable/bg_txt"
             android:gravity="start|center_vertical"
             android:textColor="?attr/colorOnBackground"
             tools:ignore="HardcodedText,TextViewEdits"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="15dp"
-            android:background="?attr/colorOnBackground" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

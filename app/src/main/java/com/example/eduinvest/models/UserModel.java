@@ -11,7 +11,8 @@ public class UserModel {
     private String image;
     private String password;
 
-    ;
+    private String socialLink;
+    private String cvLink;
 
 
     public UserModel() {
@@ -40,12 +41,23 @@ public class UserModel {
         this.password = password;
     }
 
+    public UserModel(String id, String emailId, String name, String image, String password, String socialLink, String cvLink) {
+        this.id = id;
+        this.emailId = emailId;
+        this.name = name;
+        this.image = image;
+        this.password = password;
+        this.socialLink = socialLink;
+        this.cvLink = cvLink;
+    }
+
     public UserModel(String id, String emailId, String name, String image, double allTimeScore, double weeklyScore, double monthlyScore, double lastGameScore) {
         this.id = id;
         this.emailId = emailId;
         this.name = name;
         this.image = image;
     }
+
 
     public String getId() {
         return id;
@@ -79,5 +91,28 @@ public class UserModel {
         this.image = image;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSocialLink() {
+        return socialLink;
+    }
+
+    public void setSocialLink(String socialLink) {
+        this.socialLink = socialLink;
+    }
+
+    public String getCvLink() {
+        return cvLink;
+    }
+
+    public void setCvLink(String cvLink) {
+        this.cvLink = cvLink;
+    }
 }
 

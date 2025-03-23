@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -52,14 +53,13 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
         }
 
         // Thiết lập dữ liệu cho các thành phần giao diện
-        holder.binding.titleBank.setText(loanRequestModel.getNamePerson() + " - " + loanRequestModel.getGender());
         holder.binding.nameBank.setText(loanRequestModel.getPhoneNumber() + " - " + loanRequestModel.getEmail());
-        holder.binding.browseBank.setText(loanRequestModel.getLoanPeriodBank());
-        holder.binding.rateBank.setText(loanRequestModel.getRateBank());
-        holder.binding.time.setText("Thời Gian Vay(Tháng)");
+        holder.binding.rateBank.setText("%"+loanRequestModel.getRateBank());
+        holder.binding.timeBank.setText("Thời Gian Vay(Tháng)");
 
         // Thiết lập trạng thái
         String status = loanRequestModel.getStatus();
+        holder.binding.statusBank.setVisibility(View.VISIBLE);
         holder.binding.statusBank.setText(status);
         if ("TU_CHOI".equals(status)) {
             holder.binding.statusBank.setText("Từ Chối");

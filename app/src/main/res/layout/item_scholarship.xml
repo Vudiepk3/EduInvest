@@ -1,0 +1,87 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="@dimen/dp_10"
+    android:layout_marginBottom="@dimen/dp_10"
+    android:background="@color/white"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Hình ảnh ngôi nhà -->
+        <ImageView
+            android:id="@+id/imageScholarship"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/loading" />
+
+        <!-- Nội dung bên dưới hình ảnh -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <!-- Tiêu đề -->
+            <TextView
+                android:id="@+id/titlesSholarship"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="House Insurance"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#101010" />
+
+<!--            &lt;!&ndash; Mô tả &ndash;&gt;-->
+<!--            <TextView-->
+<!--                android:id="@+id/descriptionInsurance"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Family plans cover two or more members."-->
+<!--                android:textSize="14sp"-->
+<!--                android:textColor="#707070"-->
+<!--                android:layout_marginTop="4dp" />-->
+
+            <!-- Phần thưởng + nút bấm -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Văn bản "100 Suất Học Bổng" -->
+                <TextView
+                    android:id="@+id/cashbackText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="100 Suất Học Bổng"
+                    android:textSize="14sp"
+                    android:textColor="#3478F6"
+                    android:textStyle="bold"/>
+
+                <!-- Nút "Create Plan" -->
+                <Button
+                    android:id="@+id/btnRegister"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3478F6"
+                    android:text="Đăng ký"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

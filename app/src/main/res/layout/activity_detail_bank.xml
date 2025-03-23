@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".loanactivities.DetailLoanActivity">
     <LinearLayout
@@ -28,7 +28,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:text="Thông Tin Gói Vay"
             android:gravity="center"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
 
         <TextView
@@ -38,30 +38,26 @@
             android:inputType="text"
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="5dp"
             android:text="Tên Ngân Hàng"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_txt"
             android:layout_marginStart="5dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
             android:id="@+id/detailNameBank"
             android:autofillHints="username"
             android:inputType="text"
-            android:text="Tên Ngân Hàng"
             android:gravity="start|center_vertical"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:background="?attr/colorOnBackground" />
-        
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,30 +65,27 @@
             android:inputType="text"
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="5dp"
             android:text="Tên Gói Vay"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
-
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
             android:id="@+id/detailTitleBank"
             android:autofillHints="username"
             android:inputType="text"
-            android:text="Tên Gói Vay"
             android:gravity="start|center_vertical"
-            android:textColor="?attr/colorOnBackground"
+            android:background="@drawable/bg_txt"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:background="?attr/colorOnBackground" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,11 +93,11 @@
             android:inputType="text"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="5dp"
             android:text="Lãi Xuất Cho Vay"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
 
 
@@ -115,16 +108,12 @@
             android:autofillHints="username"
             android:inputType="text"
             android:layout_marginStart="5dp"
-            android:text="Lãi Xuất Cho Vay"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
             android:gravity="start|center_vertical"
-
-            android:textColor="?attr/colorOnBackground"
+            android:background="@drawable/bg_txt"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:background="?attr/colorOnBackground" />
 
         <TextView
             android:layout_width="match_parent"
@@ -133,11 +122,11 @@
             android:inputType="text"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="5dp"
             android:text="Thời Gian Duyệt"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
         
         <TextView
@@ -147,17 +136,13 @@
             android:autofillHints="username"
             android:inputType="text"
             android:layout_marginStart="5dp"
-            android:text="Thời Gian Duyệt"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
             android:gravity="start|center_vertical"
-
-            android:textColor="?attr/colorOnBackground"
+            android:background="@drawable/bg_txt"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:background="?attr/colorOnBackground" />
 
         <TextView
             android:layout_width="match_parent"
@@ -166,11 +151,11 @@
             android:inputType="text"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="5dp"
             android:text="Thời Gian  Cho Vay"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
 
         <TextView
@@ -180,16 +165,12 @@
             android:autofillHints="username"
             android:inputType="text"
             android:layout_marginStart="5dp"
-            android:text="Thời Gian Cho Vay"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
             android:gravity="start|center_vertical"
-
-            android:textColor="?attr/colorOnBackground"
+            android:background="@drawable/bg_txt"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:background="?attr/colorOnBackground" />
 
         <TextView
             android:layout_width="match_parent"
@@ -198,11 +179,11 @@
             android:inputType="text"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="5dp"
             android:text="Hạn Mức Cho Vay"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
 
         <TextView
@@ -210,20 +191,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/detailLimitBank"
             android:autofillHints="username"
-            
+            android:background="@drawable/bg_txt"
             android:inputType="text"
             android:layout_marginStart="5dp"
-            android:text="Hạn Mức Cho Vay"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
             android:gravity="start|center_vertical"
-
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:background="?attr/colorOnBackground" />
 
         <TextView
             android:layout_width="match_parent"
@@ -232,31 +208,26 @@
             android:inputType="text"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="5dp"
             android:text="Loại Tiền Cho Vay"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detailMoneyBank"
             android:autofillHints="username"
-            
             android:inputType="text"
+            android:background="@drawable/bg_txt"
             android:layout_marginStart="5dp"
-            android:text="Loại Tiền"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
             android:gravity="start|center_vertical"
-
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:background="?attr/colorOnBackground" />
 
         <TextView
             android:layout_width="match_parent"
@@ -265,11 +236,11 @@
             android:inputType="text"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="5dp"
             android:text="Mô Tả"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
 
         <TextView
@@ -279,15 +250,12 @@
             android:autofillHints="username"
             android:inputType="text"
             android:layout_marginStart="5dp"
-            android:text="Mô Tả"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
+            android:background="@drawable/bg_txt"
             android:gravity="start|center_vertical"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="5dp"
-            android:background="?attr/colorOnBackground" />
 
         <TextView
             android:layout_width="match_parent"
@@ -296,11 +264,11 @@
             android:inputType="text"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="5dp"
             android:text="Điều Kiện Cho Vay"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits" />
         <TextView
             android:layout_width="match_parent"
@@ -310,38 +278,39 @@
             android:layout_marginBottom="20dp"
             android:inputType="text"
             android:layout_marginStart="5dp"
-            android:text="Điều Kiền Cho Vay"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
+            android:background="@drawable/bg_txt"
             android:gravity="start|center_vertical"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="@color/black"
             tools:ignore="HardcodedText,TextViewEdits"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="2"
             android:orientation="horizontal">
-            <Button
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/baseline_button_background"
                 android:text="Đăng Ký Hồ Sơ"
-                android:textColor="?attr/colorOnBackground"
                 android:layout_weight="1"
-                tools:ignore="ButtonStyle,HardcodedText">
-            </Button>
-            <Button
+                app:cornerRadius="12dp"
+                app:backgroundTint="@color/blue"
+                android:textColor="@color/white"/>
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:background="@drawable/baseline_rectangle"
                 android:text="Liên Hệ Giải Đáp"
-                android:textColor="?attr/colorOnBackground"
                 android:layout_weight="1"
-                tools:ignore="ButtonStyle,HardcodedText">
-            </Button>
-
+                app:cornerRadius="12dp"
+                app:backgroundTint="@color/blue"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

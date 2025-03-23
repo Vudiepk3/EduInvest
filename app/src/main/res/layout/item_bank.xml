@@ -1,164 +1,111 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="12dp"
     android:id="@+id/itemBank"
-    android:layout_marginStart="12dp"
-    android:layout_marginEnd="12dp"
-    android:layout_marginTop="10dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="8dp">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-<!--        <TextView-->
-<!--            android:id="@+id/typeBank"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textSize="20sp"-->
-<!--            android:textColor="?attr/colorOnBackground"-->
-<!--            android:gravity="center_horizontal"-->
-<!--            tools:ignore="HardcodedText" />-->
+    app:cardElevation="4dp">
 
-        <RelativeLayout
+    <!-- Sử dụng LinearLayout để chứa cả ConstraintLayout + TextView -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="8dp">
+
+        <!-- Nội dung chính -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:padding="12dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardImageBank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="10dp"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="4dp">
-                <ImageView
-                    android:id="@+id/imageBank"
-                    android:layout_width="85dp"
-                    android:layout_height="95dp"
-                    android:contentDescription="@string/todo"
-                    android:background="@drawable/image_eduinvest"
-                    android:scaleType="centerCrop"/>
+            <!-- App Icon với viền xanh -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageBank"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/image_eduinvest"
+                android:scaleType="centerCrop"
+                app:strokeWidth="1dp"
+                app:strokeColor="#3478F6"
+                app:shapeAppearanceOverlay="@style/RoundedImageStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-            </androidx.cardview.widget.CardView>
-            <TextView
-                android:id="@+id/titleBank"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Title Bank"
-                android:textStyle="bold"
-                android:textColor="?attr/colorOnBackground"
-                android:textSize="18sp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@+id/cardImageBank"
-                tools:ignore="HardcodedText" />
+            <!-- App Name -->
             <TextView
                 android:id="@+id/nameBank"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/blue"
-                android:textSize="12sp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@+id/cardImageBank"
-                android:layout_below="@id/titleBank"
-                tools:ignore="HardcodedText" />
+                android:text="Name Bank"
+                android:fontFamily="@font/font_inter"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#101010"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintStart_toEndOf="@id/imageBank"
+                app:layout_constraintTop_toTopOf="@id/imageBank"
+                app:layout_constraintEnd_toStartOf="@id/rateBank"/>
+
+            <!-- Next Payment Text -->
             <TextView
-                android:id="@+id/typeNews"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:background="?attr/colorOnBackground"
-                android:layout_toEndOf="@+id/cardImageBank"
-                android:layout_below="@id/nameBank"/>
-            <LinearLayout
-                android:id="@+id/linear1"
-                android:layout_width="match_parent"
+                android:id="@+id/nextPayment"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/cardImageBank"
-                android:layout_below="@id/typeNews"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                android:weightSum="6"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/rate"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:textColor="?attr/colorOnBackground"
-                    android:layout_weight="2"
-                    android:text="Lãi Suất"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:id="@+id/time"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:textColor="?attr/colorOnBackground"
-                    android:layout_weight="4"
-                    android:textSize="14sp"
-                    android:text="Thời Gian Duyệt"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linear2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/cardImageBank"
-                android:layout_below="@id/linear1"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:weightSum="6"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/rateBank"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="1%"
-                    android:textColor="@color/blue"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:id="@+id/browseBank"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:text="3-4 Tháng"
-                    android:textStyle="bold"
-                    android:textColor="@color/blue"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-            <TextView
-                android:id="@+id/statusBank"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/lightgreen"
+                android:text="Thời gian duyệt: "
                 android:textSize="14sp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@+id/cardImageBank"
-                android:layout_below="@id/linear2"/>
+                android:textColor="#A0A0A0"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/nameBank"
+                app:layout_constraintTop_toBottomOf="@id/nameBank"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-        </RelativeLayout>
+            <!-- Date in Blue -->
+            <TextView
+                android:id="@+id/timeBank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12/04"
+                android:textSize="14sp"
+                android:textColor="#3478F6"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/nextPayment"
+                app:layout_constraintBaseline_toBaselineOf="@id/nextPayment"/>
 
+            <!-- Price -->
+            <TextView
+                android:id="@+id/rateBank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$1.00"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#101010"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="8dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Status Text nằm dưới ConstraintLayout -->
+        <TextView
+            android:id="@+id/statusBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đang xử lý"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FF9800"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
-
-
 
 </androidx.cardview.widget.CardView>
