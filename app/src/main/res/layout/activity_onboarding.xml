@@ -29,26 +29,20 @@
             android:layout_centerVertical="true"
             app:ci_drawable="@drawable/bg_cicle_blue"/>
 
-        <LinearLayout
-            android:id="@+id/layout_next"
+        <Button
+            android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentEnd="true"
-            android:gravity="center_horizontal">
+            android:gravity="center"
+            android:maxLines="2"
+            android:backgroundTint="#3478F6"
+            android:text="Tiếp tục"
+            android:textColor="#FFFFFF">
 
-            <TextView
-                android:id="@+id/btn_next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/dp_10"
-                android:layout_marginEnd="@dimen/dp_10"
-                android:text="Tiếp tục"
-                android:textColor="@color/blue"
-                android:textStyle="bold"
-                android:textSize="@dimen/sp_20"/>
+        </Button>
 
-        </LinearLayout>
 
     </RelativeLayout>
 

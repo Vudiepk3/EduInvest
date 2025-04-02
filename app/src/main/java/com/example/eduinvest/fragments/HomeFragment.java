@@ -1,7 +1,6 @@
 package com.example.eduinvest.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,20 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.eduinvest.R;
 import com.example.eduinvest.activity.UserProfileActivity;
-import com.example.eduinvest.adapters.NewsAdapter;
 import com.example.eduinvest.adapters.ScholarshipAdapter;
 import com.example.eduinvest.databinding.FragmentHomeBinding;
 import com.example.eduinvest.loanactivities.ManageLoanActivities;
-import com.example.eduinvest.models.BannerModel;
 import com.example.eduinvest.models.NewsModel;
+import com.example.eduinvest.repository.BannerRepository;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,13 +37,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private FirebaseAuth auth;
-    private DatabaseReference databaseReference;
     private static final String TAG = "HomeFragment";
 
     private List<NewsModel> dataList;
@@ -95,78 +86,43 @@ public class HomeFragment extends Fragment {
     private void loadImageSlider() {
         if (!isAdded()) return;
 
-        ImageSlider imageSlider = binding.ImageSlide;
-        ArrayList<SlideModel> slideModels = new ArrayList<>();
-        List<String> linkWebsites = new ArrayList<>();
-        // Sử dụng ExecutorService để thực hiện tải dữ liệu trên background thread
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
-            databaseReference = FirebaseDatabase.getInstance().getReference("Banner");
-            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (!isAdded()) return;
+        BannerRepository bannerRepository = BannerRepository.getInstance();
 
-                    slideModels.clear();
-                    linkWebsites.clear();
+        // Nếu dữ liệu đã tải xong thì hiển thị ngay
+        if (bannerRepository.isDataLoaded()) {
+            updateSlider();
+        } else {
+            // Nếu chưa tải xong, chờ dữ liệu xong rồi cập nhật UI
+            bannerRepository.setOnDataChangedListener(this::updateSlider);
+        }
+    }
 
-                    RequestOptions requestOptions = new RequestOptions()
-                            .diskCacheStrategy(DiskCacheStrategy.ALL)
-                            .centerCrop()
-                            .placeholder(R.drawable.image_eduinvest)
-                            .error(R.drawable.image_eduinvest);
+    private void updateSlider() {
+        if (!isAdded()) return;
 
-                    for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
-                        BannerModel imageModel = itemSnapshot.getValue(BannerModel.class);
-                        if (imageModel != null && imageModel.getUrlImage() != null &&
-                                (imageModel.getNoteImage().equals("BANNER1") || imageModel.getNoteImage().equals("All"))) {
-                            // Preload ảnh vào cache
-                            Glide.with(requireContext())
-                                    .load(imageModel.getUrlImage())
-                                    .apply(requestOptions)
-                                    .preload();
+        BannerRepository bannerRepository = BannerRepository.getInstance();
+        List<SlideModel> slideModels = bannerRepository.getSlideModels();
+        List<String> linkWebsites = bannerRepository.getLinkWebsites();
 
-                            slideModels.add(new SlideModel(imageModel.getUrlImage(), ScaleTypes.FIT));
-                            linkWebsites.add(imageModel.getLinkWeb());
-                        }
-                    }
-
-                    // Cập nhật giao diện trên luồng chính
-                    requireActivity().runOnUiThread(() -> {
-                        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
-                        imageSlider.setItemClickListener(i -> {
-                            if (i >= 0 && i < linkWebsites.size()) {
-                                String linkWebsite = linkWebsites.get(i);
-                                if (linkWebsite != null && !linkWebsite.isEmpty() &&
-                                        !linkWebsite.equals("No Link Website")) {
-                                    openWebsite(linkWebsite);
-                                } else {
-                                    showToast("Không có đường dẫn web.");
-                                }
-                            }
-                        });
-                    });
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Log.e(TAG, "Failed to load banner images: " + error.getMessage());
+        requireActivity().runOnUiThread(() -> {
+            binding.ImageSlide.setImageList(slideModels, ScaleTypes.FIT);
+            binding.ImageSlide.setItemClickListener(position -> {
+                if (position >= 0 && position < linkWebsites.size()) {
+                    openWebsite(linkWebsites.get(position));
                 }
             });
         });
-        executorService.shutdown();
     }
-
-    // Mở đường dẫn website
     private void openWebsite(String url) {
-        if (!isAdded()) return;
         try {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            showToast("Không thể mở đường dẫn web.");
+        } catch (Exception e) {
+            showToast("Không thể mở liên kết.");
         }
     }
+
 
     private void initializeActivities() {
         auth = FirebaseAuth.getInstance();
@@ -208,8 +164,7 @@ public class HomeFragment extends Fragment {
         }
     }
     private void loadData() {
-        binding.recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 1));
-
+        binding.recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         dataList = new ArrayList<>();
         adapter = new ScholarshipAdapter(dataList, requireContext());
         binding.recyclerView.setAdapter(adapter);
@@ -243,5 +198,10 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 }

@@ -50,6 +50,10 @@ public class SignInActivity extends AppCompatActivity {
     private void setupListeners() {
         binding.btnSignIn.setOnClickListener(v -> signInUser());
         binding.cardSignInWithGoogle.setOnClickListener(v -> signInWithGoogle());
+        binding.txtRegister.setOnClickListener(view -> {
+            Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+            startActivity(intent);
+        });
 
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK) {

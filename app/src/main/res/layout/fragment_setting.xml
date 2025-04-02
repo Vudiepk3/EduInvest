@@ -34,79 +34,6 @@
             android:orientation="vertical">
 
 
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/rewardCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                app:cardCornerRadius="15dp">
-
-                <LinearLayout
-                    android:id="@+id/row1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="@dimen/dp_10"
-                    android:baselineAligned="false"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/utilitiesTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
-                        android:text="Cài đặt"
-                        android:textColor="@color/blue"
-                        android:textSize="24sp"
-                        android:textStyle="bold"/>
-
-                    <com.example.eduinvest.view.ButtonTextView
-                        android:id="@+id/btn_scholarship"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="8dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Ngôn ngữ thiết bị"
-                        android:textColor="@color/blue"
-                        android:textSize="16sp"
-                        app:drawableEndCompat="@drawable/icon_right" />
-
-                    <!-- Divider -->
-
-
-                    <com.example.eduinvest.view.ButtonTextView
-                        android:id="@+id/btn_internship"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="8dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Âm thanh thông báo"
-                        android:textColor="@color/blue"
-                        android:textSize="16sp"
-                        app:drawableEndCompat="@drawable/icon_right" />
-
-                    <com.example.eduinvest.view.ButtonTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="8dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Quản lý thông báo"
-                        android:textColor="@color/blue"
-                        android:textSize="16sp"
-                        app:drawableEndCompat="@drawable/icon_right" />
-
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/supportCard"
                 android:layout_width="match_parent"
@@ -249,7 +176,75 @@
 
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/rewardCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="15dp">
 
+                <LinearLayout
+                    android:id="@+id/row1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="@dimen/dp_10"
+                    android:baselineAligned="false"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/utilitiesTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Cài đặt"
+                        android:textColor="@color/blue"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <com.example.eduinvest.view.ButtonTextView
+                        android:id="@+id/btn_scholarship"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Ngôn ngữ thiết bị"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        app:drawableEndCompat="@drawable/icon_right" />
+
+                    <!-- Divider -->
+
+
+                    <com.example.eduinvest.view.ButtonTextView
+                        android:id="@+id/btn_internship"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Âm thanh thông báo"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        app:drawableEndCompat="@drawable/icon_right" />
+
+                    <com.example.eduinvest.view.ButtonTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Quản lý thông báo"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        app:drawableEndCompat="@drawable/icon_right" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
             <!-- Other RelativeLayouts for contact, donate, etc. go here -->
 

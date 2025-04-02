@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="@dimen/dp_10"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
     android:layout_marginBottom="@dimen/dp_10"
     android:background="@color/white"
     app:cardCornerRadius="12dp"
@@ -27,17 +27,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:orientation="vertical">
 
             <!-- Tiêu đề -->
             <TextView
                 android:id="@+id/titlesSholarship"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:maxLines="2"
                 android:text="House Insurance"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="#101010" />
 
 <!--            &lt;!&ndash; Mô tả &ndash;&gt;-->
@@ -63,8 +64,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:paddingStart="5dp"
                     android:text="100 Suất Học Bổng"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textColor="#3478F6"
                     android:textStyle="bold"/>
 
@@ -74,10 +76,11 @@
                     style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxLines="2"
                     android:backgroundTint="#3478F6"
                     android:text="Đăng ký"
                     android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
 
 
