@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".SupportActivities.FAQFragment">
+    android:padding="16dp">
 
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/baseline_rectangle"
     tools:context=".loanactivities.UploadLoanRequestActivity">
 
     <LinearLayout
@@ -46,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
             android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="10dp"
             android:autofillHints="username"
             android:inputType="datetime"
             android:hint="Ngày Sinh"
@@ -58,9 +58,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="10dp"
             android:autofillHints="username"
-            android:inputType="text"
-            android:hint="Giới Tính"
+            android:inputType="datetime"
+            android:hint="Giới tính"
             android:background="@drawable/bg_txt"
             android:textColor="@color/black"
             tools:ignore="LabelFor" />
@@ -75,6 +77,7 @@
             android:layout_marginTop="@dimen/dp_5"
             android:hint="Số điện thoại"
             android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="10dp"
             android:background="@drawable/bg_txt"
             android:textColor="@color/black"
             tools:ignore="LabelFor" />
@@ -85,6 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
             android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="10dp"
             android:hint="Email"
             android:autofillHints="username"
             android:inputType="text"
@@ -171,27 +175,32 @@
             android:id="@+id/detailNoteBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="5dp"
             android:paddingStart="@dimen/dp_10"
             android:paddingEnd="@dimen/dp_5"
             android:background="@drawable/bg_txt"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:autofillHints="name"
             android:textColor="@color/black"
+            android:lines="4"
+            android:minLines="3"
+            android:maxLines="6"
+            android:scrollHorizontally="false"
+            android:gravity="top|start"
+            android:imeOptions="actionDone"
             tools:ignore="LabelFor" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sendButton"
             android:layout_width="match_parent"
-            android:padding="@dimen/dp_5"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
             app:backgroundTint="@color/blue"
-            android:layout_margin="5dp"
             android:textSize="20sp"
             android:text="Gửi Yêu Cầu"
-            android:layout_weight="1"
             app:cornerRadius="16dp"
             android:textColor="@color/white"/>
 
-
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</ScrollView>

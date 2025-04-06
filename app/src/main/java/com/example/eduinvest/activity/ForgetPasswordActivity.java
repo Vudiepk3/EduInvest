@@ -72,6 +72,6 @@ public class ForgetPasswordActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         Base.hideProgressBar(this);
-        binding = null; // Giải phóng ViewBinding để tránh memory leak
+        binding = null;
     }
 }

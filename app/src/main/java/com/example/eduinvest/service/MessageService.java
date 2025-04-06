@@ -42,7 +42,7 @@ public class MessageService extends FirebaseMessagingService {
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                     .setStyle(new NotificationCompat.BigTextStyle())
                     .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setSmallIcon(R.drawable.image_eduinvest)
                     .setAutoCancel(true);
 
             notificationManager.notify(0, notificationBuilder.build());

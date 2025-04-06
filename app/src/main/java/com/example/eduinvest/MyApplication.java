@@ -11,8 +11,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-
-        // Load banner ngay khi ứng dụng khởi chạy
         BannerRepository.getInstance().loadData();
         NewsRepository.getInstance();
     }

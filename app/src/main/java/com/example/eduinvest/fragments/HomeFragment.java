@@ -119,7 +119,7 @@ public class HomeFragment extends Fragment {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         } catch (Exception e) {
-            showToast("Không thể mở liên kết.");
+//            showToast("Không thể mở liên kết.");
         }
     }
 
@@ -141,6 +141,8 @@ public class HomeFragment extends Fragment {
         setupClickListener(binding.loanCard,
                 () -> startActivity(new Intent(getActivity(), ManageLoanActivities.class)));
         setupClickListener(binding.payCard, this::showFeatureNotAvailableToast);
+        setupClickListener(binding.voucherCard, this::showFeatureNotAvailableToast);
+        setupClickListener(binding.personalGrowthCard, this::showFeatureNotAvailableToast);
 
     }
 

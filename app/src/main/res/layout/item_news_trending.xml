@@ -26,11 +26,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:textSize="@dimen/sp_18"
+        android:textSize="@dimen/sp_16"
         android:textStyle="bold"
         android:maxLines="2"
         android:ellipsize="end"
-        android:fontFamily="@font/font_inter"
         android:textColor="@color/black"
         android:text="@string/title_news" />
 
@@ -40,12 +39,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="horizontal"
-        android:paddingTop="4dp">
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="@dimen/dp_24"
-            android:layout_height="@dimen/dp_24"
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
             android:src="@drawable/icon_baseline_access_time_24"
             android:contentDescription="@string/time_icon"
             app:tint="@color/black"/>
@@ -55,16 +53,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/time"
-            android:fontFamily="@font/font_inter"
             android:textStyle="normal"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:layout_marginStart="4dp"
             android:textColor="@color/red"
             android:layout_weight="1"/> <!-- Đẩy ảnh sang cuối -->
 
         <ImageView
-            android:layout_width="@dimen/dp_24"
-            android:layout_height="@dimen/dp_24"
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
             android:layout_marginEnd="@dimen/dp_10"
             android:src="@drawable/ic_share" />
     </LinearLayout>
