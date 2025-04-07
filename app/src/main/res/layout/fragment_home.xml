@@ -116,13 +116,25 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:paddingTop="@dimen/dp_5"
-                android:text="Tiện ích"
+                android:text="Dịch vụ phổ biến"
+                android:textSize="18sp"
+                android:fontFamily="@font/font_alfa_slab_one"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText,RtlSymmetry">
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingStart="10dp"
+                android:paddingTop="@dimen/dp_5"
                 android:textSize="18sp"
                 android:fontFamily="@font/font_alfa_slab_one"
                 android:textColor="@color/black"
                 tools:ignore="HardcodedText,RtlSymmetry">
 
-            </TextView>
+        </TextView>
+
         </LinearLayout>
 
         <LinearLayout
@@ -131,180 +143,19 @@
             android:layout_height="wrap_content"
             android:baselineAligned="false"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView">
 
-            <!-- Maths Card -->
-            <LinearLayout
-                android:id="@+id/loanCard"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/loanImage"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="#F5F5F5">
-
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/todo"
-                        android:backgroundTint="@color/blue"
-                        android:src="@drawable/image_pay" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/mathsText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="normal"
-                    android:text="Gói Vay"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/voucherCard"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/voucherImageCard"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="#F5F5F5">
-
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/todo"
-                        android:backgroundTint="@color/blue"
-                        android:src="@drawable/image_voucher" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/voucherText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:text="Ưu đãi"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="normal"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/personalGrowthCard"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/personalGrowthImageCard"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="#F5F5F5">
-
-                    <ImageView
-                        android:id="@+id/personalGrowthImage"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/todo"
-                        android:backgroundTint="@color/blue"
-                        android:src="@drawable/image_personal_growth" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/personalGrowthName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:text="Việc làm"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="normal"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/payCard"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/payImageCard"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="#F5F5F5">
-
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/todo"
-                        android:backgroundTint="@color/blue"
-                        android:src="@drawable/image_course" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/literatureText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:text="Khóa Học"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="normal"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-
-
+            <include
+                android:id="@+id/layout_function"
+                layout="@layout/layout_function"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/row2">
@@ -324,9 +175,40 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/dp_40"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:scrollbars="vertical"
                 android:clipToPadding="false"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/textView1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:text="Dịch vụ đối tác"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/font_alfa_slab_one"
+                tools:ignore="HardcodedText,RtlSymmetry">
+
+            </TextView>
+
+            <include
+                android:id="@+id/layout_partner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                layout="@layout/layout_partner"/>
 
         </LinearLayout>
 

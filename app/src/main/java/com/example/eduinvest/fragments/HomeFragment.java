@@ -138,11 +138,14 @@ public class HomeFragment extends Fragment {
 
         // Các sự kiện click khác
         setupClickListener(binding.iconNotifition, this::showFeatureNotAvailableToast);
-        setupClickListener(binding.loanCard,
+        setupClickListener(binding.layoutFunction.loanCard,
                 () -> startActivity(new Intent(getActivity(), ManageLoanActivities.class)));
-        setupClickListener(binding.payCard, this::showFeatureNotAvailableToast);
-        setupClickListener(binding.voucherCard, this::showFeatureNotAvailableToast);
-        setupClickListener(binding.personalGrowthCard, this::showFeatureNotAvailableToast);
+        setupClickListener(binding.layoutFunction.payCard, this::showFeatureNotAvailableToast);
+        setupClickListener(binding.layoutFunction.voucherCard, this::showFeatureNotAvailableToast);
+        setupClickListener(binding.layoutFunction.personalGrowthCard, this::showFeatureNotAvailableToast);
+        setupClickListener(binding.layoutFunction.saveCard, this::showFeatureNotAvailableToast);
+        setupClickListener(binding.layoutFunction.mentorCard, this::showFeatureNotAvailableToast);
+        setupClickListener(binding.layoutFunction.financialGoalsCard, this::showFeatureNotAvailableToast);
 
     }
 
@@ -181,7 +184,7 @@ public class HomeFragment extends Fragment {
                 dataList.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     NewsModel news = itemSnapshot.getValue(NewsModel.class);
-                    if (news != null && news.getTypeNews().equals("KHÁC")) {
+                    if (news != null && news.getTypeNews().equals("SCHOLARSHIP")) {
                         news.setKey(itemSnapshot.getKey());
                         dataList.add(news);
                     }

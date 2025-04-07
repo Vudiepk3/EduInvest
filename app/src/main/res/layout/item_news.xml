@@ -17,7 +17,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageNews"
             android:layout_width="160dp"
-            android:layout_height="80dp"
+            android:layout_height="90dp"
             android:contentDescription="@string/todo"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
