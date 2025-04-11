@@ -70,7 +70,7 @@ public class FireBaseClass {
             }).addOnFailureListener(e -> {
                 Log.e("ImageLoad", "Failed to load image", e);
                 // Set a default image if loading fails
-                view.setImageResource(R.drawable.image_user); // replace with your default image
+                view.setImageResource(R.drawable.img_user); // replace with your default image
             });
         }
     }

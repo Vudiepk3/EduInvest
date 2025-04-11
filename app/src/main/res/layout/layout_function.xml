@@ -52,7 +52,7 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/todo"
                         android:backgroundTint="@color/blue"
-                        android:src="@drawable/image_pay" />
+                        android:src="@drawable/img_pay" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -132,7 +132,7 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/todo"
                         android:backgroundTint="@color/blue"
-                        android:src="@drawable/image_voucher" />
+                        android:src="@drawable/img_voucher" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -174,7 +174,7 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/todo"
                         android:backgroundTint="@color/blue"
-                        android:src="@drawable/image_personal_growth" />
+                        android:src="@drawable/img_personal_growth" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -215,7 +215,7 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/todo"
                         android:backgroundTint="@color/blue"
-                        android:src="@drawable/image_course" />
+                        android:src="@drawable/img_course" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView

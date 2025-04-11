@@ -26,7 +26,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:contentDescription="@string/todo"
-        android:src="@drawable/image_user"
+        android:src="@drawable/img_user"
         android:scaleType="centerCrop" />
 
     <TextView
@@ -80,7 +80,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:contentDescription="@string/todo"
-                    android:src="@drawable/image_logout" />
+                    android:src="@drawable/img_logout" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -110,7 +110,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/image_edit_profile"
+                    android:src="@drawable/img_edit_profile"
                     tools:ignore="ContentDescription" />
 
                 <TextView

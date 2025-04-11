@@ -53,8 +53,8 @@ public class UserProfileActivity extends AppCompatActivity {
                 // Hiển thị ảnh đại diện
                 Glide.with(this)
                         .load(userInfo.getImage())
-                        .placeholder(R.drawable.image_user)
-                        .error(R.drawable.image_user)
+                        .placeholder(R.drawable.img_user)
+                        .error(R.drawable.img_user)
                         .into(binding.userProfilePic);
             } else {
 //                binding.tvUserName.setText("N/A");

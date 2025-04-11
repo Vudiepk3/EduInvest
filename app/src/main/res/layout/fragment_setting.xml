@@ -7,25 +7,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginBottom="60dp">
+
     <TextView
         android:id="@+id/myselfTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/dp_10"
-        android:paddingEnd="@dimen/dp_10"
-        android:layout_marginBottom="5dp"
+        android:paddingTop="10dp"
+        android:gravity="center"
         android:textColor="@color/white"
-        android:background="@color/blue"
+        android:background="@drawable/bg_gradient_blue"
         android:text="Cài đặt"
         android:fontFamily="@font/poppins_semibold"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:padding="5dp"
+
         tools:ignore="HardcodedText" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="NestedScrolling,UselessParent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,13 +34,25 @@
             android:layout_marginEnd="10dp"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/settingTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:text="Hỗ Trợ"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/supportCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -47,19 +60,10 @@
                     android:paddingStart="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/settingTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="15dp"
-                        android:text="Hỗ Trợ"
-                        android:textColor="@color/blue"
-                        android:textSize="24sp"
-                        android:textStyle="bold"/>
 
                     <!-- ButtonTextView cho mục Share -->
                     <com.example.eduinvest.view.ButtonTextView
+                        android:id="@+id/btnAsk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
@@ -67,13 +71,14 @@
                         android:text="Câu hỏi thường gặp"
                         android:textColor="@color/blue"
                         android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_frequently_asked_questions"
                         app:drawableEndCompat="@drawable/icon_right" />
 
                     <!-- Divider -->
 
 
                     <com.example.eduinvest.view.ButtonTextView
-                        android:id="@+id/btn_rate"
+                        android:id="@+id/btnInstructions"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
@@ -81,6 +86,7 @@
                         android:textColor="@color/blue"
                         android:textSize="16sp"
                         android:fontFamily="@font/poppins_semibold"
+                        app:drawableStartCompat="@drawable/ic_instructions"
                         app:drawableEndCompat="@drawable/icon_right"/>
 
 
@@ -88,21 +94,19 @@
 
                     <!-- ButtonTextView cho mục Share -->
                     <com.example.eduinvest.view.ButtonTextView
+                        android:id="@+id/btnTerms"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Điều khoản"
+                        android:text="Điều khoản sử dụng"
                         android:textColor="@color/blue"
                         android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_terms"
                         app:drawableEndCompat="@drawable/icon_right" />
 
-                    <!-- Divider -->
-
-
-                    <!-- ButtonTextView cho mục Share -->
                     <com.example.eduinvest.view.ButtonTextView
-                        android:id="@+id/btn_share"
+                        android:id="@+id/btnFeedback"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
@@ -110,14 +114,11 @@
                         android:text="Phản hồi nhà phát triển"
                         android:textColor="@color/blue"
                         android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_feedback"
                         app:drawableEndCompat="@drawable/icon_right" />
 
-                    <!-- Divider -->
-
-
-                    <!-- ButtonTextView cho mục Contact -->
                     <com.example.eduinvest.view.ButtonTextView
-                        android:id="@+id/btn_contact"
+                        android:id="@+id/btnInvite"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
@@ -125,13 +126,12 @@
                         android:text="Mời bạn bè"
                         android:textColor="@color/blue"
                         android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_invite"
                         app:drawableEndCompat="@drawable/icon_right" />
 
 
-
-
                     <com.example.eduinvest.view.ButtonTextView
-                        android:id="@+id/btn_donate"
+                        android:id="@+id/btnEvaluate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:clickable="true"
@@ -141,11 +141,13 @@
                         android:text="Đánh giá"
                         android:textColor="@color/blue"
                         android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_evaluate"
                         app:drawableEndCompat="@drawable/icon_right" />
 
 
 
                     <com.example.eduinvest.view.ButtonTextView
+                        android:id="@+id/btnTiktok"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:clickable="true"
@@ -155,11 +157,13 @@
                         android:text="Theo dõi EduInvest trên TikTok"
                         android:textColor="@color/blue"
                         android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_tiktok"
                         app:drawableEndCompat="@drawable/icon_right" />
 
 
 
                     <com.example.eduinvest.view.ButtonTextView
+                        android:id="@+id/btnFacebook"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:clickable="true"
@@ -169,6 +173,7 @@
                         android:text="Theo dõi EduInvest trên Facebook"
                         android:textColor="@color/blue"
                         android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_facebook"
                         app:drawableEndCompat="@drawable/icon_right" />
 
 
@@ -176,12 +181,24 @@
 
             </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/utilitiesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Cài đặt"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/rewardCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                app:cardCornerRadius="15dp">
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp">
 
                 <LinearLayout
                     android:id="@+id/row1"
@@ -192,19 +209,9 @@
                     android:baselineAligned="false"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/utilitiesTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
-                        android:text="Cài đặt"
-                        android:textColor="@color/blue"
-                        android:textSize="24sp"
-                        android:textStyle="bold"/>
 
                     <com.example.eduinvest.view.ButtonTextView
-                        android:id="@+id/btn_scholarship"
+                        android:id="@+id/btnLanguage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -213,13 +220,14 @@
                         android:text="Ngôn ngữ thiết bị"
                         android:textColor="@color/blue"
                         android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_language"
                         app:drawableEndCompat="@drawable/icon_right" />
 
                     <!-- Divider -->
 
 
                     <com.example.eduinvest.view.ButtonTextView
-                        android:id="@+id/btn_internship"
+                        android:id="@+id/btnSound"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -228,9 +236,11 @@
                         android:text="Âm thanh thông báo"
                         android:textColor="@color/blue"
                         android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_sound"
                         app:drawableEndCompat="@drawable/icon_right" />
 
                     <com.example.eduinvest.view.ButtonTextView
+                        android:id="@+id/btnNotification"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -239,6 +249,7 @@
                         android:text="Quản lý thông báo"
                         android:textColor="@color/blue"
                         android:textSize="16sp"
+                        app:drawableStartCompat="@drawable/ic_notification_blue"
                         app:drawableEndCompat="@drawable/icon_right" />
 
 
@@ -246,7 +257,7 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Other RelativeLayouts for contact, donate, etc. go here -->
+
 
         </LinearLayout>
     </ScrollView>

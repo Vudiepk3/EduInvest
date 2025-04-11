@@ -15,7 +15,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:background="@drawable/baseline_rectangle"
-        android:src="@drawable/image_user"
+        android:src="@drawable/img_user"
         android:contentDescription="@string/todo"
         android:scaleType="centerCrop" />
 

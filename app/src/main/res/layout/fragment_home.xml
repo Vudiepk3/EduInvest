@@ -33,16 +33,16 @@
                 app:strokeWidth="0.25dp"
                 app:strokeColor="@color/black">
 
-            <ImageView
-                android:id="@+id/iconImage"
-                android:layout_width="@dimen/dp_47"
-                android:layout_height="@dimen/dp_47"
-                android:contentDescription="@string/todo"
-                android:src="@drawable/image_eduinvest" />
+                <ImageView
+                    android:id="@+id/iconImage"
+                    android:layout_width="@dimen/dp_47"
+                    android:layout_height="@dimen/dp_47"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/img_eduinvest" />
 
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
-        <TextView
+            <TextView
                 android:id="@+id/sologanTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

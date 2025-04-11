@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/image_intro"
+    android:background="@drawable/img_intro"
     android:gravity="center"
     tools:context=".activity.SignInActivity">
 
@@ -134,7 +134,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:contentDescription="@string/todo"
-                            android:src="@drawable/image_google_logo"
+                            android:src="@drawable/img_google_logo"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="5dp"
                             android:layout_marginStart="5dp"

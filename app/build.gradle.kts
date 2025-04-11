@@ -75,5 +75,8 @@ dependencies {
 
     implementation ("me.relex:circleindicator:2.1.6")
     implementation ("com.tbuonomo:dotsindicator:4.3")
+
+    //Rate
+    implementation ("com.github.DinoLibrary:Rate:1.0")
 }
 

@@ -27,7 +27,7 @@
                 android:id="@+id/imageBank"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:src="@drawable/image_eduinvest"
+                android:src="@drawable/img_eduinvest"
                 android:scaleType="centerCrop"
                 app:strokeWidth="1dp"
                 app:strokeColor="#3478F6"
