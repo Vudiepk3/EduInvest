@@ -36,6 +36,11 @@ firebaseMessaging = "24.1.1"
 firebaseInappmessagingDisplay = "21.0.2"
 firebaseCrashlytics = "19.4.2"
 googleFirebaseCrashlytics = "3.0.3"
+firebaseAnalytics = "22.4.0"
+firebaseVertexai = "16.3.0"
+firebasePerf = "21.0.5"
+googleFirebaseFirebasePerf = "1.4.2"
+firebaseConfig = "22.1.0"
 [libraries]
 com-google-firebase-firebase-auth = { module = "com.google.firebase:firebase-auth" }
 compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
@@ -74,8 +79,13 @@ play-services-auth-v2070 = { module = "com.google.android.gms:play-services-auth
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
 firebase-inappmessaging-display = { group = "com.google.firebase", name = "firebase-inappmessaging-display", version.ref = "firebaseInappmessagingDisplay" }
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
+firebase-vertexai = { group = "com.google.firebase", name = "firebase-vertexai", version.ref = "firebaseVertexai" }
+firebase-perf = { group = "com.google.firebase", name = "firebase-perf", version.ref = "firebasePerf" }
+firebase-config = { group = "com.google.firebase", name = "firebase-config", version.ref = "firebaseConfig" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googleFirebaseCrashlytics" }
+google-firebase-firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "googleFirebaseFirebasePerf" }
 

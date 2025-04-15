@@ -67,6 +67,10 @@ public class ButtonTextView extends androidx.appcompat.widget.AppCompatTextView 
             if (isUnderline) {
                 setPaintFlags(getPaintFlags() | android.graphics.Paint.UNDERLINE_TEXT_FLAG);
             }
+
+            // Set the padding between the drawable and text
+            int drawablePadding = typedArray.getDimensionPixelSize(R.styleable.ButtonTextView_button_drawablePadding, 10); // Default 10dp
+            setCompoundDrawablePadding(drawablePadding);
         }
     }
 
@@ -85,3 +89,5 @@ public class ButtonTextView extends androidx.appcompat.widget.AppCompatTextView 
         });
     }
 }
+
+

@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_onboarding"
+    android:background="@color/white"
     tools:context=".activity.OnboardingActivity">
 
 
@@ -29,7 +29,7 @@
             android:layout_centerVertical="true"
             app:ci_drawable="@drawable/bg_cicle_blue"/>
 
-        <Button
+        <TextView
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,9 +39,9 @@
             android:maxLines="2"
             android:backgroundTint="#3478F6"
             android:text="Tiếp tục"
-            android:textColor="#FFFFFF">
+            android:textColor="#3478F6">
 
-        </Button>
+        </TextView>
 
 
     </RelativeLayout>

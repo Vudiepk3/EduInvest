@@ -10,48 +10,49 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scaleType="fitXY"
-        android:src="@drawable/ing_onboarding2"/>
+        android:src="@drawable/img2"/>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="A Loan for every"
-        android:textSize="@dimen/sp_24"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="@dimen/dp_20"
-        android:layout_marginHorizontal="@dimen/dp_16"/>
+<!--    <TextView-->
+<!--        android:id="@+id/textView1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Tiếp sức"-->
+<!--        android:textSize="@dimen/sp_24"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:layout_marginTop="@dimen/dp_20"-->
+<!--        android:layout_marginHorizontal="@dimen/dp_16"/>-->
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="dream with"
-        android:textSize="@dimen/sp_24"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:layout_marginHorizontal="@dimen/dp_16"/>
+<!--    <TextView-->
+<!--        android:id="@+id/textView2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Học Tập"-->
+<!--        android:textSize="@dimen/sp_24"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:layout_marginHorizontal="@dimen/dp_16"/>-->
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="mobile banking"
-        android:textSize="@dimen/sp_24"
-        android:textStyle="bold"
-        android:textColor="#1E90FF"
-        android:layout_marginHorizontal="@dimen/dp_16"/>
+<!--    <TextView-->
+<!--        android:id="@+id/textView3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Xây dựng tương lai"-->
+<!--        android:textSize="@dimen/sp_24"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="#1E90FF"-->
+<!--        android:layout_marginHorizontal="@dimen/dp_16"/>-->
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="A loan facility that provides you financial assistance whenever you need."
-        android:textSize="@dimen/sp_16"
-        android:textColor="#B0B0B0"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginHorizontal="@dimen/dp_16"/>
+<!--    <TextView-->
+<!--        android:id="@+id/textView4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        android:text="Chúng tôi cam kết xây dựng các dự án mang lại tác động tích cực và bền vững, góp phần cải thiện chất lượng cuộc sống và nâng cao cơ hội giáo dục cho cộng đồng."-->
+<!--        android:textSize="@dimen/sp_16"-->
+<!--        android:textColor="#B0B0B0"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginTop="@dimen/dp_16"-->
+<!--        android:layout_marginHorizontal="@dimen/dp_16"/>-->
 
 </LinearLayout>

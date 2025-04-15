@@ -1,9 +1,7 @@
 package com.example.eduinvest.fragments;
 
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -15,9 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.dino.rate.RatingDialog;
-import com.example.eduinvest.R;
-import com.example.eduinvest.activity.UserProfileActivity;
+import com.example.eduinvest.activity.FAQActivity;
 import com.example.eduinvest.databinding.FragmentSettingBinding;
 import com.example.eduinvest.utils.Common;
 
@@ -48,7 +44,7 @@ public class SettingFragment extends Fragment {
 
     private void setupListeners() {
         //Câu hỏi thường gặp
-        binding.btnAsk.setOnClickListener(v -> showFeatureComingSoonToast());
+        binding.btnAsk.setOnClickListener(v -> goToAFQ());
         // Huong dan su dung
         binding.btnInstructions.setOnClickListener(v -> showFeatureComingSoonToast());
         //Điều khoản sử dụng
@@ -70,6 +66,11 @@ public class SettingFragment extends Fragment {
         //Quản lý thông báo
         binding.btnNotification.setOnClickListener(v -> showFeatureComingSoonToast());
 
+    }
+
+    private void goToAFQ(){
+        Intent intent = new Intent(getActivity(), FAQActivity.class);
+        startActivity(intent);
     }
 
     private void openPlayStoreForRating() {
@@ -107,19 +108,9 @@ public class SettingFragment extends Fragment {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"vulq2k3@gmail.com"});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Liên Hệ Hợp Tác");
         try {
-            startActivity(Intent.createChooser(emailIntent, "Send email via"));
+            startActivity(Intent.createChooser(emailIntent, ""));
         } catch (ActivityNotFoundException ex) {
-            Toast.makeText(getActivity(), "No email app found.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void openUserProfile() {
-        if (!isAdded()) return;
-        try {
-            Intent intent = new Intent(getActivity(), UserProfileActivity.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Log.e(TAG, "Error opening UserProfileActivity: " + e.getMessage(), e);
+            Toast.makeText(getActivity(), "Không tìm thấy ứng dụng để gửi email.", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -14,10 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.eduinvest.activity.UserProfileActivity;
 import com.example.eduinvest.adapters.ScholarshipAdapter;
 import com.example.eduinvest.databinding.FragmentHomeBinding;
 import com.example.eduinvest.loanactivities.ManageLoanActivities;
@@ -126,15 +124,6 @@ public class HomeFragment extends Fragment {
 
     private void initializeActivities() {
         auth = FirebaseAuth.getInstance();
-
-        try {
-            binding.iconImage.setOnClickListener(v -> {
-                Intent intent = new Intent(getActivity(), UserProfileActivity.class);
-                startActivity(intent);
-            });
-        } catch (Exception e) {
-            Log.e("Error", Objects.requireNonNull(e.getMessage()));
-        }
 
         // Các sự kiện click khác
         setupClickListener(binding.iconNotifition, this::showFeatureNotAvailableToast);

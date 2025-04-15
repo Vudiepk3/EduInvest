@@ -20,4 +20,26 @@
     <string name="time">Time</string>
     <string name="time_icon">Time Icon</string>
     <string name="title_news">Title News</string>
+    <string name="trang_c_nh_n">Trang cá nhân</string>
+    <string name="vi_t_nam">Việt Nam</string>
+    <string name="th_ng_tin_g_i_vay">Thông Tin Gói Vay</string>
+    <string name="t_n_ng_n_h_ng">Tên Ngân Hàng</string>
+    <string name="t_n_g_i_vay">Tên Gói Vay</string>
+    <string name="l_i_xu_t_cho_vay">Lãi Xuất Cho Vay</string>
+    <string name="th_i_gian_duy_t">Thời Gian Duyệt</string>
+    <string name="li_n_h_gi_i_p">Liên Hệ Giải Đáp</string>
+    <string name="ng_k_h_s">Đăng Ký Hồ Sơ</string>
+    <string name="h_n_m_c_cho_vay">Hạn Mức Cho Vay</string>
+    <string name="lo_i_ti_n_cho_vay">Loại Tiền Cho Vay</string>
+    <string name="th_i_gian_cho_vay">Thời Gian Cho Vay</string>
+    <string name="m_t">Mô Tả</string>
+    <string name="i_u_ki_n_cho_vay">Điều Kiện Cho Vay</string>
+    <string name="qu_n_l_m">Quản lý mã</string>
+    <string name="c_c_m_qr_c_a_b_n">Các mã QR của bạn</string>
+    <string name="eduinvest_priority">Eduinvest Priority</string>
+    <string name="th_nh_vi_n">Thành viên</string>
+    <string name="u_i">Ưu đãi</string>
+    <string name="q_a_c_a_t_i">Qùa của tôi</string>
+    <string name="_1">1</string>
+    <string name="xu_t_ch_l_y">Xu tích lũy</string>
 </resources>

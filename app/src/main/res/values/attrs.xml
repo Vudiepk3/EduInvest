@@ -38,6 +38,13 @@
         <enum name="circle" value="1" />
     </attr>
 
+    <attr name="button_paddingLeft" format="dimension" />
+    <attr name="button_paddingTop" format="dimension" />
+    <attr name="button_paddingRight" format="dimension" />
+    <attr name="button_paddingBottom" format="dimension" />
+    <attr name="button_drawablePadding" format="dimension" />
+
+
     <!-- Khai báo nhóm thuộc tính cho custom view ButtonTextView -->
     <declare-styleable name="ButtonTextView">
         <!-- Các thuộc tính bên dưới có thể được sử dụng trực tiếp trong XML khi định nghĩa ButtonTextView -->
@@ -51,6 +58,11 @@
         <attr name="button_borderWidth" />
         <attr name="button_clipToOutline" />
         <attr name="button_shape" />
+        <attr name="button_paddingLeft" />
+        <attr name="button_paddingTop" />
+        <attr name="button_paddingRight" />
+        <attr name="button_paddingBottom" />
+        <attr name="button_drawablePadding" />
         <!-- Thuộc tính boolean để thiết lập gạch chân cho văn bản -->
         <attr name="button_underline" format="boolean" />
     </declare-styleable>

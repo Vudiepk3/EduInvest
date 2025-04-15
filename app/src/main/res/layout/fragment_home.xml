@@ -4,8 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
+    android:overScrollMode="never"
+    android:fillViewport="true"
     tools:context=".fragments.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +55,7 @@
                 android:textColor="@color/blue"
                 android:textStyle="bold"
                 android:textSize="@dimen/sp_26"
-                tools:ignore="HardcodedText" />
+           />
 
             <ImageView
                 android:id="@+id/iconNotifition"
@@ -118,7 +120,7 @@
                 android:paddingTop="@dimen/dp_5"
                 android:text="Dịch vụ phổ biến"
                 android:textSize="18sp"
-                android:fontFamily="@font/font_alfa_slab_one"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 tools:ignore="HardcodedText,RtlSymmetry">
             </TextView>
@@ -166,7 +168,7 @@
                 android:text="Học bổng doanh nghiệp"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/font_alfa_slab_one"
+                android:textStyle="bold"
                 tools:ignore="HardcodedText,RtlSymmetry">
 
             </TextView>
@@ -198,7 +200,7 @@
                 android:text="Dịch vụ đối tác"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/font_alfa_slab_one"
+                android:textStyle="bold"
                 tools:ignore="HardcodedText,RtlSymmetry">
 
             </TextView>

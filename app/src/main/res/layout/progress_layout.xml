@@ -2,7 +2,6 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="20dp"
@@ -23,12 +22,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:text="Đang tải d liệu"
+            android:text="Đang tải dữ liệu"
             android:textSize="18sp"
             android:fontFamily="@font/poppins_semibold"
             android:textColor="@color/black"
             android:gravity="start|center_vertical"
-            tools:ignore="HardcodedText" />
+       />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

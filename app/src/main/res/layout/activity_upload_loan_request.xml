@@ -24,7 +24,7 @@
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText" />
+       />
 
         <EditText
             android:id="@+id/detailNamePerson"
@@ -105,7 +105,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
-            tools:ignore="HardcodedText"
+
             android:textColor="@color/black" />
 
         <EditText
@@ -127,7 +127,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
-            tools:ignore="HardcodedText"
+
             android:textColor="@color/black" />
         <EditText
             android:id="@+id/detailRateBank"
@@ -148,7 +148,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
-            tools:ignore="HardcodedText"
+
             android:textColor="@color/black" />
         <EditText
             android:id="@+id/detailLoanPeriodBank"
@@ -169,7 +169,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
-            tools:ignore="HardcodedText"
+
             android:textColor="@color/black" />
         <EditText
             android:id="@+id/detailNoteBank"

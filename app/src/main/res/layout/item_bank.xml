@@ -6,6 +6,7 @@
     android:layout_margin="5dp"
     app:cardCornerRadius="12dp"
     android:id="@+id/itemBank"
+    android:background="@color/white"
     app:cardElevation="4dp">
 
     <!-- Sử dụng LinearLayout để chứa cả ConstraintLayout + TextView -->

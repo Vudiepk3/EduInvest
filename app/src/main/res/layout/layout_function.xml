@@ -10,8 +10,6 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:fillViewport="true"
         android:scrollbars="none"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +20,7 @@
             android:id="@+id/row2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingStart="15dp"
+            android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:orientation="horizontal"
             android:baselineAligned="false">
@@ -33,15 +30,15 @@
                 android:id="@+id/loanCard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/loanImage"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    app:cardCornerRadius="15dp"
+                    app:cardCornerRadius="10dp"
                     android:layout_marginTop="5dp"
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="#F5F5F5">
@@ -52,7 +49,7 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/todo"
                         android:backgroundTint="@color/blue"
-                        android:src="@drawable/img_pay" />
+                        android:src="@drawable/ic_loan" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -65,7 +62,7 @@
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:text="Gói Vay"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
 
             <!-- Voucher Card -->
@@ -74,15 +71,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                 android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/saveImageCard"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
+                    app:cardCornerRadius="10dp"
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="#F5F5F5">
 
@@ -92,7 +89,7 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/todo"
                         android:backgroundTint="@color/blue"
-                        android:src="@drawable/img_money_management" />
+                        android:src="@drawable/ic_cash_flow" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -106,7 +103,7 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
             <!-- Voucher Card -->
             <LinearLayout
@@ -114,15 +111,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                 android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/voucherImageCard"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
+                    app:cardCornerRadius="10dp"
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="#F5F5F5">
 
@@ -132,7 +129,7 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/todo"
                         android:backgroundTint="@color/blue"
-                        android:src="@drawable/img_voucher" />
+                        android:src="@drawable/ic_voucher" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -146,7 +143,7 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
 
             <!-- Personal Growth Card -->
@@ -155,15 +152,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                 android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/personalGrowthImageCard"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
+                    app:cardCornerRadius="10dp"
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="#F5F5F5">
 
@@ -174,7 +171,7 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/todo"
                         android:backgroundTint="@color/blue"
-                        android:src="@drawable/img_personal_growth" />
+                        android:src="@drawable/ic_job" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -188,7 +185,7 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
 
             <!-- Pay Card -->
@@ -196,8 +193,8 @@
                 android:id="@+id/payCard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                 android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -205,7 +202,7 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
+                    app:cardCornerRadius="10dp"
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="#F5F5F5">
 
@@ -215,7 +212,7 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/todo"
                         android:backgroundTint="@color/blue"
-                        android:src="@drawable/img_course" />
+                        android:src="@drawable/ic_course" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -229,7 +226,7 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
 
             <LinearLayout
@@ -237,14 +234,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                 android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
+                    app:cardCornerRadius="10dp"
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="#F5F5F5">
 
@@ -254,7 +251,7 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/todo"
                         android:backgroundTint="@color/blue"
-                        android:src="@drawable/img_mentorship" />
+                        android:src="@drawable/ic_mentor" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -267,7 +264,7 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
 
             <LinearLayout
@@ -275,14 +272,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                 android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="5dp"
-                    app:cardCornerRadius="15dp"
+                    app:cardCornerRadius="10dp"
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="#F5F5F5">
 
@@ -292,7 +289,7 @@
                         android:layout_gravity="center"
                         android:contentDescription="@string/todo"
                         android:backgroundTint="@color/blue"
-                        android:src="@drawable/img_financial_goals" />
+                        android:src="@drawable/ic_goals" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -305,7 +302,7 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
 
 

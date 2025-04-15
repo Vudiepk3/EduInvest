@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".loanactivities.DetailLoanActivity">
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,10 +28,10 @@
             android:layout_marginStart="5dp"
             android:textStyle="bold"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Thông Tin Gói Vay"
+            android:text="@string/th_ng_tin_g_i_vay"
             android:gravity="center"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+            tools:ignore="TextViewEdits" />
 
         <TextView
             android:layout_width="match_parent"
@@ -39,11 +41,11 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Tên Ngân Hàng"
+            android:text="@string/t_n_ng_n_h_ng"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+            tools:ignore="TextViewEdits" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,7 +58,7 @@
             android:inputType="text"
             android:gravity="start|center_vertical"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+                   tools:ignore="TextViewEdits"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -66,11 +68,11 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Tên Gói Vay"
+            android:text="@string/t_n_g_i_vay"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+                   tools:ignore="TextViewEdits"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,7 +85,7 @@
             android:gravity="start|center_vertical"
             android:background="@drawable/bg_txt"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+                   tools:ignore="TextViewEdits"/>
 
 
         <TextView
@@ -94,11 +96,11 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Lãi Xuất Cho Vay"
+            android:text="@string/l_i_xu_t_cho_vay"
             android:textStyle="bold"
             android:gravity="start|center_vertical"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+                   tools:ignore="TextViewEdits"/>
 
 
         <TextView
@@ -113,7 +115,7 @@
             android:gravity="start|center_vertical"
             android:background="@drawable/bg_txt"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+                   tools:ignore="TextViewEdits"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -123,12 +125,12 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Thời Gian Duyệt"
+            android:text="@string/th_i_gian_duy_t"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
-        
+                   tools:ignore="TextViewEdits"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -152,11 +154,11 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Thời Gian  Cho Vay"
+            android:text="@string/th_i_gian_cho_vay"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+                   tools:ignore="TextViewEdits"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -180,11 +182,11 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Hạn Mức Cho Vay"
+            android:text="@string/h_n_m_c_cho_vay"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+                   tools:ignore="TextViewEdits"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -209,11 +211,11 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Loại Tiền Cho Vay"
+            android:text="@string/lo_i_ti_n_cho_vay"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+                   tools:ignore="TextViewEdits"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -237,11 +239,11 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Mô Tả"
+            android:text="@string/m_t"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+                   tools:ignore="TextViewEdits"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -265,11 +267,11 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Điều Kiện Cho Vay"
+            android:text="@string/i_u_ki_n_cho_vay"
             android:gravity="start|center_vertical"
             android:textStyle="bold"
             android:textColor="@color/black"
-            tools:ignore="HardcodedText,TextViewEdits" />
+                   tools:ignore="TextViewEdits"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -295,7 +297,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:text="Đăng Ký Hồ Sơ"
+                android:text="@string/ng_k_h_s"
                 android:layout_weight="1"
                 app:cornerRadius="12dp"
                 app:backgroundTint="@color/blue"
@@ -306,7 +308,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:text="Liên Hệ Giải Đáp"
+                android:text="@string/li_n_h_gi_i_p"
                 android:layout_weight="1"
                 app:cornerRadius="12dp"
                 app:backgroundTint="@color/blue"

@@ -12,25 +12,29 @@
     app:strokeColor="@color/blue"
     app:cardElevation="0dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/white">
 
         <!-- Hình ảnh ngôi nhà -->
         <ImageView
             android:id="@+id/imageScholarship"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
             android:src="@drawable/loading" />
 
         <!-- Nội dung bên dưới hình ảnh -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/imageScholarship">
 
             <!-- Tiêu đề -->
             <TextView
@@ -44,7 +48,6 @@
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:textColor="#101010" />
-
 
             <!-- Phần thưởng + nút bấm -->
             <LinearLayout
@@ -68,8 +71,6 @@
                     android:textStyle="bold"/>
 
                 <!-- Nút "Create Plan" -->
-
-
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnRegister"
                     style="?attr/materialButtonOutlinedStyle"
@@ -83,9 +84,6 @@
                     android:textColor="#FFFFFF"
                     android:textSize="10sp" />
             </LinearLayout>
-
-
         </LinearLayout>
-    </LinearLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

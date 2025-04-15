@@ -1,6 +1,8 @@
 package com.example.eduinvest.loanactivities;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eduinvest.databinding.ActivityUploadLoanRequestBinding;
+import com.example.eduinvest.databinding.DialogSucessBinding;
 import com.example.eduinvest.models.LoanRequestModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -167,12 +170,37 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
                 .setValue(dataModel)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(this, "Gửi Yêu Cầu Thành Công", Toast.LENGTH_SHORT).show();
-                        // Kết thúc Activity sau 2 giây
-                        new Handler(Looper.getMainLooper()).postDelayed(this::finish, 2000);
+                        // Tạo binding từ layout dialog
+                        DialogSucessBinding dialogBinding = DialogSucessBinding.inflate(getLayoutInflater());
+                        AlertDialog dialog = new AlertDialog.Builder(this)
+                                .setView(dialogBinding.getRoot())
+                                .setCancelable(false)
+                                .create();
+
+                        dialog.show();
+
+                        Handler handler = new Handler(Looper.getMainLooper());
+                        Runnable goToManageLoan = () -> {
+                            if (dialog.isShowing()) dialog.dismiss();
+                            Intent intent = new Intent(this, ManageLoanActivities.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        };
+                        handler.postDelayed(goToManageLoan, 2000);
+
+                        dialogBinding.txtBack.setOnClickListener(v -> {
+                            handler.removeCallbacks(goToManageLoan);
+                            dialog.dismiss();
+                            Intent intent = new Intent(this, ManageLoanActivities.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        });
+
                     } else {
                         Toast.makeText(this, "Thất Bại Trong Việc Gửi Yêu Cầu", Toast.LENGTH_SHORT).show();
                     }
+
+
                 })
                 .addOnFailureListener(e -> Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show());
     }

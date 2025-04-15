@@ -48,6 +48,7 @@ public class FAQActivity extends AppCompatActivity {
                 return true;
             }
         });
+        binding.btnBack.setOnClickListener(v -> finish());
     }
 
     private void initFAQList() {

@@ -21,9 +21,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingStart="15dp"
-            android:paddingBottom="5dp"
+            android:paddingVertical="5dp"
             android:orientation="horizontal"
             android:baselineAligned="false">
 
@@ -62,7 +60,7 @@
                     android:textSize="12sp"
                      android:textStyle="bold"
                     android:text="Xanh SM"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
 
             <!-- Voucher Card -->
@@ -100,7 +98,7 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                      android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
             <!-- Voucher Card -->
             <LinearLayout
@@ -137,7 +135,7 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                      android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
 
             <!-- Personal Growth Card -->
@@ -175,7 +173,7 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                      android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
 
             <!-- Pay Card -->
@@ -214,12 +212,13 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                      android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -250,7 +249,7 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                      android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+               />
             </LinearLayout>
 
 
