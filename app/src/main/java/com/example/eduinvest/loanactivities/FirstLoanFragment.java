@@ -116,7 +116,7 @@ public class FirstLoanFragment extends Fragment {
                     ArrayList<LoanModel> tempList = new ArrayList<>();
                     for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                         LoanModel dataClass = itemSnapshot.getValue(LoanModel.class);
-                        if (dataClass != null && "VAYUUDAI".equals(dataClass.getTypeBank())) {
+                        if (dataClass != null) {
                             dataClass.setKey(itemSnapshot.getKey());
                             tempList.add(dataClass);
                         }

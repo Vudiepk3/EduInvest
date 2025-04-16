@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.eduinvest.adapters.ViewOnboardingAdapter;
 import com.example.eduinvest.databinding.ActivityOnboardingBinding;
+import com.example.eduinvest.utils.Common;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -21,6 +22,12 @@ public class OnboardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOnboardingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        if (Common.getFirstOpen(this)) {
+            Common.logEvent(this, "first_open_app");
+            Common.setFirstOpen(this, false);
+        } else {
+            Common.logEvent(this, "open_app");
+        }
 
         setupViewPager();
         setupClick();

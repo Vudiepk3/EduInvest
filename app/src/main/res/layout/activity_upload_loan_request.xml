@@ -61,7 +61,7 @@
             android:paddingStart="@dimen/dp_10"
             android:paddingEnd="10dp"
             android:autofillHints="username"
-            android:inputType="datetime"
+            android:inputType="text"
             android:hint="Giới tính"
             android:background="@drawable/bg_txt"
             android:textColor="@color/black"

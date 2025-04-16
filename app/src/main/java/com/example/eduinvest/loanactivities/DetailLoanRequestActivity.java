@@ -86,12 +86,15 @@ public class DetailLoanRequestActivity extends AppCompatActivity {
                         switch (loanModel.getStatus()) {
                             case "DA_DUYET":
                                 binding.detailStatusLoanRequestBank.setText("Đã duyệt. Sẽ có nhân viên liên hệ bạn");
+                                binding.imgStatus.setBackgroundResource(R.drawable.ic_confirm);
                                 break;
                             case "DANG_DUYET":
                                 binding.detailStatusLoanRequestBank.setText("Chúng tôi đang xử lý yêu cầu.");
+                                binding.imgStatus.setBackgroundResource(R.drawable.ic_processing);
                                 break;
                             case "TU_CHOI":
                                 binding.detailStatusLoanRequestBank.setText("Yêu cầu của bạn không được chấp thuận. Bạn có thể tạo yêu cầu mới để tiếp tục.");
+                                binding.imgStatus.setBackgroundResource(R.drawable.ic_rejected);
                                 break;
                         }
                     }
@@ -121,5 +124,9 @@ public class DetailLoanRequestActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         binding = null;
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

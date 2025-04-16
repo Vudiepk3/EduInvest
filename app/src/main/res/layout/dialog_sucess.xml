@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:text="Đăng ký thành công"
             android:textColor="#456EFE"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />
 

@@ -14,6 +14,7 @@ import com.example.eduinvest.databinding.ItemBankBinding;
 
 import com.example.eduinvest.loanactivities.DetailLoanActivity;
 import com.example.eduinvest.models.LoanModel;
+import com.example.eduinvest.utils.Common;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,9 +46,11 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyBankViewHold
                 .into(holder.binding.imageBank);
         holder.binding.nameBank.setText(loanModel.getNameBank());
         holder.binding.rateBank.setText(loanModel.getRateBank());
+        holder.binding.timeBank.setText(loanModel.getLoanPeriodBank());
 
         // Thiết lập sự kiện click cho item
         holder.binding.itemBank.setOnClickListener(view -> {
+            Common.logEvent(context, "click_item_bank" + loanModel.getNameBank()+"_"+loanModel.getKey());
             Intent intent = new Intent(context, DetailLoanActivity.class);
             intent.putExtra("Key", loanModel.getKey());
             context.startActivity(intent);

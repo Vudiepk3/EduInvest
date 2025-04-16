@@ -15,6 +15,7 @@ import com.example.eduinvest.R;
 import com.example.eduinvest.databinding.ItemNewsBinding;
 import com.example.eduinvest.databinding.ItemNewsTrendingBinding;
 import com.example.eduinvest.models.NewsModel;
+import com.example.eduinvest.utils.Common;
 
 import java.util.List;
 
@@ -59,14 +60,20 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             trendingHolder.binding.titleNews.setText(news.getTitleNews());
             trendingHolder.binding.timeNews.setText(news.getTimeNews());
 
-            trendingHolder.binding.itemNewsTrending.setOnClickListener(v -> openLink(linkWeb));
+            trendingHolder.binding.itemNewsTrending.setOnClickListener(v -> {
+                        Common.logEvent(context, "click_item_news_trending" + news.getTitleNews());
+                        openLink(linkWeb);
+                    }
+            );
         } else if (holder instanceof NewsViewHolder) {
             NewsViewHolder newsHolder = (NewsViewHolder) holder;
             Glide.with(context).load(news.getImageNew()).into(newsHolder.binding.imageNews);
             newsHolder.binding.titleNews.setText(news.getTitleNews());
             newsHolder.binding.timeNews.setText(news.getTimeNews());
-
-            newsHolder.binding.itemNews.setOnClickListener(v -> openLink(linkWeb));
+            newsHolder.binding.itemNews.setOnClickListener(v -> {
+                Common.logEvent(context, "click_item_news" + news.getTitleNews());
+                openLink(linkWeb);
+            });
         }
     }
 

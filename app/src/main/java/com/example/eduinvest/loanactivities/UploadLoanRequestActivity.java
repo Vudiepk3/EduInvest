@@ -210,4 +210,8 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
         super.onDestroy();
         binding = null;
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

@@ -160,4 +160,8 @@ public class DetailLoanActivity extends AppCompatActivity {
         binding = null;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

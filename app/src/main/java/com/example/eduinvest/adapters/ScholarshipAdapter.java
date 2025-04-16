@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.eduinvest.databinding.ItemScholarshipBinding;
 import com.example.eduinvest.models.NewsModel;
+import com.example.eduinvest.utils.Common;
 
 import java.util.List;
 
@@ -40,7 +41,10 @@ public class ScholarshipAdapter extends RecyclerView.Adapter<ScholarshipAdapter.
         Glide.with(context).load(messageModel.getImageNew()).into(holder.binding.imageScholarship);
         holder.binding.titlesSholarship.setText(messageModel.getTitleNews());
         String linkWeb = messageModel.getLinkNews();
-        holder.binding.btnRegister.setOnClickListener(v -> openLink(v, linkWeb)); // Truyền context qua View
+        holder.binding.btnRegister.setOnClickListener(v -> {
+            Common.logEvent(context, "click_item_scholarship" + messageModel.getTitleNews());
+            openLink(v, linkWeb);
+        }); // Truyền context qua View
     }
 
     private void openLink(View view, String link) {

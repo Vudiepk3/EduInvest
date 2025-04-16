@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,11 +24,21 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:fontFamily="@font/font_inter"
-            android:text="Thông Tin Gói Vay Mong Muốn"
+            android:text="Thông Tin Gói Vay"
             android:gravity="center"
             android:focusableInTouchMode="true"
             android:textColor="@color/white"
             />
+
+        <ImageView
+            android:id="@+id/imgStatus"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/todo"
+            android:padding="8dp"
+            android:scaleType="fitXY" />
 
         <TextView
             android:layout_width="match_parent"
@@ -47,8 +58,7 @@
             android:id="@+id/detailInformationPersonBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/dp_10"
-            android:paddingEnd="@dimen/dp_10"
+            android:padding="10dp"
             android:layout_marginStart="5dp"
             android:gravity="start|center_vertical"
             android:inputType="textMultiLine"
@@ -79,8 +89,7 @@
             android:id="@+id/detailInformationLoanRequestBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/dp_10"
-            android:paddingEnd="@dimen/dp_10"
+            android:padding="10dp"
             android:layout_marginStart="5dp"
             android:gravity="start|center_vertical"
             android:inputType="textMultiLine"
