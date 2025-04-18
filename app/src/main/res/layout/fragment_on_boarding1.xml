@@ -10,49 +10,49 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scaleType="fitXY"
-        android:src="@drawable/img1"/>
+        android:src="@drawable/ing_onboarding1"/>
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView1"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Lãi xuất ưu đãi"-->
-<!--        android:textSize="@dimen/sp_24"-->
-<!--        android:textStyle="bold"-->
-<!--        android:textColor="#FFFFFF"-->
-<!--        android:layout_marginTop="@dimen/dp_20"-->
-<!--        android:layout_marginHorizontal="@dimen/dp_16"/>-->
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lãi xuất ưu đãi"
+        android:textSize="@dimen/sp_24"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginHorizontal="@dimen/dp_16"/>
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Hỗ trợ tận tâm"-->
-<!--        android:textSize="@dimen/sp_24"-->
-<!--        android:textStyle="bold"-->
-<!--        android:textColor="#FFFFFF"-->
-<!--        android:layout_marginHorizontal="@dimen/dp_16"/>-->
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hỗ trợ tận tâm"
+        android:textSize="@dimen/sp_24"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginHorizontal="@dimen/dp_16"/>
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView3"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Cam kết mang lại giá trị tốt nhất"-->
-<!--        android:textSize="@dimen/sp_24"-->
-<!--        android:textStyle="bold"-->
-<!--        android:textColor="#1E90FF"-->
-<!--        android:layout_marginHorizontal="@dimen/dp_16"/>-->
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cam kết mang lại giá trị tốt nhất"
+        android:textSize="@dimen/sp_24"
+        android:textStyle="bold"
+        android:textColor="#1E90FF"
+        android:layout_marginHorizontal="@dimen/dp_16"/>
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView4"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="5dp"-->
-<!--        android:text="EduInvest đặt mục tiêu tạo ra những giá trị lâu dài, góp phần xây dựng một tương lai thịnh vượng và tốt đẹp hơn cho tất cả mọi người."-->
-<!--        android:textSize="@dimen/sp_16"-->
-<!--        android:textColor="#B0B0B0"-->
-<!--        android:layout_gravity="center_horizontal"-->
-<!--        android:layout_marginTop="@dimen/dp_16"-->
-<!--        android:layout_marginHorizontal="@dimen/dp_16"/>-->
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="EduInvest đặt mục tiêu tạo ra những giá trị lâu dài, góp phần xây dựng một tương lai thịnh vượng và tốt đẹp hơn cho tất cả mọi người."
+        android:textSize="@dimen/sp_16"
+        android:textColor="#B0B0B0"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginHorizontal="@dimen/dp_16"/>
 
 </LinearLayout>

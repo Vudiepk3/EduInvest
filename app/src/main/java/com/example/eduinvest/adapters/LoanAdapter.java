@@ -40,16 +40,15 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyBankViewHold
     public void onBindViewHolder(@NonNull MyBankViewHolder holder, int position) {
         LoanModel loanModel = dataList.get(position);
 
-        // Load dữ liệu vào các thành phần giao diện thông qua binding
         Glide.with(context)
                 .load(loanModel.getImageBank())
                 .into(holder.binding.imageBank);
         holder.binding.nameBank.setText(loanModel.getNameBank());
         holder.binding.rateBank.setText(loanModel.getRateBank());
-        holder.binding.timeBank.setText(loanModel.getLoanPeriodBank());
+        holder.binding.timeBank.setText(loanModel.getBrowseBank());
 
         // Thiết lập sự kiện click cho item
-        holder.binding.itemBank.setOnClickListener(view -> {
+        holder.binding.linearLayoutBank.setOnClickListener(view -> {
             Common.logEvent(context, "click_item_bank" + loanModel.getNameBank()+"_"+loanModel.getKey());
             Intent intent = new Intent(context, DetailLoanActivity.class);
             intent.putExtra("Key", loanModel.getKey());

@@ -54,7 +54,7 @@ public class LoanRequestAdapter extends RecyclerView.Adapter<LoanRequestAdapter.
 
         // Thiết lập dữ liệu cho các thành phần giao diện
         holder.binding.nameBank.setText(loanRequestModel.getNameBank());
-        holder.binding.rateBank.setText(loanRequestModel.getRateBank()+"%");
+        holder.binding.rateBank.setText(loanRequestModel.getRateBank());
         holder.binding.timeBank.setText(loanRequestModel.getLoanPeriodBank());
 
         // Thiết lập trạng thái

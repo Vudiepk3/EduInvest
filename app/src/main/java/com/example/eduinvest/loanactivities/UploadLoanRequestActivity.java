@@ -72,7 +72,7 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
     /**
      * Phương thức kiểm tra các trường dữ liệu nhập vào
      */
-    private boolean validateInput(String namePerson, String birthDate, String gender, String phoneNumber, String email, String limitBank, String rateBank, String loanPeriodBank) {
+    private boolean validateInput(String namePerson, String birthDate, String gender, String phoneNumber, String email, String limitBank, String rateBank, String loanPeriodBank,String linkData) {
         if (namePerson.isEmpty()) return showError(binding.detailNamePerson, "Vui lòng nhập tên người vay");
         if (birthDate.isEmpty()) return showError(binding.detailBirthDate, "Vui lòng nhập ngày sinh");
         if (gender.isEmpty()) return showError(binding.detailGender, "Vui lòng nhập giới tính");
@@ -81,6 +81,7 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
         if (limitBank.isEmpty()) return showError(binding.detailLimitBank, "Vui lòng nhập hạn mức vay");
         if (rateBank.isEmpty()) return showError(binding.detailRateBank, "Vui lòng nhập lãi suất");
         if (loanPeriodBank.isEmpty()) return showError(binding.detailLoanPeriodBank, "Vui lòng nhập thời gian vay");
+        if (linkData.isEmpty()) return showError(binding.detailData, "Vui lòng nhập link chứa các thành tích học tập của bạn");
         return true;
     }
     // Thong bao neu loi
@@ -93,7 +94,7 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
     /**
      * Phương thức tạo model dữ liệu yêu cầu vay dựa trên dữ liệu nhập vào và nhận từ Intent
      */
-    private LoanRequestModel createDataModel(String typeBank, String namePerson, String birthDate, String gender, String phoneNumber, String email, String limitBank, String rateBank, String loanPeriodBank, String noteBank) {
+    private LoanRequestModel createDataModel(String typeBank, String namePerson, String birthDate, String gender, String phoneNumber, String email, String limitBank, String rateBank, String loanPeriodBank, String noteBank,String linkData) {
         String nameBank = getIntent().getStringExtra("nameBank");
         String titleBank = getIntent().getStringExtra("titleBank");
         String imageBank = getIntent().getStringExtra("imageBank");
@@ -119,7 +120,8 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
                     noteBank,
                     "Gói Vay Ưu Đãi",
                     "DANG_DUYET",
-                    userId
+                    userId,
+                    linkData
             );
         } else {
             return new LoanRequestModel(
@@ -138,7 +140,8 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
                     noteBank,
                     "Gói Vay Mong Muốn",
                     "DANG_DUYET",
-                    userId
+                    userId,
+                    linkData
             );
         }
     }
@@ -154,15 +157,16 @@ public class UploadLoanRequestActivity extends AppCompatActivity {
         String rateBank = binding.detailRateBank.getText().toString().trim();
         String loanPeriodBank = binding.detailLoanPeriodBank.getText().toString().trim();
         String noteBank = binding.detailNoteBank.getText().toString().trim();
+        String linkData = binding.detailData.getText().toString().trim();
         String typeBank = getIntent().getStringExtra("typeBank");
 
         // Kiểm tra dữ liệu nhập vào
-        if (!validateInput(namePerson, birthDate, gender, phoneNumber, email, limitBank, rateBank, loanPeriodBank)) {
+        if (!validateInput(namePerson, birthDate, gender, phoneNumber, email, limitBank, rateBank, loanPeriodBank,linkData)) {
             return;
         }
 
         // Tạo model dữ liệu từ thông tin đã nhập
-        LoanRequestModel dataModel = createDataModel(typeBank, namePerson, birthDate, gender, phoneNumber, email, limitBank, rateBank, loanPeriodBank, noteBank);
+        LoanRequestModel dataModel = createDataModel(typeBank, namePerson, birthDate, gender, phoneNumber, email, limitBank, rateBank, loanPeriodBank, noteBank,linkData);
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
         // Gửi dữ liệu lên Firebase Realtime Database

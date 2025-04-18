@@ -81,10 +81,10 @@ public class FirstLoanFragment extends Fragment {
         loadDataFromFirebase(dialog);
 
         // Xử lý sự kiện khi nhấn FloatingActionButton
-        binding.fab.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), UploadLoanRequestActivity.class);
-            startActivity(intent);
-        });
+//        binding.fab.setOnClickListener(v -> {
+//            Intent intent = new Intent(getActivity(), UploadLoanRequestActivity.class);
+//            startActivity(intent);
+//        });
 
         // Xử lý tìm kiếm thông tin
         binding.search.clearFocus();

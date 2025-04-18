@@ -74,7 +74,8 @@ public class DetailLoanRequestActivity extends AppCompatActivity {
                                             "\nThời Gian Vay: " + loanModel.getLoanPeriodBank() +
                                             "\nGiới Hạn: " + loanModel.getLimitBank()
                             );
-                        } else {
+
+                        }else {
                             binding.detailInformationLoanRequestBank.setText(
                                     "Tên Ngân Hàng: " + loanModel.getNameBank() +
                                             "\nTên Gói Vay: " + loanModel.getTitleBank() +
@@ -82,6 +83,11 @@ public class DetailLoanRequestActivity extends AppCompatActivity {
                                             "\nThời Gian Vay: " + loanModel.getLoanPeriodBank() +
                                             "\nGiới Hạn: " + loanModel.getLimitBank()
                             );
+                            if(loanModel.getLinkData().isEmpty()){
+                                binding.detailPersonalAchievements.setText("Không có dữ liệu");
+                            }else{
+                                binding.detailPersonalAchievements.setText(loanModel.getLinkData());
+                            }
                         }
                         switch (loanModel.getStatus()) {
                             case "DA_DUYET":

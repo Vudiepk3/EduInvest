@@ -178,7 +178,7 @@ public class HomeFragment extends Fragment {
                         dataList.add(news);
                     }
                 }
-                Collections.reverse(dataList);
+//                Collections.reverse(dataList);
                 adapter.notifyDataSetChanged();
             }
 

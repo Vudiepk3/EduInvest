@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/baseline_rectangle"
     android:orientation="vertical"
     tools:context=".loanactivities.DetailLoanActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,17 +18,16 @@
             android:layout_height="wrap_content"
             android:autofillHints="username"
             android:background="@color/blue"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/font_inter"
+            android:gravity="center"
             android:inputType="text"
             android:maxLines="2"
             android:padding="15dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/font_inter"
             android:text="Thông Tin Gói Vay"
-            android:gravity="center"
-            android:focusableInTouchMode="true"
             android:textColor="@color/white"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imgStatus"
@@ -43,29 +42,29 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="username"
-            android:inputType="text"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="Thông Tin Cá Nhân"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:autofillHints="username"
             android:gravity="start|center_vertical"
+            android:inputType="text"
+            android:text="Thông Tin Cá Nhân"
             android:textColor="?attr/colorOnBackground"
-            />
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/detailInformationPersonBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:layout_marginStart="5dp"
+            android:autofillHints="username"
+            android:background="@drawable/bg_txt"
             android:gravity="start|center_vertical"
             android:inputType="textMultiLine"
-            android:singleLine="false"
+            android:padding="10dp"
             android:scrollHorizontally="false"
-            android:background="@drawable/bg_txt"
-            android:autofillHints="username"
+            android:singleLine="false"
             android:text=""
             tools:ignore="TextViewEdits" />
 
@@ -73,64 +72,90 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="username"
-            android:inputType="text"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="Thông Tin Gói Vay"
+            android:autofillHints="username"
             android:gravity="start|center_vertical"
+            android:inputType="text"
+            android:text="Thông Tin Gói Vay"
             android:textColor="?attr/colorOnBackground"
-            />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/detailInformationLoanRequestBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:layout_marginStart="5dp"
+            android:autofillHints="username"
+            android:background="@drawable/bg_txt"
             android:gravity="start|center_vertical"
             android:inputType="textMultiLine"
-            android:singleLine="false"
+            android:padding="10dp"
             android:scrollHorizontally="false"
-            android:background="@drawable/bg_txt"
+            android:singleLine="false"
             android:textColor="?attr/colorOnBackground"
-            android:autofillHints="username"
             tools:ignore="TextViewEdits" />
-
-
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="username"
-            android:inputType="text"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="Trạng Thái"
+            android:autofillHints="username"
             android:gravity="start|center_vertical"
+            android:inputType="text"
+            android:text="Thành tích"
             android:textColor="?attr/colorOnBackground"
-            />
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/detailPersonalAchievements"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:autofillHints="username"
+            android:background="@drawable/bg_txt"
+            android:gravity="start|center_vertical"
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            android:scrollHorizontally="false"
+            android:singleLine="false"
+            android:textColor="?attr/colorOnBackground"
+            tools:ignore="TextViewEdits" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/dp_10"
-            android:paddingEnd="@dimen/dp_10"
-            android:id="@+id/detailStatusLoanRequestBank"
-            android:autofillHints="username"
-            android:inputType="text"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="username"
+            android:gravity="start|center_vertical"
+            android:inputType="text"
+            android:text="Trạng Thái"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/detailStatusLoanRequestBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:autofillHints="username"
             android:background="@drawable/bg_txt"
             android:gravity="start|center_vertical"
+            android:inputType="text"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
             android:textColor="?attr/colorOnBackground"
-            tools:ignore="HardcodedText,TextViewEdits"/>
+            tools:ignore="HardcodedText,TextViewEdits" />
 
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</androidx.core.widget.NestedScrollView>

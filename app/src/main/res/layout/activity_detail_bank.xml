@@ -55,10 +55,12 @@
             android:paddingEnd="@dimen/dp_10"
             android:id="@+id/detailNameBank"
             android:autofillHints="username"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:gravity="start|center_vertical"
             android:textColor="@color/black"
-                   tools:ignore="TextViewEdits"/>
+            android:singleLine="false"
+            tools:ignore="TextViewEdits" />
+
 
         <TextView
             android:layout_width="match_parent"

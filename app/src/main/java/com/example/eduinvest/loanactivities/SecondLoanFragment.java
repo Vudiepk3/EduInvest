@@ -77,14 +77,13 @@ public class SecondLoanFragment extends Fragment {
         Query query = databaseReference.orderByChild("timestamp");
 
         // Sử dụng addListenerForSingleValueEvent để chỉ lắng nghe dữ liệu một lần
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        eventListener = query.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dataList.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     LoanRequestModel dataClass = itemSnapshot.getValue(LoanRequestModel.class);
-                    // Kiểm tra nếu đối tượng không null và idUser khớp với người dùng hiện tại
                     if (dataClass != null && dataClass.getIdUser()
                             .equals(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())) {
                         dataClass.setKey(itemSnapshot.getKey());

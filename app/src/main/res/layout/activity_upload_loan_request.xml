@@ -96,6 +96,20 @@
             android:textColor="@color/black"
             tools:ignore="LabelFor,TextFields" />
 
+        <EditText
+            android:id="@+id/detailData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="10dp"
+            android:hint="Link chứa các thành tích học tập của bạn"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:background="@drawable/bg_txt"
+            android:textColor="@color/black"
+            tools:ignore="LabelFor,TextFields" />
+
         <TextView
             android:id="@+id/txtLimitBank"
             android:layout_width="match_parent"
